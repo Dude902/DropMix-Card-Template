@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-
+<title>Dropmix Card Mockup Template</title>
 <style>
 @font-face {
     font-family: boldtext;
@@ -191,25 +192,77 @@ input:disabled {
 </div>
 <script>
 //PRELOAD IMAGES
-var imageObjects = [];
+//IMAGES TO LOAD
+var imagestoload = new Array
+imagestoload = [
+'resources/images/Blank_Card.png',
+'resources/images/Power_Levels/Wild_2.png',
+'resources/images/Power_Levels/Yellow_3.png',
+'resources/images/Power_Levels/Yellow_2.png',
+'resources/images/Power_Levels/Red_3.png',
+'resources/images/Power_Levels/Red_2.png',
+'resources/images/Power_Levels/Red_1.png',
+'resources/images/Power_Levels/Blue_3.png',
+'resources/images/Power_Levels/Blue_2.png',
+'resources/images/Power_Levels/Blue_1.png',
+'resources/images/Power_Levels/Green_3.png',
+'resources/images/Power_Levels/Green_2.png',
+'resources/images/Instrument_Slot_1/Yellow_Vocals.png',
+'resources/images/Instrument_Slot_1/Red_Guitar.png',
+'resources/images/Instrument_Slot_1/Red_Keys.png',
+'resources/images/Instrument_Slot_1/Red_Horns.png',
+'resources/images/Instrument_Slot_1/Red_Strings.png',
+'resources/images/Instrument_Slot_1/Blue_Drums.png',
+'resources/images/Instrument_Slot_1/Green_Guitar.png',
+'resources/images/Instrument_Slot_1/Green_Keys.png',
+'resources/images/Instrument_Slot_2/Red_Guitar.png',
+'resources/images/Instrument_Slot_2/Red_Keys.png',
+'resources/images/Instrument_Slot_2/Red_Horns.png',
+'resources/images/Instrument_Slot_2/Red_Strings.png',
+'resources/images/Instrument_Slot_2/Red_Sampler.png',
+'resources/images/Instrument_Slot_3/Blue_Drums.png',
+'resources/images/Instrument_Slot_4/Green_Guitar.png',
+'resources/images/Instrument_Slot_4/Green_Keys.png',
+'resources/images/Playlist_Icons/Astro.png',
+'resources/images/Playlist_Icons/The_Blade.png',
+'resources/images/Playlist_Icons/Bomb.png',
+'resources/images/Playlist_Icons/Breaker.png',
+'resources/images/Playlist_Icons/Chiller.png',
+'resources/images/Playlist_Icons/Controller.png',
+'resources/images/Playlist_Icons/Dapper.png',
+'resources/images/Playlist_Icons/Derby.png',
+'resources/images/Playlist_Icons/Flawless.png',
+'resources/images/Playlist_Icons/Highness.png',
+'resources/images/Playlist_Icons/Hightower.png',
+'resources/images/Playlist_Icons/Lucky.png',
+'resources/images/Playlist_Icons/Mirrors.png',
+'resources/images/Playlist_Icons/Moonlight.png',
+'resources/images/Playlist_Icons/Ouroboros.png',
+'resources/images/Playlist_Icons/Puff.png',
+'resources/images/Playlist_Icons/Seer.png',
+'resources/images/Playlist_Icons/Sweets.png',
+]
+loadImages(imagestoload, init);
+//var imageObjects = [];
 function loadImages(images, onComplete) {
     var loaded = 0;
-	console.log(images.length);
+	//console.log(images.length);
     function onLoad() {
-        loaded++; console.log(loaded);
-        if (loaded == images.length) {
-            onComplete();
-        }
-    }
+        loaded++;
+		//console.log(loaded);
+        if (loaded == images.length) {onComplete();}
+		}
     for (var i = 0; i < images.length; i++) {
         var img = new Image();
         img.addEventListener("load", onLoad);
         img.src = images[i];
-        imageObjects.push(img);
-    }
+		//document.body.appendChild(img);
+		//console.log(img.src);
+        //imageObjects.push(img);
+		}
 }
 function init() {
-     console.log("start game");
+     //console.log("start game");
 	draw();
 }
 
@@ -471,57 +524,6 @@ function draw()
 	}
 
 draw();
-
-//IMAGES TO LOAD
-loadImages([
-'resources/images/Blank_Card.png',
-'resources/images/Power_Levels/Wild_2.png',
-'resources/images/Power_Levels/Yellow_3.png',
-'resources/images/Power_Levels/Yellow_2.png',
-'resources/images/Power_Levels/Yellow_1.png',
-'resources/images/Power_Levels/Red_3',
-'resources/images/Power_Levels/Red_2',
-'resources/images/Power_Levels/Red_1',
-'resources/images/Power_Levels/Blue_3',
-'resources/images/Power_Levels/Blue_2',
-'resources/images/Power_Levels/Blue_1',
-'resources/images/Power_Levels/Green_3',
-'resources/images/Power_Levels/Green_2',
-'resources/images/Instrument_Slot_1/Yellow_Vocals.png',
-'resources/images/Instrument_Slot_1/Red_Guitar.png',
-'resources/images/Instrument_Slot_1/Red_Keys.png',
-'resources/images/Instrument_Slot_1/Red_Horns.png',
-'resources/images/Instrument_Slot_1/Red_Strings.png',
-'resources/images/Instrument_Slot_1/Blue_Drums.png',
-'resources/images/Instrument_Slot_1/Green_Guitar.png',
-'resources/images/Instrument_Slot_1/Green_Keys.png',
-'resources/images/Instrument_Slot_2/Red_Guitar.png',
-'resources/images/Instrument_Slot_2/Red_Keys.png',
-'resources/images/Instrument_Slot_2/Red_Horns.png',
-'resources/images/Instrument_Slot_2/Red_Strings.png',
-'resources/images/Instrument_Slot_2/Red_Sampler.png',
-'resources/images/Instrument_Slot_3/Blue_Drums.png',
-'resources/images/Instrument_Slot_4/Green_Guitar.png',
-'resources/images/Instrument_Slot_4/Green_Keys.png',
-'resources/images/Playlist_Icons/Astro.png',
-'resources/images/Playlist_Icons/The_Blade.png',
-'resources/images/Playlist_Icons/Bomb.png',
-'resources/images/Playlist_Icons/Breaker.png',
-'resources/images/Playlist_Icons/Chiller.png',
-'resources/images/Playlist_Icons/Controller.png',
-'resources/images/Playlist_Icons/Dapper.png',
-'resources/images/Playlist_Icons/Derby.png',
-'resources/images/Playlist_Icons/Flawless.png',
-'resources/images/Playlist_Icons/Highness.png',
-'resources/images/Playlist_Icons/Hightower.png',
-'resources/images/Playlist_Icons/Lucky.png',
-'resources/images/Playlist_Icons/Mirrors.png',
-'resources/images/Playlist_Icons/Moonlight.png',
-'resources/images/Playlist_Icons/Ouroboros.png',
-'resources/images/Playlist_Icons/Puff.png',
-'resources/images/Playlist_Icons/Seer.png',
-'resources/images/Playlist_Icons/Sweets.png'
-], init);
 
 </script>
 
