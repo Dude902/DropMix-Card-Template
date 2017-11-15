@@ -15,7 +15,7 @@
 #canvas_artist, #text_artist {
 	text-transform: uppercase !important;
 	letter-spacing: 0.08em;
-	font-family: "boldtext"
+	font-family: "boldtext";
 	}
 #canvas_title, #text_title {
 	text-transform: uppercase !important;
@@ -24,7 +24,7 @@
 	}
 #canvas_series_card_id, #text_series_id, #text_card_id {
 	letter-spacing: 0.06em;
-	font-family: "boldtext"
+	font-family: "boldtext";
 	}
 #canvas_copyright, #text_copyright {
 	text-transform: uppercase !important;
@@ -33,9 +33,11 @@
 	}
 #canvas_card_num, #text_card_num {
 	letter-spacing: 0.08em;
-	font-family: "boldtext"
+	font-family: "boldtext";
 	}
 
+#header {font-family: "boldtext";}
+#footer {font-family: "lighttext";}
 
 .wild {background-color:#b4a7d6;}
 .yellow {background-color:#ffe599;}
@@ -67,129 +69,165 @@ input:disabled {
 }
 
 </style>
+
 <script> </script>
 
 </head>
 
 
+
+
+
+
+
+
+
+
+
+
+
 <body>
+<div id="header" style="margin:auto; text-align:center; padding:0px 80px 0px 0px;">
+	<img width=25% height=25% align=middle src="resources/images/DMX_logo_color.png">
+	<span style="font-size:2em; line-height:2em; vertical-align:middle;"> Card Mockup Template</span>
+	<BR>
+	<img src="resources/images/divider-bg.png">
+</div>
+ 
 <div style="display:table; margin:auto;">
 <div style="display:table-row;">
-<div style="display:table-cell;vertical-align:middle;padding:0px 40px 0px 40px;">
-<P>
-	<H1>Text:</H1>
-	Artist: 		<BR><input size='50' oninput="textchanged()" 	id="text_artist" 		value="Artist" style="width:500px;"><BR><BR>
-	Title: 			<BR><textarea rows="4" oninput="textchanged()" 	id="text_title" 		value="Title" style="width:500px;">Title</textarea>
-	<!--<input size='50' oninput="textchanged()" id="text_title" 		value="Title">--><BR><BR>
-	Series ID #: 	<BR><input size='50' oninput="textchanged()" 	id="text_series_id" 	value="S##" style="width:500px;"><BR><BR>
-	Card ID #: 		<BR><input size='50' oninput="textchanged()" 	id="text_card_id" 		value="C##" style="width:500px;"><BR><BR>
-	Copyright: 		<BR><input size='50' oninput="textchanged()" 	id="text_copyright" 	value="&trade; &amp; &copy; 2017 HARMONIX  &copy; 2017 HASBROTHER" style="width:500px;"><BR><BR>
-	Card #: 		<BR><input size='50' oninput="textchanged()" 	id="text_card_num" 		value="##/##" style="width:500px;"><BR><BR>
-</P>
+	<div style="display:table-cell;vertical-align:middle;padding:0px 40px 0px 40px;">
+		<P>
+			<H1>Text:</H1>
+			Artist: 		<BR><input size='50' oninput="textchanged()" 	id="text_artist" 		value="Artist" style="width:500px;"><BR><BR>
+			Title: 			<BR><textarea rows="4" oninput="textchanged()" 	id="text_title" 		value="Title" style="width:500px;">Title</textarea>
+			<!--<input size='50' oninput="textchanged()" id="text_title" 		value="Title">--><BR><BR>
+			Series ID #: 	<BR><input size='50' oninput="textchanged()" 	id="text_series_id" 	value="S##" style="width:500px;"><BR><BR>
+			Card ID #: 		<BR><input size='50' oninput="textchanged()" 	id="text_card_id" 		value="C##" style="width:500px;"><BR><BR>
+			Copyright: 		<BR><input size='50' oninput="textchanged()" 	id="text_copyright" 	value="&trade; &amp; &copy; 2017 HARMONIX  &copy; 2017 HASBROTHER" style="width:500px;"><BR><BR>
+			Card #: 		<BR><input size='50' oninput="textchanged()" 	id="text_card_num" 		value="##/##" style="width:500px;"><BR><BR>
+		</P>
 
-<P>
-	<H1>Power Levels:</H1>
-	<div class="leveltable">
-		<div class="tablerow">
-			<div class="tablecell disabled"><span class="wild"><input type="radio" onchange="levelchanged();" name="level" value="w3" id="w3" disabled><label for="w3">Wild - 3</label></span></div>
-			<div class="tablecell"><span class="yellow"><input type="radio" onchange="levelchanged();" name="level" value="y3" id="y3"><label for="y3">Yellow - 3</label></span></div>
-			<div class="tablecell"><span class="red"><input type="radio" onchange="levelchanged();" name="level" value="r3" id="r3"><label for="r3">Red - 3</label></span></div>
-			<div class="tablecell"><span class="blue"><input type="radio" onchange="levelchanged();" name="level" value="b3" id="b3"><label for="b3">Blue - 3</label></span></div>
-			<div class="tablecell"><span class="green"><input type="radio" onchange="levelchanged();" name="level" value="g3" id="g3"><label for="g3">Green - 3</label></span></div>
-			<div class="tablecell disabled"><span class="white"><input type="radio" onchange="levelchanged();" name="level" value="f3" id="f3" disabled><label for="f3">White - 3</label></span></div>
-		</div>
-		<div class="tablerow">
-			<div class="tablecell"><span class="wild"><input type="radio" onchange="levelchanged();" name="level" value="w2" id="w2"><label for="w2">Wild - 2</label></span></div>
-			<div class="tablecell"><span class="yellow"><input type="radio" onchange="levelchanged();" name="level" value="y2" id="y2"><label for="y2">Yellow - 2</label></span></div>
-			<div class="tablecell"><span class="red"><input type="radio" onchange="levelchanged();" name="level" value="r2" id="r2"><label for="r2">Red - 2</label></span></div>
-			<div class="tablecell"><span class="blue"><input type="radio" onchange="levelchanged();" name="level" value="b2" id="b2"><label for="b2">Blue - 2</label></span></div>
-			<div class="tablecell"><span class="green"><input type="radio" onchange="levelchanged();" name="level" value="g2" id="g2"><label for="g2">Green - 2</label></span></div>
-			<div class="tablecell disabled"><span class="white"><input type="radio" onchange="levelchanged();" name="level" value="f2" id="f2" disabled><label for="f2">White - 2</label></span></div>
-		</div>
-		<div class="tablerow">
-			<div class="tablecell disabled"><span class="wild"><input type="radio" onchange="levelchanged();" name="level" value="w1" id="w1" disabled><label for="w1">Wild - 1</label></span></div>
-			<div class="tablecell disabled"><span class="yellow"><input type="radio" onchange="levelchanged();" name="level" value="y1" id="y1" disabled><label for="y1">Yellow - 1</label></span></div>
-			<div class="tablecell"><span class="red"><input type="radio" onchange="levelchanged();" name="level" value="r1" id="r1"><label for="r1">Red - 1</label></span></div>
-			<div class="tablecell"><span class="blue"><input type="radio" onchange="levelchanged();" name="level" value="b1" id="b1"><label for="b1">Blue - 1</label></span></div>
-			<div class="tablecell disabled"><span class="green"><input type="radio" onchange="levelchanged();" name="level" value="g1" id="g1" disabled><label for="g1">Green - 1</label></span></div>
-			<div class="tablecell disabled"><span class="white"><input type="radio" onchange="levelchanged();" name="level" value="f1" id="f1" disabled><label for="f1">White - 1</label></span></div>
-		</div>
+		<P>
+			<H1>Power Levels:</H1>
+			<div class="leveltable">
+				<div class="tablerow">
+					<div class="tablecell disabled"><span class="wild"><input type="radio" onchange="levelchanged();" name="level" value="w3" id="w3" disabled><label for="w3">Wild - 3</label></span></div>
+					<div class="tablecell"><span class="yellow"><input type="radio" onchange="levelchanged();" name="level" value="y3" id="y3"><label for="y3">Yellow - 3</label></span></div>
+					<div class="tablecell"><span class="red"><input type="radio" onchange="levelchanged();" name="level" value="r3" id="r3"><label for="r3">Red - 3</label></span></div>
+					<div class="tablecell"><span class="blue"><input type="radio" onchange="levelchanged();" name="level" value="b3" id="b3"><label for="b3">Blue - 3</label></span></div>
+					<div class="tablecell"><span class="green"><input type="radio" onchange="levelchanged();" name="level" value="g3" id="g3"><label for="g3">Green - 3</label></span></div>
+					<div class="tablecell disabled"><span class="white"><input type="radio" onchange="levelchanged();" name="level" value="f3" id="f3" disabled><label for="f3">White - 3</label></span></div>
+				</div>
+				<div class="tablerow">
+					<div class="tablecell"><span class="wild"><input type="radio" onchange="levelchanged();" name="level" value="w2" id="w2"><label for="w2">Wild - 2</label></span></div>
+					<div class="tablecell"><span class="yellow"><input type="radio" onchange="levelchanged();" name="level" value="y2" id="y2"><label for="y2">Yellow - 2</label></span></div>
+					<div class="tablecell"><span class="red"><input type="radio" onchange="levelchanged();" name="level" value="r2" id="r2"><label for="r2">Red - 2</label></span></div>
+					<div class="tablecell"><span class="blue"><input type="radio" onchange="levelchanged();" name="level" value="b2" id="b2"><label for="b2">Blue - 2</label></span></div>
+					<div class="tablecell"><span class="green"><input type="radio" onchange="levelchanged();" name="level" value="g2" id="g2"><label for="g2">Green - 2</label></span></div>
+					<div class="tablecell disabled"><span class="white"><input type="radio" onchange="levelchanged();" name="level" value="f2" id="f2" disabled><label for="f2">White - 2</label></span></div>
+				</div>
+				<div class="tablerow">
+					<div class="tablecell disabled"><span class="wild"><input type="radio" onchange="levelchanged();" name="level" value="w1" id="w1" disabled><label for="w1">Wild - 1</label></span></div>
+					<div class="tablecell disabled"><span class="yellow"><input type="radio" onchange="levelchanged();" name="level" value="y1" id="y1" disabled><label for="y1">Yellow - 1</label></span></div>
+					<div class="tablecell"><span class="red"><input type="radio" onchange="levelchanged();" name="level" value="r1" id="r1"><label for="r1">Red - 1</label></span></div>
+					<div class="tablecell"><span class="blue"><input type="radio" onchange="levelchanged();" name="level" value="b1" id="b1"><label for="b1">Blue - 1</label></span></div>
+					<div class="tablecell disabled"><span class="green"><input type="radio" onchange="levelchanged();" name="level" value="g1" id="g1" disabled><label for="g1">Green - 1</label></span></div>
+					<div class="tablecell disabled"><span class="white"><input type="radio" onchange="levelchanged();" name="level" value="f1" id="f1" disabled><label for="f1">White - 1</label></span></div>
+				</div>
+			</div>
+			
+		</P>
+
+		<P>
+			<H1>Instruments:</H1>
+			<select id="instrument1" name="instrument1" onchange="instrumentchanged();">
+				<option value="none">Instrument slot 1</option>
+				<option value="yvocals" class="yellow">Yellow Vocals</option>
+				<option value="rguitar" class="red">Red Guitar</option>
+				<option value="rkeys"  class="red">Red Keys</option>
+				<option value="rhorns"  class="red">Red Horns</option>
+				<option value="rstrings"  class="red">Red Strings</option>
+				<option value="bdrums"  class="blue">Blue Drums</option>
+				<option value="gguitar"  class="green">Green Guitar</option>
+				<option value="gkeys"  class="green">Green Keys</option>
+			</select>
+			
+			<select id="instrument2" name="instrument2" onchange="instrumentchanged();">
+				<option value="none">Instrument slot 2</option>
+				<option value="rguitar"  class="red">Red Guitar</option>
+				<option value="rkeys"  class="red">Red Keys</option>
+				<option value="rhorns"  class="red">Red Horns</option>
+				<option value="rstrings"  class="red">Red Strings</option>
+				<option value="rsampler"  class="red">Red Sampler</option>
+			</select>
+			
+			<select id="instrument3" name="instrument3" onchange="instrumentchanged();">
+				<option value="none" >Instrument slot 3</option>
+				<option value="bdrums" class="blue">Blue Drums</option>
+			</select>
+			
+			<select id="instrument4" name="instrument4" onchange="instrumentchanged();">
+				<option value="none">Instrument slot 4</option>
+				<option value="gguitar" class="green">Green Guitar</option>
+				<option value="gkeys" class="green">Green Keys</option>
+			</select>
+
+		</P>
+
+		<P>
+			<H1>Playlist Icons:</H1>
+			<select id="playlist" name="playlist" onchange="playlistchanged();">
+				<option value="none">None</option>
+				<option value="astro">Astro</option>
+				<option value="blade">The Blade</option>
+				<option value="bomb">Bomb</option>
+				<option value="breaker">Breaker</option>
+				<option value="chiller">Chiller</option>
+				<option value="controller">Controller</option>
+				<option value="dapper">Dapper</option>
+				<option value="derby">Derby</option>
+				<option value="flawless">Flawless</option>
+				<option value="highness">Highness</option>
+				<option value="hightower">Hightower</option>
+				<option value="lucky">Lucky</option>
+				<option value="mirrors">Mirrors</option>
+				<option value="moonlight">Moonlight</option>
+				<option value="ouroboros">Ouroboros</option>
+				<option value="puff">Puff</option>
+				<option value="seer">Seer</option>
+				<option value="sweets">Sweets</option>
+			</select>
+		</P>
 	</div>
-	
-</P>
+	<div style="display:table-cell;vertical-align:middle;padding:40px;">
+		<canvas id="canvas_bg" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
+		<canvas id="canvas_artist" hidden width=562 height=780 border="1px" style="border:1px solid #000000;letter-spacing:20px;"></canvas>
+		<canvas id="canvas_title" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
+		<canvas id="canvas_series_card_id" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
+		<canvas id="canvas_copyright" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
+		<canvas id="canvas_card_num" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
+		<canvas id="canvas" width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
+	</div>
+</div>
+</div>
 
-<P>
-	<H1>Instruments:</H1>
-	<select id="instrument1" name="instrument1" onchange="instrumentchanged();">
-		<option value="none">Instrument slot 1</option>
-		<option value="yvocals" class="yellow">Yellow Vocals</option>
-		<option value="rguitar" class="red">Red Guitar</option>
-		<option value="rkeys"  class="red">Red Keys</option>
-		<option value="rhorns"  class="red">Red Horns</option>
-		<option value="rstrings"  class="red">Red Strings</option>
-		<option value="bdrums"  class="blue">Blue Drums</option>
-		<option value="gguitar"  class="green">Green Guitar</option>
-		<option value="gkeys"  class="green">Green Keys</option>
-	</select>
-	
-	<select id="instrument2" name="instrument2" onchange="instrumentchanged();">
-		<option value="none">Instrument slot 2</option>
-		<option value="rguitar"  class="red">Red Guitar</option>
-		<option value="rkeys"  class="red">Red Keys</option>
-		<option value="rhorns"  class="red">Red Horns</option>
-		<option value="rstrings"  class="red">Red Strings</option>
-		<option value="rsampler"  class="red">Red Sampler</option>
-	</select>
-	
-	<select id="instrument3" name="instrument3" onchange="instrumentchanged();">
-		<option value="none" >Instrument slot 3</option>
-		<option value="bdrums" class="blue">Blue Drums</option>
-	</select>
-	
-	<select id="instrument4" name="instrument4" onchange="instrumentchanged();">
-		<option value="none">Instrument slot 4</option>
-		<option value="gguitar" class="green">Green Guitar</option>
-		<option value="gkeys" class="green">Green Keys</option>
-	</select>
+<div id="footer" style="margin:auto;padding:0px 40px 0px 40px;text-align:center;">
+	<img src="resources/images/divider-bg.png">
+	<h6>
+		<P>Web template and original Photoshop template made by Adam N. A. <a href="http://www.twitter.com/AdamUnavailable">@AdamUnavailable</a> for creating card mockups for the music-mixing card game DropMix.</P>
+		<P>DropMix &trade; &amp; &copy; 2017 HARMONIX  &copy; 2017 HASBRO</P>
+	</h6>
+</div>
 
-</P>
 
-<P>
-	<H1>Playlist Icons:</H1>
-	<select id="playlist" name="playlist" onchange="playlistchanged();">
-		<option value="none">None</option>
-		<option value="astro">Astro</option>
-		<option value="blade">The Blade</option>
-		<option value="bomb">Bomb</option>
-		<option value="breaker">Breaker</option>
-		<option value="chiller">Chiller</option>
-		<option value="controller">Controller</option>
-		<option value="dapper">Dapper</option>
-		<option value="derby">Derby</option>
-		<option value="flawless">Flawless</option>
-		<option value="highness">Highness</option>
-		<option value="hightower">Hightower</option>
-		<option value="lucky">Lucky</option>
-		<option value="mirrors">Mirrors</option>
-		<option value="moonlight">Moonlight</option>
-		<option value="ouroboros">Ouroboros</option>
-		<option value="puff">Puff</option>
-		<option value="seer">Seer</option>
-		<option value="sweets">Sweets</option>
-	</select>
-</P>
-</div>
-<div style="display:table-cell;vertical-align:middle;padding:40px;">
-<canvas id="canvas_bg" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
-<canvas id="canvas_artist" hidden width=562 height=780 border="1px" style="border:1px solid #000000;letter-spacing:20px;"></canvas>
-<canvas id="canvas_title" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
-<canvas id="canvas_series_card_id" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
-<canvas id="canvas_copyright" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
-<canvas id="canvas_card_num" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
-<canvas id="canvas" width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
-</div>
-</div>
-</div>
+
+
+
+
+
+
+
 <script>
 //PRELOAD IMAGES
 //IMAGES TO LOAD
@@ -243,8 +281,8 @@ imagestoload = [
 'resources/images/Playlist_Icons/Sweets.png',
 ]
 loadImages(imagestoload, init);
-//var imageObjects = [];
 function loadImages(images, onComplete) {
+	var imageObjects = [];
     var loaded = 0;
 	//console.log(images.length);
     function onLoad() {
@@ -258,7 +296,7 @@ function loadImages(images, onComplete) {
         img.src = images[i];
 		//document.body.appendChild(img);
 		//console.log(img.src);
-        //imageObjects.push(img);
+        imageObjects.push(img);
 		}
 }
 function init() {
