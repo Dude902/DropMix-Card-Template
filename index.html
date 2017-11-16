@@ -10,7 +10,7 @@
 
 <body>
 <div id="header" style="margin:auto; text-align:center; padding:0px 80px 0px 0px;">
-	<img width=25% height=25% align=middle src="resources/images/DMX_logo_color.png">
+	<A href="https://dropmix.hasbro.com"><img width=25% height=25% align=middle src="resources/images/DMX_logo_color.png"></A>
 	<span style="font-size:2em; line-height:2em; vertical-align:middle;"> Card Mockup Template</span>
 	<div id="version" style="font-size:14px; margin:-20px auto -15px 300px;">(Version Alpha - Work in Progress)</div>
 	<BR>
@@ -22,13 +22,13 @@
 	<div style="display:table-cell;vertical-align:middle;padding:0px 40px 0px 40px;">
 		<P>
 			<H1>Text:</H1>
-			Artist: 		<BR><input size='50' oninput="textchanged()" 	id="text_artist" 		value="Artist" style="width:500px;"><BR><BR>
-			Title: 			<BR><textarea rows="4" oninput="textchanged()" 	id="text_title" 		value="Title" style="width:500px;">Title</textarea><BR><BR>
-			<!--<input size='50' oninput="textchanged()" id="text_title" 		value="Title"><BR><BR>-->
-			Series ID #: 	<BR><input size='50' oninput="textchanged()" 	id="text_series_id" 	value="S##" style="width:500px;"><BR><BR>
-			Card ID #: 		<BR><input size='50' oninput="textchanged()" 	id="text_card_id" 		value="C###" style="width:500px;"><BR><BR>
-			Copyright: 		<BR><input size='50' oninput="textchanged()" 	id="text_copyright" 	value="&trade; &amp; &copy; 2017 HARMONIX  &copy; 2017 HASBROTHER" style="width:500px;"><BR><BR>
-			Card #: 		<BR><input size='50' oninput="textchanged()" 	id="text_card_num" 		value="##/##" style="width:500px;"><BR><BR>
+			Artist: 		<BR><input size='50'	id="text_artist" 		value="Artist" style="width:500px;"><BR><BR>
+			Title: 			<BR><textarea rows="4"	id="text_title" 		value="Title" style="width:500px;">Title</textarea><BR><BR>
+			<!--<input size='50' id="text_title" 		value="Title"><BR><BR>-->
+			Series ID #: 	<BR><input size='50'	id="text_series_id" 	value="S##" style="width:500px;"><BR><BR>
+			Card ID #: 		<BR><input size='50'	id="text_card_id" 		value="C###" style="width:500px;"><BR><BR>
+			Copyright: 		<BR><input size='50'	id="text_copyright" 	value="&trade; &amp; &copy; 2017 HARMONIX  &copy; 2017 HASBROTHER" style="width:500px;"><BR><BR>
+			Card #: 		<BR><input size='50'	id="text_card_num" 		value="##/##" style="width:500px;"><BR><BR>
 			<!--For compatibility with canvas library fabric.js-->
 			<!--(returns "ReferenceError: text_titleX is not defined, based on existing id's"-->
 			<a id="text_title1"></a><a id="text_title2"></a><a id="text_title3"></a><a id="text_title4"></a>
@@ -39,28 +39,28 @@
 			<H1>Power Levels:</H1>
 			<div class="leveltable">
 				<div class="tablerow">
-					<div class="tablecell disabled"><span class="wild"><input type="radio" onchange="levelchanged();" name="level" value="w3" id="w3" disabled><label for="w3">Wild - 3</label></span></div>
-					<div class="tablecell"><span class="yellow"><input type="radio" onchange="levelchanged();" name="level" value="y3" id="y3"><label for="y3">Yellow - 3</label></span></div>
-					<div class="tablecell"><span class="red"><input type="radio" onchange="levelchanged();" name="level" value="r3" id="r3"><label for="r3">Red - 3</label></span></div>
-					<div class="tablecell"><span class="blue"><input type="radio" onchange="levelchanged();" name="level" value="b3" id="b3"><label for="b3">Blue - 3</label></span></div>
-					<div class="tablecell"><span class="green"><input type="radio" onchange="levelchanged();" name="level" value="g3" id="g3"><label for="g3">Green - 3</label></span></div>
-					<div class="tablecell disabled"><span class="white"><input type="radio" onchange="levelchanged();" name="level" value="f3" id="f3" disabled><label for="f3">White - 3</label></span></div>
+					<div class="tablecell disabled"><span class="wild"><input type="radio" name="level" value="w3" id="w3" disabled><label for="w3">Wild - 3</label></span></div>
+					<div class="tablecell"><span class="yellow"><input type="radio" name="level" value="y3" id="y3"><label for="y3">Yellow - 3</label></span></div>
+					<div class="tablecell"><span class="red"><input type="radio" name="level" value="r3" id="r3"><label for="r3">Red - 3</label></span></div>
+					<div class="tablecell"><span class="blue"><input type="radio" name="level" value="b3" id="b3"><label for="b3">Blue - 3</label></span></div>
+					<div class="tablecell"><span class="green"><input type="radio" name="level" value="g3" id="g3"><label for="g3">Green - 3</label></span></div>
+					<div class="tablecell disabled"><span class="white"><input type="radio" name="level" value="f3" id="f3" disabled><label for="f3">White - 3</label></span></div>
 				</div>
 				<div class="tablerow">
-					<div class="tablecell"><span class="wild"><input type="radio" onchange="levelchanged();" name="level" value="w2" id="w2"><label for="w2">Wild - 2</label></span></div>
-					<div class="tablecell"><span class="yellow"><input type="radio" onchange="levelchanged();" name="level" value="y2" id="y2"><label for="y2">Yellow - 2</label></span></div>
-					<div class="tablecell"><span class="red"><input type="radio" onchange="levelchanged();" name="level" value="r2" id="r2"><label for="r2">Red - 2</label></span></div>
-					<div class="tablecell"><span class="blue"><input type="radio" onchange="levelchanged();" name="level" value="b2" id="b2"><label for="b2">Blue - 2</label></span></div>
-					<div class="tablecell"><span class="green"><input type="radio" onchange="levelchanged();" name="level" value="g2" id="g2"><label for="g2">Green - 2</label></span></div>
-					<div class="tablecell disabled"><span class="white"><input type="radio" onchange="levelchanged();" name="level" value="f2" id="f2" disabled><label for="f2">White - 2</label></span></div>
+					<div class="tablecell"><span class="wild"><input type="radio" name="level" value="w2" id="w2"><label for="w2">Wild - 2</label></span></div>
+					<div class="tablecell"><span class="yellow"><input type="radio" name="level" value="y2" id="y2"><label for="y2">Yellow - 2</label></span></div>
+					<div class="tablecell"><span class="red"><input type="radio" name="level" value="r2" id="r2"><label for="r2">Red - 2</label></span></div>
+					<div class="tablecell"><span class="blue"><input type="radio" name="level" value="b2" id="b2"><label for="b2">Blue - 2</label></span></div>
+					<div class="tablecell"><span class="green"><input type="radio" name="level" value="g2" id="g2"><label for="g2">Green - 2</label></span></div>
+					<div class="tablecell disabled"><span class="white"><input type="radio" name="level" value="f2" id="f2" disabled><label for="f2">White - 2</label></span></div>
 				</div>
 				<div class="tablerow">
-					<div class="tablecell disabled"><span class="wild"><input type="radio" onchange="levelchanged();" name="level" value="w1" id="w1" disabled><label for="w1">Wild - 1</label></span></div>
-					<div class="tablecell disabled"><span class="yellow"><input type="radio" onchange="levelchanged();" name="level" value="y1" id="y1" disabled><label for="y1">Yellow - 1</label></span></div>
-					<div class="tablecell"><span class="red"><input type="radio" onchange="levelchanged();" name="level" value="r1" id="r1"><label for="r1">Red - 1</label></span></div>
-					<div class="tablecell"><span class="blue"><input type="radio" onchange="levelchanged();" name="level" value="b1" id="b1"><label for="b1">Blue - 1</label></span></div>
-					<div class="tablecell disabled"><span class="green"><input type="radio" onchange="levelchanged();" name="level" value="g1" id="g1" disabled><label for="g1">Green - 1</label></span></div>
-					<div class="tablecell disabled"><span class="white"><input type="radio" onchange="levelchanged();" name="level" value="f1" id="f1" disabled><label for="f1">White - 1</label></span></div>
+					<div class="tablecell disabled"><span class="wild"><input type="radio" name="level" value="w1" id="w1" disabled><label for="w1">Wild - 1</label></span></div>
+					<div class="tablecell disabled"><span class="yellow"><input type="radio" name="level" value="y1" id="y1" disabled><label for="y1">Yellow - 1</label></span></div>
+					<div class="tablecell"><span class="red"><input type="radio" name="level" value="r1" id="r1"><label for="r1">Red - 1</label></span></div>
+					<div class="tablecell"><span class="blue"><input type="radio" name="level" value="b1" id="b1"><label for="b1">Blue - 1</label></span></div>
+					<div class="tablecell disabled"><span class="green"><input type="radio" name="level" value="g1" id="g1" disabled><label for="g1">Green - 1</label></span></div>
+					<div class="tablecell disabled"><span class="white"><input type="radio" name="level" value="f1" id="f1" disabled><label for="f1">White - 1</label></span></div>
 				</div>
 			</div>
 			
@@ -138,7 +138,7 @@
 <div id="footer" style="margin:auto;padding:0px 40px 0px 40px;text-align:center;">
 	<img src="resources/images/divider-bg.png">
 	<h6>
-		<P>Web template and original Photoshop template made by Adam N. A. <a href="http://www.twitter.com/AdamUnavailable">@AdamUnavailable</a> for creating card mockups for the music-mixing card game DropMix.</P>
+		<P>Web template and original Photoshop template made by Adam N. A. <a href="http://www.twitter.com/AdamUnavailable">@AdamUnavailable</a> to create card mockups for the music-mixing card game DropMix.</P>
 		<P>Made using the <a href="https://github.com/kangax/fabric.js/">fabric.js</a> HTML5 canvas library by <a href="http://www.twitter.com/kangax">@kangax</a> & <a href="http://www.twitter.com/andreabogazzi">@andreabogazzi</a> (<a href="http://www.twitter.com/fabricjs">@fabricjs</a>).
 		<P>DropMix &trade; &amp; &copy; 2017 HARMONIX  &copy; 2017 HASBRO</P>
 	</h6>

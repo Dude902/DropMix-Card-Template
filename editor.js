@@ -70,6 +70,7 @@ function loadImages(images, onComplete)
 
 loadImages(imagestoload, loadboldfont);
 
+//PRELOAD FONTS
 var boldfont = new FontFaceObserver('boldtext', {
   weight: 400
 });
@@ -98,7 +99,7 @@ lightfont.load().then(
 	function () 
 		{
 		console.log('Font is available');
-		draw();
+		draw();//LAST PRELOADED ASSET, IF ADDING MORE PUT LOAD FUNCTION HERE
 		}, 
 	function ()
 		{
@@ -108,9 +109,52 @@ lightfont.load().then(
 );
 }
 
-
-
-
+//ADD LISTENERS TO INPUT OBJECTS TO REDRAW CANVAS
+/*
+[id^='someId'] will match all ids starting with someId.
+[id$='someId'] will match all ids ending with someId.
+[id*='someId'] will match all ids containing someId.
+*/
+var elements = document.querySelectorAll("input, textarea, select, option, canvas");
+for (var i = 0; i < elements.length; i++) {
+  elements[i].addEventListener("input", draw);
+  elements[i].addEventListener("keyup", draw);
+  elements[i].addEventListener("blur", draw);
+  elements[i].addEventListener("change", draw);
+  elements[i].addEventListener("click", draw);
+}
+var elements = document.querySelectorAll('input[type=text], textarea, input[id^=text')
+for (var i = 0; i < elements.length; i++) {
+  elements[i].addEventListener("input", textchanged);
+  elements[i].addEventListener("keyup", textchanged);
+  elements[i].addEventListener("blur", textchanged);
+  elements[i].addEventListener("change", textchanged);
+  elements[i].addEventListener("click", textchanged);
+}
+var elements = document.querySelectorAll('input[name^=level]')
+for (var i = 0; i < elements.length; i++) {
+  elements[i].addEventListener("input", levelchanged);
+  elements[i].addEventListener("keyup", levelchanged);
+  elements[i].addEventListener("blur", levelchanged);
+  elements[i].addEventListener("change", levelchanged);
+  elements[i].addEventListener("click", levelchanged);
+}
+var elements = document.querySelectorAll('input[name^=instrument]')
+for (var i = 0; i < elements.length; i++) {
+  elements[i].addEventListener("input", instrumentchanged);
+  elements[i].addEventListener("keyup", instrumentchanged);
+  elements[i].addEventListener("blur", instrumentchanged);
+  elements[i].addEventListener("change", instrumentchanged);
+  elements[i].addEventListener("click", instrumentchanged);
+}
+var elements = document.querySelectorAll('input[name^=playlist]')
+for (var i = 0; i < elements.length; i++) {
+  elements[i].addEventListener("input", playlistchanged);
+  elements[i].addEventListener("keyup", playlistchanged);
+  elements[i].addEventListener("blur", playlistchanged);
+  elements[i].addEventListener("change", playlistchanged);
+  elements[i].addEventListener("click", playlistchanged);
+}
 
 
 
@@ -159,7 +203,7 @@ copyright = '&trade; &amp; &copy; 2017 HARMONIX  &copy; 2017 HASBROTHER';
 card_num = '##/##';
 */
 
-//Default text
+//Initial text
 artist = document.getElementById('text_artist').value;
 title  = 'Title';
 title1 = 'Title';
