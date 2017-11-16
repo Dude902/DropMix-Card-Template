@@ -244,7 +244,7 @@ text_title = new fabric.IText(title.toUpperCase(), {
 if (typeof title1 != 'undefined')
 text_title1 = new fabric.IText(title1.toUpperCase(), {
   fontFamily: 'lighttext',
-  fontWeight:100,
+  fontWeight:400,
   fontSize:fs_title,
   charSpacing:sp_title,
   fill:"white",
