@@ -156,6 +156,9 @@ for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("click", playlistchanged);
 }
 
+//Try drawing automatically after little bit in case fonts don't load right away
+setTimeout(draw, 250);
+setTimeout(draw, 500); //0.5 sec
 
 
 
