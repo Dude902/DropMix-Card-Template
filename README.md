@@ -9,5 +9,5 @@ Conversion of my photoshop-based template for Dropmix musical trading card mocku
 </UL>
 <BR>
 <UL>Bugs:
-  <LI>Kerning is wrong but is correct after soft-refreshing (presumably fonts loaded badly)</LI>
+  <LI>Kerning is wrong but is correct after soft-refreshing (maybe fonts loaded incorrectly?)</LI>
 </UL>
