@@ -12,6 +12,7 @@
 <div id="header" style="margin:auto; text-align:center; padding:0px 80px 0px 0px;">
 	<img width=25% height=25% align=middle src="resources/images/DMX_logo_color.png">
 	<span style="font-size:2em; line-height:2em; vertical-align:middle;"> Card Mockup Template</span>
+	<div id="version" style="font-size:14px; margin:-20px auto -15px 300px;">(Version Alpha - Work in Progress)</div>
 	<BR>
 	<img src="resources/images/divider-bg.png">
 </div>
@@ -28,6 +29,10 @@
 			Card ID #: 		<BR><input size='50' oninput="textchanged()" 	id="text_card_id" 		value="C###" style="width:500px;"><BR><BR>
 			Copyright: 		<BR><input size='50' oninput="textchanged()" 	id="text_copyright" 	value="&trade; &amp; &copy; 2017 HARMONIX  &copy; 2017 HASBROTHER" style="width:500px;"><BR><BR>
 			Card #: 		<BR><input size='50' oninput="textchanged()" 	id="text_card_num" 		value="##/##" style="width:500px;"><BR><BR>
+			<!--For compatibility with canvas library fabric.js-->
+			<!--(returns "ReferenceError: text_titleX is not defined, based on existing id's"-->
+			<a id="text_title1"></a><a id="text_title2"></a><a id="text_title3"></a><a id="text_title4"></a>
+			<!--For compatibility with canvas library fabric.js-->
 		</P>
 
 		<P>

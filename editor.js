@@ -213,7 +213,6 @@ textcanvas.hidden = true;
 
 drawtext();
 function drawtext() {
-var text_title, text_title1, text_title2, text_title3, text_title4;
 if (text_artist) textcanvas.remove(text_artist);
 if (text_title)  textcanvas.remove(text_title);
 if (text_title1) textcanvas.remove(text_title1);
@@ -233,50 +232,50 @@ text_artist = new fabric.IText(artist.toUpperCase(), {
   fill:"white",
 });
 
-text_title = new fabric.IText('', {
+if (typeof title != 'undefined')
+text_title = new fabric.IText(title.toUpperCase(), {
   fontFamily: 'lighttext',
   fontWeight:400,
   fontSize:fs_title,
   charSpacing:sp_title,
   fill:"white",
 });
-if (title) text_title.set('Text',title.toUpperCase());
 
-text_title1 = new fabric.IText('', {
+if (typeof title1 != 'undefined')
+text_title1 = new fabric.IText(title1.toUpperCase(), {
   fontFamily: 'lighttext',
-  fontWeight:400,
+  fontWeight:100,
   fontSize:fs_title,
   charSpacing:sp_title,
   fill:"white",
 });
-if (title1) text_title1.set('Text',title1.toUpperCase());
 
-text_title2 = new fabric.IText('', {
+if (typeof title2 != 'undefined')
+text_title2 = new fabric.IText(title2.toUpperCase(), {
   fontFamily: 'lighttext',
   fontWeight:400,
   fontSize:fs_title,
   charSpacing:sp_title,
   fill:"white",
 });
-if (title2) text_title2.set('Text',title2.toUpperCase());
 
-text_title3 = new fabric.IText('', {
+if (typeof title3 != 'undefined')
+text_title3 = new fabric.IText(title3.toUpperCase(), {
   fontFamily: 'lighttext',
   fontWeight:400,
   fontSize:fs_title,
   charSpacing:sp_title,
   fill:"white",
 });
-if (title3) text_title3.set('Text',title3.toUpperCase());
 
-text_title4 = new fabric.IText('', {
+if (typeof title4 != 'undefined')
+text_title4 = new fabric.IText(title4.toUpperCase(), {
   fontFamily: 'lighttext',
   fontWeight:400,
   fontSize:fs_title,
   charSpacing:sp_title,
   fill:"white",
 });
-if (title4) text_title4.set('Text',title4.toUpperCase());
 
 text_series_id = new fabric.IText(series_id, {
   fontFamily: 'boldtext',
@@ -313,21 +312,21 @@ text_card_num = new fabric.IText(card_num, {
 });
 
 textcanvas.add(text_artist);
-//textcanvas.add(text_title);
-textcanvas.add(text_title1);
-textcanvas.add(text_title2);
-textcanvas.add(text_title3);
-textcanvas.add(text_title4);
+//if (typeof title  != 'undefined') textcanvas.add(text_title);
+if (typeof title1 != 'undefined') textcanvas.add(text_title1);
+if (typeof title2 != 'undefined') textcanvas.add(text_title2);
+if (typeof title3 != 'undefined') textcanvas.add(text_title3);
+if (typeof title4 != 'undefined') textcanvas.add(text_title4);
 textcanvas.add(text_series_id);
 textcanvas.add(text_card_id);
 textcanvas.add(text_copyright);
 textcanvas.add(text_card_num);
 
 text_artist.set({ 		left: pos_artist[0], 	top: pos_artist[1] });
-if (title1) text_title1.set({ 		left: pos_title1[0], 	top: pos_title1[1] });
-if (title2) text_title2.set({ 		left: pos_title2[0], 	top: pos_title2[1] });
-if (title3) text_title3.set({ 		left: pos_title3[0], 	top: pos_title3[1] });
-if (title4) text_title4.set({ 		left: pos_title4[0], 	top: pos_title4[1] });
+if (typeof title1 != 'undefined') text_title1.set({ 		left: pos_title1[0], 	top: pos_title1[1] });
+if (typeof title2 != 'undefined') text_title2.set({ 		left: pos_title2[0], 	top: pos_title2[1] });
+if (typeof title3 != 'undefined') text_title3.set({ 		left: pos_title3[0], 	top: pos_title3[1] });
+if (typeof title4 != 'undefined') text_title4.set({ 		left: pos_title4[0], 	top: pos_title4[1] });
 text_series_id.set({ 	left: pos_series_id[0], top: pos_series_id[1] });
 text_card_id.set({ 		left: pos_card_id[0], 	top: pos_card_id[1] });
 text_copyright.set({ 	left: pos_copyright[0], top: pos_copyright[1] });
@@ -453,10 +452,8 @@ function draw()
 	{
 	//Reset canvases
 	var canvas_bg = document.getElementById('canvas_bg');
-	//var canvas_text = document.getElementById('canvas_text');
 	var canvas = document.getElementById('canvas');
 	canvas_bg.getContext('2d').clearRect(0, 0, canvas_bg.width, canvas_bg.height);
-	//canvas_text.getContext('2d').clearRect(0, 0, canvas_text.width, canvas_text.height);
 	canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
 	
 	//Blank Card canvas

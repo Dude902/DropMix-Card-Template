@@ -38,8 +38,9 @@
 	}
 
 #header {font-family: "boldtext";}
-h1 {font-family: "boldtext";}
+#version {font-family: "lighttext";}
 #footer {font-family: "lighttext";}
+h1 {font-family: "boldtext";}
 
 .wild {background-color:#b4a7d6;}
 .yellow {background-color:#ffe599;}
