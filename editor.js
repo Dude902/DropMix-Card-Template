@@ -236,6 +236,8 @@ function init()
 	setTimeout(draw, 250); //0.25 sec
 	setTimeout(draw, 500); //0.5 sec
 	setTimeout(draw, 1000); //1.0 sec
+	setTimeout(draw, 2000); //1.0 sec
+	setTimeout(draw, 3000); //1.0 sec
 	}
 
 //REDRAW TEXT CANVAS CONTENTS - DRAWN TO VISIBLE CANVAS IN draw()
