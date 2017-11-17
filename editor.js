@@ -424,8 +424,11 @@ function draw()
 		canvas_bg.drawImage(playlist, 0, 0);
 		
 		var canvas = document.getElementById('canvas').getContext('2d');
-		var canvas_bg = document.getElementById('canvas_bg');		canvas.drawImage(canvas_bg,0,0);
-		var canvas_text = document.getElementById('canvas_text');	canvas.drawImage(canvas_text,0,0);
+		var canvas_bg = document.getElementById('canvas_bg');
+			canvas.drawImage(canvas_bg,0,0);
+		var canvas_text = document.getElementById('canvas_text');
+			canvas_text.getContext('2d').imageSmoothingEnabled = false;
+			canvas.drawImage(canvas_text,0,0);
 		}
 	}
 
