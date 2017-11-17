@@ -1,6 +1,10 @@
+//INIT LOADING VARIABLES
+var doneloading = false;
+var blankcard, powerlevel, instrument1, instrument2, instrument3, instrument4, playlist;
+
 //PRELOAD IMAGES
-//IMAGES TO LOAD
 var imagestoload = new Array();
+//LIST OF IMAGES TO LOAD
 imagestoload = [
 'resources/images/Blank_Card.png',
 'resources/images/Power_Levels/Wild_2.png',
@@ -67,49 +71,9 @@ function loadImages(images, onComplete)
 		imageObjects.push(img);
 		}
 	}
+loadImages(imagestoload, init);
 
-loadImages(imagestoload, loadboldfont);
-
-//PRELOAD FONTS
-var boldfont = new FontFaceObserver('boldtext', {
-  weight: 400
-});
-var lightfont = new FontFaceObserver('lighttext', {
-  weight: 400
-});
-
-function loadboldfont() {
-boldfont.load().then(
-	function () 
-		{
-		console.log('Font is available');
-		loadlightfont();
-		draw();
-		}, 
-	function ()
-		{
-		console.log('Font is not available');
-		loadboldfont();
-		}
-);
-}
-
-function loadlightfont() {
-lightfont.load().then(
-	function () 
-		{
-		console.log('Font is available');
-		draw();//LAST PRELOADED ASSET, IF ADDING MORE PUT LOAD FUNCTION HERE
-		}, 
-	function ()
-		{
-		console.log('Font is not available');
-		loadlightfont();
-		}
-);
-}
-
-//ADD LISTENERS TO INPUT OBJECTS TO REDRAW CANVAS
+//ADD LISTENERS TO INPUT OBJECTS TO DETECT WHEN TO REDRAW CANVAS
 /*
 [id^='someId'] will match all ids starting with someId.
 [id$='someId'] will match all ids ending with someId.
@@ -156,9 +120,6 @@ for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("click", playlistchanged);
 }
 
-//Try drawing automatically after little bit in case fonts don't load right away
-setTimeout(draw, 250);
-setTimeout(draw, 500); //0.5 sec
 
 
 
@@ -186,201 +147,260 @@ setTimeout(draw, 500); //0.5 sec
 
 
 
+//INITIALIZE VARIABLES
+function init()
+	{
+	blankcard = new Image();	blankcard.src = 'resources/images/Blank_Card.png';
+	powerlevel = new Image();	//powerlevel.src = 'resources/images/Power_Levels/Wild_2.png';
+	instrument1 = new Image();
+	instrument2 = new Image();
+	instrument3 = new Image();
+	instrument4 = new Image();
+	playlist = new Image();
 
+	//Default text
+	def_artist = 'Artist';
+	def_title = 'Title';
+	def_title1 = 'Title';
+	def_title2 = '';
+	def_title3 = '';
+	def_title4 = '';
+	def_series_id = 'S##';
+	def_card_id = 'C###';
+	def_copyright = '™ & © 2017 HARMONIX  © 2017 HASBROTHER';
+	def_card_num = '##/##';
 
-var blankcard = new Image();	blankcard.src = 'resources/images/Blank_Card.png';
-var powerlevel = new Image();	//powerlevel.src = 'resources/images/Power_Levels/Wild_2.png';
-var instrument1 = new Image();
-var instrument2 = new Image();
-var instrument3 = new Image();
-var instrument4 = new Image();
-var playlist = new Image();
+	//Text position coordinates
+	pos_artist = [39.2, 570];
+	pos_title  = [40.2,597.6];
+	pos_title1 = [40.2,597.6];
+	pos_title2 = [40.2,597.6+27];
+	pos_title3 = [40.2,597.6+27+27];
+	pos_title4 = [40.2,597.6+27+27+27];
+	pos_series_id = [39.3, 725];
+	pos_card_id = [74.2, 725];
+	pos_copyright = [120.6, 727.8];
+	pos_card_num = [489.4, 725.8];
 
-//Default text UNUSED
-/*
-artist = 'Artist';
-title = 'Title';
-series_id = 'S##';
-card_id = 'C###';
-copyright = '&trade; &amp; &copy; 2017 HARMONIX  &copy; 2017 HASBROTHER';
-card_num = '##/##';
-*/
+	//Font size
+	fs_artist = 24;
+	fs_title = 23;
+	fs_series_id = 15.5;
+	fs_card_id = 15.5;
+	fs_copyright = 12;
+	fs_card_num = 14.5;
 
-//Initial text
-artist = document.getElementById('text_artist').value;
-title  = 'Title';
-title1 = 'Title';
-title2 = '';
-title3 = '';
-title4 = '';
-title = document.getElementById('text_title').value;
-	var delimiter = /\n/;
-	var start = 0;
-	var tokens = title.split(delimiter).slice(start);
-if (tokens[0]) title1 = tokens[0]; else title1 = '';
-if (tokens[1]) title2 = tokens[1]; else title2 = '';
-if (tokens[2]) title3 = tokens[2]; else title3 = '';
-if (tokens[3]) title4 = tokens[3]; else title4 = '';
-series_id = document.getElementById('text_series_id').value;
-card_id = document.getElementById('text_card_id').value;
-copyright = document.getElementById('text_copyright').value;
-card_num = document.getElementById('text_card_num').value;
+	//Text spacing
+	sp_artist = 80;
+	sp_title = 100;
+	sp_series_id = 60;
+	sp_card_id = 60;
+	sp_copyright = 80;
+	sp_card_num = 80;
+	
+	//Initial text
+	artist = document.getElementById('text_artist').value;
+	title  = document.getElementById('text_title').value;
+	title1 = document.getElementById('text_title').value;
+	title2 = '';
+	title3 = '';
+	title4 = '';
+	title = document.getElementById('text_title').value;
+		var delimiter = /\n/;
+		var start = 0;
+		var tokens = title.split(delimiter).slice(start);
+	if (tokens[0]) title1 = tokens[0]; else title1 = '';
+	if (tokens[1]) title2 = tokens[1]; else title2 = '';
+	if (tokens[2]) title3 = tokens[2]; else title3 = '';
+	if (tokens[3]) title4 = tokens[3]; else title4 = '';
+	series_id = document.getElementById('text_series_id').value;
+	card_id = document.getElementById('text_card_id').value;
+	copyright = document.getElementById('text_copyright').value;
+	card_num = document.getElementById('text_card_num').value;
 
-//Text position coordinates
-pos_artist = [39.2, 570];
-pos_title  = [40.2,597.6];
-pos_title1 = [40.2,597.6];
-pos_title2 = [40.2,597.6+27];
-pos_title3 = [40.2,597.6+27+27];
-pos_title4 = [40.2,597.6+27+27+27];
-pos_series_id = [39.3, 725];
-pos_card_id = [74.2, 725];
-pos_copyright = [120.6, 727.8];
-pos_card_num = [489.4, 725.8];
+	//Create text canvas
+	textcanvas  = new fabric.Canvas('canvas_text');
+	textcanvas.id = "canvas_text";
+	textcanvas.hidden = true;
+	textcanvas.onLoad = "draw()";
 
-//Text spacing, add space equal to font size multiplied by sp/100
-sp_artist = 80;
-sp_title = 100;
-sp_series_id = 60;
-sp_card_id = 60;
-sp_copyright = 80;
-sp_card_num = 80;
+	textchanged();
+	levelchanged();
+	instrumentchanged();
+	playlistchanged();
+	
+	doneloading = true;
+	draw();
+	
+	//Draw automatically after little bit, for some reason text doesn't show until here
+	//setTimeout(draw, 250); //0.25 sec
+	//setTimeout(draw, 500); //0.5 sec
+	//setTimeout(draw, 1000); //1.0 sec
+	}
 
-//Font size
-fs_artist = 24;
-fs_title = 23;
-fs_series_id = 15.5;
-fs_card_id = 15.5;
-fs_copyright = 12;
-fs_card_num = 14.5;
+//REDRAW TEXT CANVAS CONTENTS - DRAWN TO VISIBLE CANVAS IN draw()
+function drawtext()
+	{
+	if (text_artist) textcanvas.remove(text_artist);
+	if (text_title)  textcanvas.remove(text_title);
+	if (text_title1) textcanvas.remove(text_title1);
+	if (text_title2) textcanvas.remove(text_title2);
+	if (text_title3) textcanvas.remove(text_title3);
+	if (text_title4) textcanvas.remove(text_title4);
+	if (text_series_id) textcanvas.remove(text_series_id);
+	if (text_card_id) textcanvas.remove(text_card_id);
+	if (text_copyright) textcanvas.remove(text_copyright);
+	if (text_card_num) textcanvas.remove(text_card_num);
 
-textcanvas  = new fabric.Canvas('canvas_text');
-textcanvas.id = "canvas_text";
-textcanvas.hidden = true;
+	text_artist = new fabric.IText(artist.toUpperCase(), {
+	  fontFamily: 'boldtext',
+	  fontWeight:400,
+	  fontSize:fs_artist,
+	  charSpacing:sp_artist,
+	  fontKerning: 'none !important',
+	  fill:"white",
+	});
 
-drawtext();
-function drawtext() {
-if (text_artist) textcanvas.remove(text_artist);
-if (text_title)  textcanvas.remove(text_title);
-if (text_title1) textcanvas.remove(text_title1);
-if (text_title2) textcanvas.remove(text_title2);
-if (text_title3) textcanvas.remove(text_title3);
-if (text_title4) textcanvas.remove(text_title4);
-if (text_series_id) textcanvas.remove(text_series_id);
-if (text_card_id) textcanvas.remove(text_card_id);
-if (text_copyright) textcanvas.remove(text_copyright);
-if (text_card_num) textcanvas.remove(text_card_num);
+	if (typeof title != 'undefined')
+	text_title = new fabric.IText(title.toUpperCase(), {
+	  fontFamily: 'lighttext',
+	  fontWeight:400,
+	  fontSize:fs_title,
+	  charSpacing:sp_title,
+	  fontKerning: 'none !important',
+	  fill:"white",
+	});
 
-text_artist = new fabric.IText(artist.toUpperCase(), {
-  fontFamily: 'boldtext',
-  fontWeight:400,
-  fontSize:fs_artist,
-  charSpacing:sp_artist,
-  fill:"white",
-});
+	if (typeof title1 != 'undefined')
+	//text_title1 = new fabric.IText('THROUGH THE FIRE AND FLAMES'.toUpperCase(), {
+	text_title1 = new fabric.IText(title1.toUpperCase(), {
+	  fontFamily: 'lighttext',
+	  fontWeight:400,
+	  fontSize:fs_title,
+	  charSpacing:sp_title,
+	  fontKerning: 'none !important',
+	  fill:"white",
+	});
 
-if (typeof title != 'undefined')
-text_title = new fabric.IText(title.toUpperCase(), {
-  fontFamily: 'lighttext',
-  fontWeight:400,
-  fontSize:fs_title,
-  charSpacing:sp_title,
-  fill:"white",
-});
+	if (typeof title2 != 'undefined')
+	text_title2 = new fabric.IText(title2.toUpperCase(), {
+	  fontFamily: 'lighttext',
+	  fontWeight:400,
+	  fontSize:fs_title,
+	  charSpacing:sp_title,
+	  fontKerning: 'none !important',
+	  fill:"white",
+	});
 
-if (typeof title1 != 'undefined')
-text_title1 = new fabric.IText(title1.toUpperCase(), {
-  fontFamily: 'lighttext',
-  fontWeight:400,
-  fontSize:fs_title,
-  charSpacing:sp_title,
-  fill:"white",
-});
+	if (typeof title3 != 'undefined')
+	text_title3 = new fabric.IText(title3.toUpperCase(), {
+	  fontFamily: 'lighttext',
+	  fontWeight:400,
+	  fontSize:fs_title,
+	  charSpacing:sp_title,
+	  fontKerning: 'none !important',
+	  fill:"white",
+	});
 
-if (typeof title2 != 'undefined')
-text_title2 = new fabric.IText(title2.toUpperCase(), {
-  fontFamily: 'lighttext',
-  fontWeight:400,
-  fontSize:fs_title,
-  charSpacing:sp_title,
-  fill:"white",
-});
+	if (typeof title4 != 'undefined')
+	text_title4 = new fabric.IText(title4.toUpperCase(), {
+	  fontFamily: 'lighttext',
+	  fontWeight:400,
+	  fontSize:fs_title,
+	  charSpacing:sp_title,
+	  fontKerning: 'none !important',
+	  fill:"white",
+	});
 
-if (typeof title3 != 'undefined')
-text_title3 = new fabric.IText(title3.toUpperCase(), {
-  fontFamily: 'lighttext',
-  fontWeight:400,
-  fontSize:fs_title,
-  charSpacing:sp_title,
-  fill:"white",
-});
+	text_series_id = new fabric.IText(series_id, {
+	  fontFamily: 'boldtext',
+	  fontWeight:400,
+	  fontSize:fs_series_id,
+	  charSpacing:sp_series_id,
+	  fontKerning: 'none !important',
+	  fill:"white",
+	});
 
-if (typeof title4 != 'undefined')
-text_title4 = new fabric.IText(title4.toUpperCase(), {
-  fontFamily: 'lighttext',
-  fontWeight:400,
-  fontSize:fs_title,
-  charSpacing:sp_title,
-  fill:"white",
-});
+	text_card_id = new fabric.IText(card_id, {
+	  fontFamily: 'boldtext',
+	  fontWeight:400,
+	  fontSize:fs_card_id,
+	  charSpacing:sp_card_id,
+	  fontKerning: 'none !important',
+	  fill:"white",
+	});
 
-text_series_id = new fabric.IText(series_id, {
-  fontFamily: 'boldtext',
-  fontWeight:400,
-  fontSize:fs_series_id,
-  charSpacing:sp_series_id,
-  fill:"white",
-});
+	text_copyright = new fabric.IText(copyright, {
+	  fontFamily: 'lighttext',
+	  fontWeight:400,
+	  fontSize:fs_copyright,
+	  charSpacing:sp_copyright,
+	  fontKerning: 'none !important',
+	  fill:"white",
+	});
 
-text_card_id = new fabric.IText(card_id, {
-  fontFamily: 'boldtext',
-  fontWeight:400,
-  fontSize:fs_card_id,
-  charSpacing:sp_card_id,
-  fill:"white",
-});
+	text_card_num = new fabric.IText(card_num, {
+	  fontFamily: 'boldtext',
+	  fontWeight:400,
+	  align: 'mid', //added
+	  originX: 'center', //added
+	  fontSize:fs_card_num,
+	  charSpacing:sp_card_num,
+	  fontKerning: 'none !important',
+	  fill:"white",
+	});
 
-text_copyright = new fabric.IText(copyright, {
-  fontFamily: 'lighttext',
-  fontWeight:400,
-  fontSize:fs_copyright,
-  charSpacing:sp_copyright,
-  fill:"white",
-});
+	textcanvas.add(text_artist);
+	//if (typeof title  != 'undefined') textcanvas.add(text_title);
+	if (typeof title1 != 'undefined') textcanvas.add(text_title1);
+	if (typeof title2 != 'undefined') textcanvas.add(text_title2);
+	if (typeof title3 != 'undefined') textcanvas.add(text_title3);
+	if (typeof title4 != 'undefined') textcanvas.add(text_title4);
+	textcanvas.add(text_series_id);
+	textcanvas.add(text_card_id);
+	textcanvas.add(text_copyright);
+	textcanvas.add(text_card_num);
 
-text_card_num = new fabric.IText(card_num, {
-  fontFamily: 'boldtext',
-  fontWeight:400,
-  align: 'mid', //added
-  originX: 'center', //added
-  fontSize:fs_card_num,
-  charSpacing:sp_card_num,
-  fill:"white",
-});
+	text_artist.set({ 		left: pos_artist[0], 	top: pos_artist[1] });
+	if (typeof title1 != 'undefined') text_title1.set({ 		left: pos_title1[0], 	top: pos_title1[1] });
+	if (typeof title2 != 'undefined') text_title2.set({ 		left: pos_title2[0], 	top: pos_title2[1] });
+	if (typeof title3 != 'undefined') text_title3.set({ 		left: pos_title3[0], 	top: pos_title3[1] });
+	if (typeof title4 != 'undefined') text_title4.set({ 		left: pos_title4[0], 	top: pos_title4[1] });
+	text_series_id.set({ 	left: pos_series_id[0], top: pos_series_id[1] });
+	text_card_id.set({ 		left: pos_card_id[0], 	top: pos_card_id[1] });
+	text_copyright.set({ 	left: pos_copyright[0], top: pos_copyright[1] });
+	text_card_num.set({ 	left: pos_card_num[0], 	top: pos_card_num[1] });
+	}
 
-textcanvas.add(text_artist);
-//if (typeof title  != 'undefined') textcanvas.add(text_title);
-if (typeof title1 != 'undefined') textcanvas.add(text_title1);
-if (typeof title2 != 'undefined') textcanvas.add(text_title2);
-if (typeof title3 != 'undefined') textcanvas.add(text_title3);
-if (typeof title4 != 'undefined') textcanvas.add(text_title4);
-textcanvas.add(text_series_id);
-textcanvas.add(text_card_id);
-textcanvas.add(text_copyright);
-textcanvas.add(text_card_num);
+//MAIN DRAW FUNCTION
+function draw()
+	{
+		if (doneloading)
+		{
+		drawtext();
+		//Reset canvases
+		var canvas_bg = document.getElementById('canvas_bg');
+		var canvas = document.getElementById('canvas');
+		canvas_bg.getContext('2d').clearRect(0, 0, canvas_bg.width, canvas_bg.height);
+		canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+		
+		//Blank Card canvas
+		var canvas_bg = document.getElementById('canvas_bg').getContext('2d');
+		canvas_bg.drawImage(blankcard, 0, 0);
+		canvas_bg.drawImage(powerlevel, 0, 0);
+		canvas_bg.drawImage(instrument1, 0, 0);
+		canvas_bg.drawImage(instrument2, 0, 0);
+		canvas_bg.drawImage(instrument3, 0, 0);
+		canvas_bg.drawImage(instrument4, 0, 0);
+		canvas_bg.drawImage(playlist, 0, 0);
+		
+		var canvas = document.getElementById('canvas').getContext('2d');
+		var canvas_bg = document.getElementById('canvas_bg');		canvas.drawImage(canvas_bg,0,0);
+		var canvas_text = document.getElementById('canvas_text');	canvas.drawImage(canvas_text,0,0);
+		}
+	}
 
-text_artist.set({ 		left: pos_artist[0], 	top: pos_artist[1] });
-if (typeof title1 != 'undefined') text_title1.set({ 		left: pos_title1[0], 	top: pos_title1[1] });
-if (typeof title2 != 'undefined') text_title2.set({ 		left: pos_title2[0], 	top: pos_title2[1] });
-if (typeof title3 != 'undefined') text_title3.set({ 		left: pos_title3[0], 	top: pos_title3[1] });
-if (typeof title4 != 'undefined') text_title4.set({ 		left: pos_title4[0], 	top: pos_title4[1] });
-text_series_id.set({ 	left: pos_series_id[0], top: pos_series_id[1] });
-text_card_id.set({ 		left: pos_card_id[0], 	top: pos_card_id[1] });
-text_copyright.set({ 	left: pos_copyright[0], top: pos_copyright[1] });
-text_card_num.set({ 	left: pos_card_num[0], 	top: pos_card_num[1] });
-
-}
-
+//DETECT CHANGES AND REDRAW
 function textchanged()
 	{
 	artist = document.getElementById('text_artist').value;
@@ -399,9 +419,10 @@ function textchanged()
 	drawtext();
 	draw();
 	}
-
 function levelchanged()
 	{
+	if (!document.querySelector('input[name="level"]:checked')) powerlevel.src = '';
+	else
 	switch (document.querySelector('input[name="level"]:checked').value)
 		{
 		case 'w3': break;
@@ -425,7 +446,6 @@ function levelchanged()
 		}
 	draw();
 	}
-
 function instrumentchanged()
 	{
 	var i1 = document.getElementById('instrument1');
@@ -466,7 +486,6 @@ function instrumentchanged()
 		}
 	draw();
 	}
-	
 function playlistchanged()
 	{
 	var pl = document.getElementById('playlist');
@@ -495,28 +514,31 @@ function playlistchanged()
 	draw();
 	}
 
-function draw()
+//RESET TO BLANK CARD WITH DEFAULT IF RESET BUTTON IS PRESSED
+function resetcard()
 	{
-	//Reset canvases
-	var canvas_bg = document.getElementById('canvas_bg');
-	var canvas = document.getElementById('canvas');
-	canvas_bg.getContext('2d').clearRect(0, 0, canvas_bg.width, canvas_bg.height);
-	canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-	
-	//Blank Card canvas
-	var canvas_bg = document.getElementById('canvas_bg').getContext('2d');
-	canvas_bg.drawImage(blankcard, 0, 0);
-	canvas_bg.drawImage(powerlevel, 0, 0);
-	canvas_bg.drawImage(instrument1, 0, 0);
-	canvas_bg.drawImage(instrument2, 0, 0);
-	canvas_bg.drawImage(instrument3, 0, 0);
-	canvas_bg.drawImage(instrument4, 0, 0);
-	canvas_bg.drawImage(playlist, 0, 0);
-	
-	var canvas = document.getElementById('canvas').getContext('2d');
-	var canvas_bg = document.getElementById('canvas_bg');		canvas.drawImage(canvas_bg,0,0);
-	drawtext();
-	var canvas_text = document.getElementById('canvas_text');	canvas.drawImage(canvas_text,0,0);
+	if(confirm('Are you sure you want to erase this card and start from a blank card?'))
+		{
+		//Reset text
+		document.getElementById('text_artist').value 	= def_artist;
+		document.getElementById('text_title').value 	= def_title;
+		document.getElementById('text_series_id').value = def_series_id;
+		document.getElementById('text_card_id').value 	= def_card_id;
+		document.getElementById('text_copyright').value = def_copyright;
+		document.getElementById('text_card_num').value	= def_card_num;
+		textchanged();
+		//Reset power level
+		if (document.querySelector('input[name="level"]:checked'))
+			document.querySelector('input[name="level"]:checked').checked = false;
+		levelchanged();
+		//Reset instruments
+		var i1 = document.getElementById('instrument1'); i1.selectedIndex = 0;
+		var i2 = document.getElementById('instrument2'); i2.selectedIndex = 0;
+		var i4 = document.getElementById('instrument4'); i4.selectedIndex = 0;
+		var i3 = document.getElementById('instrument3'); i3.selectedIndex = 0;
+		instrumentchanged();
+		//Reset playlist
+		var pl = document.getElementById('playlist'); pl.selectedIndex = 0;
+		playlistchanged();
+		}
 	}
-
-draw();

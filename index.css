@@ -1,3 +1,4 @@
+body { font-kerning: none; }
 @font-face {
     font-family: boldtext;
     src: url(resources/fonts/AEH.ttf) format("truetype");

@@ -2,9 +2,13 @@
 <html>
 
 <head>
+<meta charset="utf-8">
+<meta name="keywords" content="DropMix,Dropmix,Hamonix,Hasbro,card,generator,creator,template" />
+<meta name="description" content="Card mockup creator for the music-mixing card game DropMix by Harmonix and Hasbro. Created by Adam N.A. @AdamUnavailable" />
 <title>DropMix Card Mockup Template</title>
 <link rel="stylesheet" href="index.css">
-<script src="resources/fontfaceobserver.js"></script>
+<script src="resources/webfontloader.js"></script>
+<script>var WebFontConfig = {custom: {families: ['boldtext', 'lighttext'], urls: ['/index.css']}};</script>
 <script src="resources/fabric.min.js"></script>
 </head>
 
@@ -127,10 +131,12 @@
 			</select>
 		</P>
 	</div>
-	<div style="display:table-cell;vertical-align:middle;padding:40px;">
+	<div style="display:table-cell;vertical-align:middle; text-align:center; padding:40px;">
 		<canvas id="canvas_bg" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
 		<canvas id="canvas_text" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
 		<canvas id="canvas" width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
+		<BR><BR>
+		<input type='button' value="Reset Card to Blank" onClick="resetcard()">
 	</div>
 </div>
 </div>
