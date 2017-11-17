@@ -120,7 +120,29 @@ for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("click", playlistchanged);
 }
 
+// COMMENTED BECAUSE CARD URL DOESN'T WORK IN CHROME DUE TO PERMISSIONS
+//
+// //ADD LISTENER TO "SAVE CARD" LINK TO UPDATE URL
+// var elements = document.getElementById('savelink');
+// elements.addEventListener("click", updatecardlink);
+// elements.addEventListener("mouseenter", updatecardlink);
 
+// //UPDATE "SAVE CARD" LINK
+// function updatecardlink() {
+// var canvas = document.getElementById('canvas');
+// var savelink = document.getElementById('savelink');		
+
+// //update save card link to data link - works in firefox, but not chrome
+// savelink.href = canvas.toDataURL("image/png");
+
+// //update save card link to blob - works in firefox, but not chrome
+// canvas.toBlob(function(blob) 
+	// {
+	// var newImg = document.createElement('img');
+	// var url = URL.createObjectURL(blob);
+	// savelink.href = url;
+	// });*/
+// }
 
 
 
