@@ -7,7 +7,6 @@ The world's first and only Dropmix card mockup template.
   <LI>Draw text as soon as it loads instead of waiting.</LI>
   <LI>Allow uploading card art and moving/resizing/rotating.</LI>
   <LI>Make the text boxes and other inputs more immediately responsive to changes.</LI>
-  <LI>Make text render sharper (try rendering at higher resolution and scaling down).</LI>
 </UL>
 <BR>
 <UL>Bugs:
