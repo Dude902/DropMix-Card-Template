@@ -167,7 +167,12 @@ function init()
 	def_title4 = '';
 	def_series_id = 'S##';
 	def_card_id = 'C###';
-	def_copyright = '™ & © 2017 HARMONIX  © 2017 HASBROTHER';
+	//Ampersand & &amp;   U=0026 alt+38
+	//Trademark ™ &trade; U+2122 alt+0153
+	//Copyright © &copy;  U+00A9 alt+0169
+	def_copyright = '\u2122 \u0026 \u00A9 2017 HARMONIX  \u00A9 2017 HASBROTHER';
+	//def_copyright = '™ & © 2017 HARMONIX  © 2017 HASBROTHER';
+	//def_copyright = '&trade; &amp; &copy; 2017 HARMONIX  &copy; 2017 HASBROTHER';
 	def_card_num = '##/##';
 
 	//Text position coordinates
@@ -236,8 +241,8 @@ function init()
 	setTimeout(draw, 250); //0.25 sec
 	setTimeout(draw, 500); //0.5 sec
 	setTimeout(draw, 1000); //1.0 sec
-	setTimeout(draw, 2000); //1.0 sec
-	setTimeout(draw, 3000); //1.0 sec
+	setTimeout(draw, 2000); //2.0 sec
+	setTimeout(draw, 3000); //3.0 sec
 	}
 
 //REDRAW TEXT CANVAS CONTENTS - DRAWN TO VISIBLE CANVAS IN draw()
