@@ -5,7 +5,6 @@ The world's first and only Dropmix card mockup template.
 <BR>
 <UL>To do list (loosely in order):
   <LI>Make text display correct regardless of browser zoom.</LI>
-  <LI>Make "download image" link visible (detect if data URL is compatible first).</LI>
   <LI>Draw text as soon as it loads instead of waiting.</LI>
   <LI>Allow uploading card art and moving/resizing/rotating.</LI>
   <LI>Make the text boxes and other inputs more immediately responsive to changes.</LI>
