@@ -1,4 +1,4 @@
-# Dropmix Card Mockup Template
+# DropMix Card Mockup Template
 Conversion of my photoshop-based template for Dropmix musical trading card mockups to a web-based image creator.
 <BR>
 The world's first and only Dropmix card mockup template.
