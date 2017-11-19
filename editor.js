@@ -121,39 +121,52 @@ for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("click", playlistchanged);
 }
 
-// COMMENTED BECAUSE CARD URL DOESN'T WORK IN CHROME DUE TO PERMISSIONS
-//
+//SAVE CARD LINK - HIDDEN UNLESS COMPATIBLE
 //ADD LISTENER TO "SAVE CARD" LINK TO UPDATE URL
 var elements = document.getElementById('savelink');
 elements.addEventListener("click", updatecardlink);
 elements.addEventListener("mouseenter", updatecardlink);
-
-//UPDATE "SAVE CARD" LINK
+//IF POSSIBLE, SHOW & UPDATE "SAVE CARD" LINK
 function supportsToDataURL()
 {
-    var c = document.createElement("canvas");
-    var data = c.toDataURL("image/png");
-    return (data.indexOf("data:image/png") == 0);
+	var data, returnstate = false;
+	var canvas = document.getElementById('canvas').getContext('2d');
+	try { canvas.canvas.toDataURL("image/png"); returnstate = true; }
+	catch (e) { returnstate = false; }
+	finally { return returnstate; }
 }
-function updatecardlink() {
-if (supportsToDataURL())
+function updatecardlink()
 {
-	var canvas = document.getElementById('canvas');
-	var savelink = document.getElementById('savelink');		
-
-	savelink.hidden = false;
-	//update save card link to data link - works in firefox, but not chrome
-	savelink.href = canvas.toDataURL("image/png");
-
-	//update save card link to blob - works in firefox, but not chrome
-	/*canvas.toBlob(function(blob) 
+	if (supportsToDataURL())
 		{
-		var newImg = document.createElement('img');
-		var url = URL.createObjectURL(blob);
-		savelink.href = url;
-		});*/
+			var canvas = document.getElementById('canvas');
+			var savelink = document.getElementById('savelink');		
+
+			savelink.hidden = false;
+			savelink.href = canvas.toDataURL("image/png");
+
+			//update save card link to blob - works in firefox, but not chrome
+			/*canvas.toBlob(function(blob) 
+				{
+				var newImg = document.createElement('img');
+				var url = URL.createObjectURL(blob);
+				savelink.href = url;
+				});*/
+		}
 }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

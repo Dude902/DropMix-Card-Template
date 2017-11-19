@@ -27,7 +27,7 @@
 <div id="header" style="margin:auto; text-align:center; padding:0px 40px 0px 40px;">
 	<A href="https://dropmix.hasbro.com"><img width=25% height=25% align=middle src="resources/images/DMX_logo_color.png"></A>
 	<span style="font-size:2em; line-height:2em; vertical-align:middle;"> Card Mockup Template</span>
-	<div id="version" style="font-size:14px; margin:-20px auto -15px 400px;">(Version Alpha - Work in Progress, may break on occasion)</div>
+	<div id="version" style="font-size:14px; margin:-20px auto -15px 325px;">(Version Alpha - Work in Progress, may break on occasion)</div>
 	<BR>
 	<img src="resources/images/divider-bg.png">
 </div>
@@ -142,13 +142,11 @@
 		</P>
 	</div>
 	<div style="display:table-cell;vertical-align:middle; text-align:center; padding:40px;">
-		<canvas id="canvas_bg" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
-		<canvas id="canvas_text" hidden width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
-		<canvas id="canvas" width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
+		<canvas id="canvas_bg" 		width=562 height=780 border="1px" style="border:1px solid #000000;" hidden></canvas>
+		<canvas id="canvas_text" 	width=562 height=780 border="1px" style="border:1px solid #000000;" hidden></canvas>
+		<canvas id="canvas" 		width=562 height=780 border="1px" style="border:1px solid #000000;"></canvas>
 		<BR><BR>
-		<!-- COMMENTED BECAUSE CARD URL DOESN'T WORK IN CHROME DUE TO PERMISSIONS -->
-		<a id="savelink" hidden=true href="" download target="_blank">Save card as image (.png)<BR></a>
-		(Right click the card and "save image as" .png)<BR><BR>
+		(Right click the card and "save image as" .png)<a id="savelink" hidden=true href="" download target="_blank"><BR>Download Link</a><BR><BR>
 		<input type='button' value="Reset Card to Blank" onClick="resetcard()">
 	</div>
 </div>
