@@ -1,5 +1,6 @@
 //INIT LOADING VARIABLES
 var doneloading = false;
+var def_width, def_height;
 var blankcard, powerlevel, instrument1, instrument2, instrument3, instrument4, playlist;
 
 //PRELOAD IMAGES
@@ -122,28 +123,37 @@ for (var i = 0; i < elements.length; i++) {
 
 // COMMENTED BECAUSE CARD URL DOESN'T WORK IN CHROME DUE TO PERMISSIONS
 //
-// //ADD LISTENER TO "SAVE CARD" LINK TO UPDATE URL
-// var elements = document.getElementById('savelink');
-// elements.addEventListener("click", updatecardlink);
-// elements.addEventListener("mouseenter", updatecardlink);
+//ADD LISTENER TO "SAVE CARD" LINK TO UPDATE URL
+var elements = document.getElementById('savelink');
+elements.addEventListener("click", updatecardlink);
+elements.addEventListener("mouseenter", updatecardlink);
 
-// //UPDATE "SAVE CARD" LINK
-// function updatecardlink() {
-// var canvas = document.getElementById('canvas');
-// var savelink = document.getElementById('savelink');		
+//UPDATE "SAVE CARD" LINK
+function supportsToDataURL()
+{
+    var c = document.createElement("canvas");
+    var data = c.toDataURL("image/png");
+    return (data.indexOf("data:image/png") == 0);
+}
+function updatecardlink() {
+if (supportsToDataURL())
+{
+	var canvas = document.getElementById('canvas');
+	var savelink = document.getElementById('savelink');		
 
-// //update save card link to data link - works in firefox, but not chrome
-// savelink.href = canvas.toDataURL("image/png");
+	savelink.hidden = false;
+	//update save card link to data link - works in firefox, but not chrome
+	savelink.href = canvas.toDataURL("image/png");
 
-// //update save card link to blob - works in firefox, but not chrome
-// canvas.toBlob(function(blob) 
-	// {
-	// var newImg = document.createElement('img');
-	// var url = URL.createObjectURL(blob);
-	// savelink.href = url;
-	// });*/
-// }
-
+	//update save card link to blob - works in firefox, but not chrome
+	/*canvas.toBlob(function(blob) 
+		{
+		var newImg = document.createElement('img');
+		var url = URL.createObjectURL(blob);
+		savelink.href = url;
+		});*/
+}
+}
 
 
 
@@ -172,6 +182,9 @@ for (var i = 0; i < elements.length; i++) {
 //INITIALIZE VARIABLES
 function init()
 	{
+	def_width = 562;
+	def_height = 780;
+	
 	blankcard = new Image();	blankcard.src = 'resources/images/Blank_Card.png';
 	powerlevel = new Image();	//powerlevel.src = 'resources/images/Power_Levels/Wild_2.png';
 	instrument1 = new Image();
@@ -258,6 +271,7 @@ function init()
 	
 	doneloading = true;
 	draw();
+	updatecardlink();
 	
 	//Draw automatically after little bit, for some reason text doesn't show until here
 	setTimeout(draw, 250); //0.25 sec
@@ -426,8 +440,11 @@ function draw()
 		var canvas = document.getElementById('canvas').getContext('2d');
 		var canvas_bg = document.getElementById('canvas_bg');
 			canvas.drawImage(canvas_bg,0,0);
+			
 		var canvas_text = document.getElementById('canvas_text');
 			canvas_text.getContext('2d').imageSmoothingEnabled = false;
+			//canvas_text.width = def_width * (1/canvas_text.zoom);
+			//canvas_text.height = def_height * (1/canvas_text.zoom);
 			canvas.drawImage(canvas_text,0,0);
 		}
 	}
