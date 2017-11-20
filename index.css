@@ -50,6 +50,10 @@ h1 {font-family: "boldtext";}
 .green {background-color:#b7e1cd;}
 .white {background-color:#f3f3f3;}
 
+input, textarea, select, option, canvas {
+	cursor: pointer;
+}
+
 input:disabled {
 	opacity:0.4;
 	}
