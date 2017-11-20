@@ -215,12 +215,13 @@ function init()
 	def_title4 = '';
 	def_series_id = 'S##';
 	def_card_id = 'C###';
-	//Ampersand & &amp;   U=0026 alt+38
-	//Trademark ™ &trade; U+2122 alt+0153
-	//Copyright © &copy;  U+00A9 alt+0169
 	def_copyright = '\u2122 \u0026 \u00A9 2017 HARMONIX  \u00A9 2017 HASBROTHER';
 	//def_copyright = '™ & © 2017 HARMONIX  © 2017 HASBROTHER';
 	//def_copyright = '&trade; &amp; &copy; 2017 HARMONIX  &copy; 2017 HASBROTHER';
+	//FOR REFERENCE FOR def_copyright
+	//Ampersand & &amp;   U=0026 alt+38
+	//Trademark ™ &trade; U+2122 alt+0153
+	//Copyright © &copy;  U+00A9 alt+0169
 	def_card_num = '##/##';
 
 	//Text position coordinates
@@ -272,10 +273,29 @@ function init()
 	card_num = document.getElementById('text_card_num').value;
 
 	//Create text canvas
-	textcanvas  = new fabric.Canvas('canvas_text');
-	textcanvas.id = "canvas_text";
+	textcanvas  = new fabric.Canvas('canvas_text',  { width: def_width, height: def_height });
+	//textcanvas.setDimensions(def_width, def_height);
+	//textcanvas.setZoom(1);
+	textcanvas.setWidth(def_width);
+	textcanvas.setHeight(def_height);
+	
+	//DOESN'T WORK scaleX and scaleY DON'T EXIST
+	//textcanvas.setWidth(textcanvas.getWidth()/textcanvas.scaleX);
+	//textcanvas.setHeight(textcanvas.getHeight()/textcanvas.scaleY);
+	
+	//RESIZES CANVASES BUT BREAKS fabric.js CODE
+	//textcanvas.lowerCanvasEl.width = def_width;
+	//textcanvas.lowerCanvasEl.height = def_height;
+	
+	//UNNEEEDED
+	//document.getElementById('canvas_text').width = def_width; document.getElementById('canvas_text').height = def_height;
+	//textcanvas.width = def_width;
+	//textcanvas.height = def_height;
+	//textcanvas.style = "width:"+def_width+"px; height:"+def_height+"px;";
+	//UNNEEEDED
 	textcanvas.hidden = true;
 	textcanvas.onLoad = "draw()";
+	//textcanvas.calcOffset();
 
 	textchanged();
 	levelchanged();
@@ -308,17 +328,19 @@ function drawtext()
 	if (text_copyright) textcanvas.remove(text_copyright);
 	if (text_card_num) textcanvas.remove(text_card_num);
 
-	text_artist = new fabric.IText(artist.toUpperCase(), {
+	text_artist = new fabric.Text(artist.toUpperCase(), {
 	  fontFamily: 'boldtext',
 	  fontWeight:400,
 	  fontSize:fs_artist,
 	  charSpacing:sp_artist,
 	  fontKerning: 'none !important',
 	  fill:"white",
+	  //scaleX:4,
+	  //scaleY:4,
 	});
 
 	if (typeof title != 'undefined')
-	text_title = new fabric.IText(title.toUpperCase(), {
+	text_title = new fabric.Text(title.toUpperCase(), {
 	  fontFamily: 'lighttext',
 	  fontWeight:400,
 	  fontSize:fs_title,
@@ -328,8 +350,8 @@ function drawtext()
 	});
 
 	if (typeof title1 != 'undefined')
-	//text_title1 = new fabric.IText('THROUGH THE FIRE AND FLAMES'.toUpperCase(), {
-	text_title1 = new fabric.IText(title1.toUpperCase(), {
+	//FOR TESTING text_title1 = new fabric.Text('THROUGH THE FIRE AND FLAMES'.toUpperCase(), {
+	text_title1 = new fabric.Text(title1.toUpperCase(), {
 	  fontFamily: 'lighttext',
 	  fontWeight:400,
 	  fontSize:fs_title,
@@ -339,7 +361,7 @@ function drawtext()
 	});
 
 	if (typeof title2 != 'undefined')
-	text_title2 = new fabric.IText(title2.toUpperCase(), {
+	text_title2 = new fabric.Text(title2.toUpperCase(), {
 	  fontFamily: 'lighttext',
 	  fontWeight:400,
 	  fontSize:fs_title,
@@ -349,7 +371,7 @@ function drawtext()
 	});
 
 	if (typeof title3 != 'undefined')
-	text_title3 = new fabric.IText(title3.toUpperCase(), {
+	text_title3 = new fabric.Text(title3.toUpperCase(), {
 	  fontFamily: 'lighttext',
 	  fontWeight:400,
 	  fontSize:fs_title,
@@ -359,7 +381,7 @@ function drawtext()
 	});
 
 	if (typeof title4 != 'undefined')
-	text_title4 = new fabric.IText(title4.toUpperCase(), {
+	text_title4 = new fabric.Text(title4.toUpperCase(), {
 	  fontFamily: 'lighttext',
 	  fontWeight:400,
 	  fontSize:fs_title,
@@ -368,7 +390,7 @@ function drawtext()
 	  fill:"white",
 	});
 
-	text_series_id = new fabric.IText(series_id, {
+	text_series_id = new fabric.Text(series_id, {
 	  fontFamily: 'boldtext',
 	  fontWeight:400,
 	  fontSize:fs_series_id,
@@ -377,7 +399,7 @@ function drawtext()
 	  fill:"white",
 	});
 
-	text_card_id = new fabric.IText(card_id, {
+	text_card_id = new fabric.Text(card_id, {
 	  fontFamily: 'boldtext',
 	  fontWeight:400,
 	  fontSize:fs_card_id,
@@ -386,7 +408,7 @@ function drawtext()
 	  fill:"white",
 	});
 
-	text_copyright = new fabric.IText(copyright, {
+	text_copyright = new fabric.Text(copyright, {
 	  fontFamily: 'lighttext',
 	  fontWeight:400,
 	  fontSize:fs_copyright,
@@ -395,7 +417,7 @@ function drawtext()
 	  fill:"white",
 	});
 
-	text_card_num = new fabric.IText(card_num, {
+	text_card_num = new fabric.Text(card_num, {
 	  fontFamily: 'boldtext',
 	  fontWeight:400,
 	  align: 'mid', //added
@@ -426,40 +448,7 @@ function drawtext()
 	text_card_id.set({ 		left: pos_card_id[0], 	top: pos_card_id[1] });
 	text_copyright.set({ 	left: pos_copyright[0], top: pos_copyright[1] });
 	text_card_num.set({ 	left: pos_card_num[0], 	top: pos_card_num[1] });
-	}
-
-//MAIN DRAW FUNCTION
-function draw()
-	{
-		if (doneloading)
-		{
-		drawtext();
-		//Reset canvases
-		var canvas_bg = document.getElementById('canvas_bg');
-		var canvas = document.getElementById('canvas');
-		canvas_bg.getContext('2d').clearRect(0, 0, canvas_bg.width, canvas_bg.height);
-		canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-		
-		//Blank Card canvas
-		var canvas_bg = document.getElementById('canvas_bg').getContext('2d');
-		canvas_bg.drawImage(blankcard, 0, 0);
-		canvas_bg.drawImage(powerlevel, 0, 0);
-		canvas_bg.drawImage(instrument1, 0, 0);
-		canvas_bg.drawImage(instrument2, 0, 0);
-		canvas_bg.drawImage(instrument3, 0, 0);
-		canvas_bg.drawImage(instrument4, 0, 0);
-		canvas_bg.drawImage(playlist, 0, 0);
-		
-		var canvas = document.getElementById('canvas').getContext('2d');
-		var canvas_bg = document.getElementById('canvas_bg');
-			canvas.drawImage(canvas_bg,0,0);
-			
-		var canvas_text = document.getElementById('canvas_text');
-			canvas_text.getContext('2d').imageSmoothingEnabled = false;
-			//canvas_text.width = def_width * (1/canvas_text.zoom);
-			//canvas_text.height = def_height * (1/canvas_text.zoom);
-			canvas.drawImage(canvas_text,0,0);
-		}
+	//textcanvas.calcOffset();
 	}
 
 //DETECT CHANGES AND REDRAW
@@ -602,5 +591,36 @@ function resetcard()
 		//Reset playlist
 		var pl = document.getElementById('playlist'); pl.selectedIndex = 0;
 		playlistchanged();
+		}
+	}
+
+//MAIN DRAW FUNCTION
+function draw()
+	{
+		if (doneloading)
+		{
+		drawtext();
+		//Reset canvases
+		var canvas_bg = document.getElementById('canvas_bg');
+		var canvas = document.getElementById('canvas');
+		canvas_bg.getContext('2d').clearRect(0, 0, canvas_bg.width, canvas_bg.height);
+		canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+		
+		//Blank Card canvas
+		var canvas_bg = document.getElementById('canvas_bg').getContext('2d');
+		canvas_bg.drawImage(blankcard, 0, 0);
+		canvas_bg.drawImage(powerlevel, 0, 0);
+		canvas_bg.drawImage(instrument1, 0, 0);
+		canvas_bg.drawImage(instrument2, 0, 0);
+		canvas_bg.drawImage(instrument3, 0, 0);
+		canvas_bg.drawImage(instrument4, 0, 0);
+		canvas_bg.drawImage(playlist, 0, 0);
+		
+		var canvas = document.getElementById('canvas').getContext('2d');
+		var canvas_bg = document.getElementById('canvas_bg');
+		canvas.drawImage(canvas_bg,0,0);
+		
+		textcanvas.getContext('2d').imageSmoothingEnabled = false;
+		canvas.drawImage(textcanvas.getElement(),0,0,def_width,def_height);
 		}
 	}
