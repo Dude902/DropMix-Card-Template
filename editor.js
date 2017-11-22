@@ -8,9 +8,12 @@ var imagestoload = new Array();
 //LIST OF IMAGES TO LOAD
 imagestoload = [
 'resources/images/Blank_Card.png',
+'resources/images/Power_Levels/Wild_3.png',
 'resources/images/Power_Levels/Wild_2.png',
+'resources/images/Power_Levels/Wild_1.png',
 'resources/images/Power_Levels/Yellow_3.png',
 'resources/images/Power_Levels/Yellow_2.png',
+'resources/images/Power_Levels/Yellow_1.png',
 'resources/images/Power_Levels/Red_3.png',
 'resources/images/Power_Levels/Red_2.png',
 'resources/images/Power_Levels/Red_1.png',
@@ -19,23 +22,61 @@ imagestoload = [
 'resources/images/Power_Levels/Blue_1.png',
 'resources/images/Power_Levels/Green_3.png',
 'resources/images/Power_Levels/Green_2.png',
+'resources/images/Power_Levels/Green_1.png',
+'resources/images/Power_Levels/White_3.png',
+'resources/images/Power_Levels/White_2.png',
+'resources/images/Power_Levels/White_1.png',
 'resources/images/Instrument_Slot_1/Yellow_Vocals.png',
+'resources/images/Instrument_Slot_1/Yellow_Guitar.png',
+'resources/images/Instrument_Slot_1/Yellow_Keys.png',
+'resources/images/Instrument_Slot_1/Yellow_Horns.png',
+'resources/images/Instrument_Slot_1/Yellow_Strings.png',
+'resources/images/Instrument_Slot_1/Yellow_Sampler.png',
+'resources/images/Instrument_Slot_1/Yellow_Drums.png',
+'resources/images/Instrument_Slot_1/Red_Vocals.png',
 'resources/images/Instrument_Slot_1/Red_Guitar.png',
 'resources/images/Instrument_Slot_1/Red_Keys.png',
 'resources/images/Instrument_Slot_1/Red_Horns.png',
 'resources/images/Instrument_Slot_1/Red_Strings.png',
+'resources/images/Instrument_Slot_1/Red_Sampler.png',
+'resources/images/Instrument_Slot_1/Red_Drums.png',
+'resources/images/Instrument_Slot_1/Blue_Vocals.png',
+'resources/images/Instrument_Slot_1/Blue_Guitar.png',
+'resources/images/Instrument_Slot_1/Blue_Keys.png',
+'resources/images/Instrument_Slot_1/Blue_Horns.png',
+'resources/images/Instrument_Slot_1/Blue_Strings.png',
+'resources/images/Instrument_Slot_1/Blue_Sampler.png',
 'resources/images/Instrument_Slot_1/Blue_Drums.png',
+'resources/images/Instrument_Slot_1/Green_Vocals.png',
 'resources/images/Instrument_Slot_1/Green_Guitar.png',
 'resources/images/Instrument_Slot_1/Green_Keys.png',
+'resources/images/Instrument_Slot_1/Green_Horns.png',
+'resources/images/Instrument_Slot_1/Green_Strings.png',
+'resources/images/Instrument_Slot_1/Green_Sampler.png',
+'resources/images/Instrument_Slot_1/Green_Drums.png',
+'resources/images/Instrument_Slot_2/Red_Vocals.png',
 'resources/images/Instrument_Slot_2/Red_Guitar.png',
 'resources/images/Instrument_Slot_2/Red_Keys.png',
 'resources/images/Instrument_Slot_2/Red_Horns.png',
 'resources/images/Instrument_Slot_2/Red_Strings.png',
 'resources/images/Instrument_Slot_2/Red_Sampler.png',
+'resources/images/Instrument_Slot_2/Red_Drums.png',
+'resources/images/Instrument_Slot_3/Blue_Vocals.png',
+'resources/images/Instrument_Slot_3/Blue_Guitar.png',
+'resources/images/Instrument_Slot_3/Blue_Keys.png',
+'resources/images/Instrument_Slot_3/Blue_Horns.png',
+'resources/images/Instrument_Slot_3/Blue_Strings.png',
+'resources/images/Instrument_Slot_3/Blue_Sampler.png',
 'resources/images/Instrument_Slot_3/Blue_Drums.png',
+'resources/images/Instrument_Slot_4/Green_Vocals.png',
 'resources/images/Instrument_Slot_4/Green_Guitar.png',
 'resources/images/Instrument_Slot_4/Green_Keys.png',
+'resources/images/Instrument_Slot_4/Green_Horns.png',
+'resources/images/Instrument_Slot_4/Green_Strings.png',
+'resources/images/Instrument_Slot_4/Green_Sampler.png',
+'resources/images/Instrument_Slot_4/Green_Drums.png',
 'resources/images/Playlist_Icons/Astro.png',
+//'resources/images/Playlist_Icons/Baffler.png',
 'resources/images/Playlist_Icons/The_Blade.png',
 'resources/images/Playlist_Icons/Bomb.png',
 'resources/images/Playlist_Icons/Breaker.png',
@@ -43,6 +84,8 @@ imagestoload = [
 'resources/images/Playlist_Icons/Controller.png',
 'resources/images/Playlist_Icons/Dapper.png',
 'resources/images/Playlist_Icons/Derby.png',
+//'resources/images/Playlist_Icons/DM_Icon.png',
+//'resources/images/Playlist_Icons/Fever.png',
 'resources/images/Playlist_Icons/Flawless.png',
 'resources/images/Playlist_Icons/Highness.png',
 'resources/images/Playlist_Icons/Hightower.png',
@@ -52,6 +95,7 @@ imagestoload = [
 'resources/images/Playlist_Icons/Ouroboros.png',
 'resources/images/Playlist_Icons/Puff.png',
 'resources/images/Playlist_Icons/Seer.png',
+//'resources/images/Playlist_Icons/Socket.png',
 'resources/images/Playlist_Icons/Sweets.png',
 ];
 function loadImages(images, onComplete)
@@ -89,7 +133,7 @@ for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("click", draw);
   elements[i].addEventListener("touchend", draw);
 }
-var elements = document.querySelectorAll('input[type=text], textarea, input[id^=text')
+var elements = document.querySelectorAll('input[type=text], textarea, input[id^=text');
 for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("input", textchanged);
   elements[i].addEventListener("keyup", textchanged);
@@ -98,7 +142,7 @@ for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("click", textchanged);
   elements[i].addEventListener("touchend", textchanged);
 }
-var elements = document.querySelectorAll('input[name^=level]')
+var elements = document.querySelectorAll('input[name^=level]');
 for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("input", levelchanged);
   elements[i].addEventListener("keyup", levelchanged);
@@ -107,7 +151,7 @@ for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("click", levelchanged);
   elements[i].addEventListener("touchend", levelchanged);
 }
-var elements = document.querySelectorAll('input[name^=instrument]')
+var elements = document.querySelectorAll('select[name^=instrument]');
 for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("input", instrumentchanged);
   elements[i].addEventListener("keyup", instrumentchanged);
@@ -116,7 +160,7 @@ for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("click", instrumentchanged);
   elements[i].addEventListener("touchend", instrumentchanged);
 }
-var elements = document.querySelectorAll('input[name^=playlist]')
+var elements = document.querySelectorAll('select[name^=playlist]');
 for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("input", playlistchanged);
   elements[i].addEventListener("keyup", playlistchanged);
@@ -125,6 +169,15 @@ for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("click", playlistchanged);
   elements[i].addEventListener("touchend", playlistchanged);
 }
+
+//ADD INSTRUMENT EMOJI FOR EASIER VISUAL
+var elements = document.querySelectorAll('option[value$=vocals]'); for (var i = 0; i < elements.length; i++) {elements[i].innerHTML = "&#x1F3A4; " + elements[i].innerHTML;}
+var elements = document.querySelectorAll('option[value$=guitar]'); for (var i = 0; i < elements.length; i++) {elements[i].innerHTML = "&#x1F3B8; " + elements[i].innerHTML;}
+var elements = document.querySelectorAll('option[value$=keys]'); for (var i = 0; i < elements.length; i++) {elements[i].innerHTML = "&#x1F3B9; " + elements[i].innerHTML;}
+var elements = document.querySelectorAll('option[value$=horns]'); for (var i = 0; i < elements.length; i++) {elements[i].innerHTML = "&#x1F4EF; " + elements[i].innerHTML;}
+var elements = document.querySelectorAll('option[value$=strings]'); for (var i = 0; i < elements.length; i++) {elements[i].innerHTML = "&#x1F3BB; " + elements[i].innerHTML;}
+var elements = document.querySelectorAll('option[value$=drums]'); for (var i = 0; i < elements.length; i++) {elements[i].innerHTML = "&#x1F941; " + elements[i].innerHTML;}
+var elements = document.querySelectorAll('option[value$=sampler]'); for (var i = 0; i < elements.length; i++) {elements[i].innerHTML = /*radio emoji*/"&#x1F4FB; " /*music note emoji"&#x1F3B5; "*/ + elements[i].innerHTML;}
 
 //SAVE CARD LINK - HIDDEN UNLESS COMPATIBLE
 //ADD LISTENER TO "SAVE CARD" LINK TO UPDATE URL
@@ -340,12 +393,12 @@ function levelchanged()
 	else
 	switch (document.querySelector('input[name="level"]:checked').value)
 		{
-		case 'w3': break;
+		case 'w3': powerlevel.src = 'resources/images/Power_Levels/Wild_3.png'; break;
 		case 'w2': powerlevel.src = 'resources/images/Power_Levels/Wild_2.png'; break;
-		case 'w1': break;
+		case 'w1': powerlevel.src = 'resources/images/Power_Levels/Wild_1.png'; break;
 		case 'y3': powerlevel.src = 'resources/images/Power_Levels/Yellow_3.png'; break;
 		case 'y2': powerlevel.src = 'resources/images/Power_Levels/Yellow_2.png'; break;
-		case 'y1': break;
+		case 'y1': powerlevel.src = 'resources/images/Power_Levels/Yellow_1.png'; break;
 		case 'r3': powerlevel.src = 'resources/images/Power_Levels/Red_3.png'; break;
 		case 'r2': powerlevel.src = 'resources/images/Power_Levels/Red_2.png'; break;
 		case 'r1': powerlevel.src = 'resources/images/Power_Levels/Red_1.png'; break;
@@ -354,10 +407,10 @@ function levelchanged()
 		case 'b1': powerlevel.src = 'resources/images/Power_Levels/Blue_1.png'; break;
 		case 'g3': powerlevel.src = 'resources/images/Power_Levels/Green_3.png'; break;
 		case 'g2': powerlevel.src = 'resources/images/Power_Levels/Green_2.png'; break;
-		case 'g1': break;
-		case 'f3': break;
-		case 'f2': break;
-		case 'f1': break;
+		case 'g1': powerlevel.src = 'resources/images/Power_Levels/Green_1.png'; break;
+		case 'f3': powerlevel.src = 'resources/images/Power_Levels/White_3.png'; break;
+		case 'f2': powerlevel.src = 'resources/images/Power_Levels/White_2.png'; break;
+		case 'f1': powerlevel.src = 'resources/images/Power_Levels/White_1.png'; break;
 		}
 	draw();
 	}
@@ -370,34 +423,71 @@ function instrumentchanged()
 	switch (i1.options[i1.selectedIndex].value)
 		{
 		case 'none': instrument1.src = ''; break;
+		
 		case 'yvocals': instrument1.src = 'resources/images/Instrument_Slot_1/Yellow_Vocals.png'; break;
+		case 'yguitar': instrument1.src = 'resources/images/Instrument_Slot_1/Yellow_Guitar.png'; break;
+		case 'ykeys': instrument1.src = 'resources/images/Instrument_Slot_1/Yellow_Keys.png'; break;
+		case 'yhorns': instrument1.src = 'resources/images/Instrument_Slot_1/Yellow_Horns.png'; break;
+		case 'ystrings': instrument1.src = 'resources/images/Instrument_Slot_1/Yellow_Strings.png'; break;
+		case 'ysampler': instrument1.src = 'resources/images/Instrument_Slot_1/Yellow_Sampler.png'; break;
+		case 'ydrums': instrument1.src = 'resources/images/Instrument_Slot_1/Yellow_Drums.png'; break;
+		
+		case 'rvocals': instrument1.src = 'resources/images/Instrument_Slot_1/Red_Vocals.png'; break;
 		case 'rguitar': instrument1.src = 'resources/images/Instrument_Slot_1/Red_Guitar.png'; break;
 		case 'rkeys': instrument1.src = 'resources/images/Instrument_Slot_1/Red_Keys.png'; break;
 		case 'rhorns': instrument1.src = 'resources/images/Instrument_Slot_1/Red_Horns.png'; break;
 		case 'rstrings': instrument1.src = 'resources/images/Instrument_Slot_1/Red_Strings.png'; break;
+		case 'rsampler': instrument1.src = 'resources/images/Instrument_Slot_1/Red_Sampler.png'; break;
+		case 'rdrums': instrument1.src = 'resources/images/Instrument_Slot_1/Red_Drums.png'; break;
+		
+		case 'bvocals': instrument1.src = 'resources/images/Instrument_Slot_1/Blue_Vocals.png'; break;
+		case 'bguitar': instrument1.src = 'resources/images/Instrument_Slot_1/Blue_Guitar.png'; break;
+		case 'bkeys': instrument1.src = 'resources/images/Instrument_Slot_1/Blue_Keys.png'; break;
+		case 'bhorns': instrument1.src = 'resources/images/Instrument_Slot_1/Blue_Horns.png'; break;
+		case 'bstrings': instrument1.src = 'resources/images/Instrument_Slot_1/Blue_Strings.png'; break;
+		case 'bsampler': instrument1.src = 'resources/images/Instrument_Slot_1/Blue_Sampler.png'; break;
 		case 'bdrums': instrument1.src = 'resources/images/Instrument_Slot_1/Blue_Drums.png'; break;
+		
+		case 'gvocals': instrument1.src = 'resources/images/Instrument_Slot_1/Green_Vocals.png'; break;
 		case 'gguitar': instrument1.src = 'resources/images/Instrument_Slot_1/Green_Guitar.png'; break;
 		case 'gkeys': instrument1.src = 'resources/images/Instrument_Slot_1/Green_Keys.png'; break;
+		case 'ghorns': instrument1.src = 'resources/images/Instrument_Slot_1/Green_Horns.png'; break;
+		case 'gstrings': instrument1.src = 'resources/images/Instrument_Slot_1/Green_Strings.png'; break;
+		case 'gsampler': instrument1.src = 'resources/images/Instrument_Slot_1/Green_Sampler.png'; break;
+		case 'gdrums': instrument1.src = 'resources/images/Instrument_Slot_1/Green_Drums.png'; break;
 		}
 	switch (i2.options[i2.selectedIndex].value)
 		{
 		case 'none': instrument2.src = ''; break;
+		case 'rvocals': instrument2.src = 'resources/images/Instrument_Slot_2/Red_Vocals.png'; break;
 		case 'rguitar': instrument2.src = 'resources/images/Instrument_Slot_2/Red_Guitar.png'; break;
 		case 'rkeys': instrument2.src = 'resources/images/Instrument_Slot_2/Red_Keys.png'; break;
 		case 'rhorns': instrument2.src = 'resources/images/Instrument_Slot_2/Red_Horns.png'; break;
 		case 'rstrings': instrument2.src = 'resources/images/Instrument_Slot_2/Red_Strings.png'; break;
 		case 'rsampler': instrument2.src = 'resources/images/Instrument_Slot_2/Red_Sampler.png'; break;
+		case 'rdrums': instrument2.src = 'resources/images/Instrument_Slot_2/Red_Drums.png'; break;
 		}
 	switch (i3.options[i3.selectedIndex].value)
 		{
 		case 'none': instrument3.src = ''; break;
+		case 'bvocals': instrument3.src = 'resources/images/Instrument_Slot_3/Blue_Vocals.png'; break;
+		case 'bguitar': instrument3.src = 'resources/images/Instrument_Slot_3/Blue_Guitar.png'; break;
+		case 'bkeys': instrument3.src = 'resources/images/Instrument_Slot_3/Blue_Keys.png'; break;
+		case 'bhorns': instrument3.src = 'resources/images/Instrument_Slot_3/Blue_Horns.png'; break;
+		case 'bstrings': instrument3.src = 'resources/images/Instrument_Slot_3/Blue_Strings.png'; break;
+		case 'bsampler': instrument3.src = 'resources/images/Instrument_Slot_3/Blue_Sampler.png'; break;
 		case 'bdrums': instrument3.src = 'resources/images/Instrument_Slot_3/Blue_Drums.png'; break;
 		}
 	switch (i4.options[i4.selectedIndex].value)
 		{
 		case 'none': instrument4.src = ''; break;
+		case 'gvocals': instrument4.src = 'resources/images/Instrument_Slot_4/Green_Vocals.png'; break;
 		case 'gguitar': instrument4.src = 'resources/images/Instrument_Slot_4/Green_Guitar.png'; break;
 		case 'gkeys': instrument4.src = 'resources/images/Instrument_Slot_4/Green_Keys.png'; break;
+		case 'ghorns': instrument4.src = 'resources/images/Instrument_Slot_4/Green_Horns.png'; break;
+		case 'gstrings': instrument4.src = 'resources/images/Instrument_Slot_4/Green_Strings.png'; break;
+		case 'gsampler': instrument4.src = 'resources/images/Instrument_Slot_4/Green_Sampler.png'; break;
+		case 'gdrums': instrument4.src = 'resources/images/Instrument_Slot_4/Green_Drums.png'; break;
 		}
 	draw();
 	}
@@ -408,6 +498,7 @@ function playlistchanged()
 		{
 		case 'none': playlist.src = ''; break;
 		case 'astro': playlist.src = 'resources/images/Playlist_Icons/Astro.png'; break;
+		//case 'baffler': playlist.src = 'resources/images/Playlist_Icons/Baffler.png'; break;
 		case 'blade': playlist.src = 'resources/images/Playlist_Icons/The_Blade.png'; break;
 		case 'bomb': playlist.src = 'resources/images/Playlist_Icons/Bomb.png'; break;
 		case 'breaker': playlist.src = 'resources/images/Playlist_Icons/Breaker.png'; break;
@@ -415,6 +506,8 @@ function playlistchanged()
 		case 'controller': playlist.src = 'resources/images/Playlist_Icons/Controller.png'; break;
 		case 'dapper': playlist.src = 'resources/images/Playlist_Icons/Dapper.png'; break;
 		case 'derby': playlist.src = 'resources/images/Playlist_Icons/Derby.png'; break;
+		//case 'dm': playlist.src = 'resources/images/Playlist_Icons/DM_Icon.png'; break;
+		//case 'fever': playlist.src = 'resources/images/Playlist_Icons/Fever.png'; break;
 		case 'flawless': playlist.src = 'resources/images/Playlist_Icons/Flawless.png'; break;
 		case 'highness': playlist.src = 'resources/images/Playlist_Icons/Highness.png'; break;
 		case 'hightower': playlist.src = 'resources/images/Playlist_Icons/Hightower.png'; break;
@@ -424,6 +517,7 @@ function playlistchanged()
 		case 'ouroboros': playlist.src = 'resources/images/Playlist_Icons/Ouroboros.png'; break;
 		case 'puff': playlist.src = 'resources/images/Playlist_Icons/Puff.png'; break;
 		case 'seer': playlist.src = 'resources/images/Playlist_Icons/Seer.png'; break;
+		//case 'socket': playlist.src = 'resources/images/Playlist_Icons/Socket.png'; break;
 		case 'sweets': playlist.src = 'resources/images/Playlist_Icons/Sweets.png'; break;
 		}
 	draw();
