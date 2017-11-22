@@ -19,4 +19,5 @@ The world's first and only Dropmix card mockup template.
     <BR>  - FIXED - Fonts load correctly and don't draw until loaded.</LI>
   <LI><strike>Text draws at the wrong size and location if browser zoom is not regular/100%.</strike>
     <BR>  - FIXED - Text draws at the same size regardless of browser zoom.</LI>
+  <LI>Probably more.</LI>
 </UL>
