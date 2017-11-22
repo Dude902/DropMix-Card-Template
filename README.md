@@ -7,10 +7,12 @@ The world's first and only Dropmix card mockup template.
   <LI>Draw text as soon as it loads instead of waiting.</LI>
   <LI>Make the text boxes and other inputs more immediately responsive to changes.</LI>
   <LI>Allow uploading card art and moving/resizing/rotating.</LI>
-  <LI>Add icons to dropdown select options (and radio buttons if it's possible to cleanly isolate graphics for power levels).</LI>
-  <LI>Add remaining missing assets if possible.</LI>
-  <LI>Add mobile support (partially in place).</LI>
+  <BR>
+  <LI>*Add remaining missing assets if possible.</LI>
+  <LI>*Add mobile support (partially in place).</LI>
 </UL>
+<BR>
+  * - mostly done
 <BR>
 <UL>Bugs:
   <LI>Text doesn't load right away (set to manually draw after 0.25, 0.5, 1, 2, and 3 seconds and if still not loaded by then, draws when edits are made or card preview is clicked.</LI>
