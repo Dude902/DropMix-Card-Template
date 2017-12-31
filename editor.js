@@ -393,7 +393,7 @@ function art_init()
 	var distX, distY;
 	var artisDraggable = false;
 	canvas.onmousedown = canvas.ontouchstart = function(e) {
-		if (e.button == 0 || event.type == "touchstart")
+		if (e.button == 0 || e.type == "touchstart")
 		{
 		startingX = e.clientX;
 		startingY = e.clientY;
