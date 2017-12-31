@@ -398,21 +398,26 @@ function art_init()
 		startingX = e.clientX;
 		startingY = e.clientY;
 		artisDraggable = true;
+		e.preventDefault();
 		}
 	};
 	canvas.onmouseup = canvas.ontouchend = function(e) {
 		artisDraggable = false;
+		e.preventDefault();
 	};
 	canvas.onmouseout = canvas.ontouchleave = function(e) {
 		artisDraggable = false;
+		e.preventDefault();
 	};
 	canvas.onmousemove = canvas.ontouchmove = function(e) {
-		if (artisDraggable) {
+		if (artisDraggable)
+		{
 		art_x = art_x + flipmul_h*(e.clientX-startingX)/artscaleh;
 		art_y = art_y + flipmul_v*(e.clientY-startingY)/artscalev;
 		draw();
 		startingX = e.clientX;
 		startingY = e.clientY;
+		e.preventDefault();
 		}
 	};
 	
