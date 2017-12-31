@@ -7,8 +7,7 @@ The world's first and only Dropmix card mockup template.
   <LI>*Allow uploading card art and moving/resizing/rotating.
     <BR>* Rotation sliders functional but buggy.
       <BR>- Shifting rotated images moves them with respect to the rotation, instead of moving straight with respect to the card.
-      <BR>- Resetting or centering a rotated and scaled or flipped image causes skewing
-    <BR>* Manipulating card art is untested on mobile.</LI>
+      <BR>- Resetting or centering a rotated and scaled or flipped image causes skewing</LI>
   <LI>Draw text as soon as it loads instead of waiting.</LI>
   <LI>Make the text boxes and other inputs more immediately responsive to changes.</LI>
   <BR>
@@ -24,5 +23,7 @@ The world's first and only Dropmix card mockup template.
     <BR>  - FIXED - Fonts load correctly and don't draw until loaded.</LI>
   <LI><strike>Text draws at the wrong size and location if browser zoom is not regular/100%.</strike>
     <BR>  - FIXED - Text draws at the same size regardless of browser zoom.</LI>
+  <LI><strike>Manipulating card art is untested on mobile.</strike>
+    <BR>  - FIXED -  Manipulating card art on mobile is functional. Mouse events were given touch event equivalents.</LI>
   <LI>Probably more.</LI>
 </UL>
