@@ -4,8 +4,8 @@ Conversion of my photoshop-based template for Dropmix musical trading card mocku
 The world's first and only Dropmix card mockup template.
 <BR>
 <UL>To do list (loosely in order):
-  <LI>Allow uploading card art and moving/resizing/rotating.
-    <BR><B>Coded but not uploaded, scale and rotation sliders not yet functional.</B></LI>
+  <LI><H2>Allow uploading card art and moving/resizing/rotating.
+    <BR>Coded but not uploaded, scale and rotation sliders not yet functional. Shifting rotated images doesn't work correctly.</H2></LI>
   <LI>Draw text as soon as it loads instead of waiting.</LI>
   <LI>Make the text boxes and other inputs more immediately responsive to changes.</LI>
   <BR>
