@@ -395,8 +395,16 @@ function art_init()
 	canvas.onmousedown = canvas.ontouchstart = function(e) {
 		if (e.button == 0 || e.type == "touchstart")
 		{
-		startingX = e.clientX;
-		startingY = e.clientY;
+		if (e.type == "touchstart")
+			{
+			startingX = e.touches[0].clientX;
+			startingY = e.touches[0].clientY;
+			}
+		else
+			{
+			startingX = e.clientX;
+			startingY = e.clientY;
+			}
 		artisDraggable = true;
 		if (e.type == "touchstart") e.preventDefault();
 		}
@@ -412,11 +420,22 @@ function art_init()
 	canvas.onmousemove = canvas.ontouchmove = function(e) {
 		if (artisDraggable)
 		{
-		art_x = art_x + flipmul_h*(e.clientX-startingX)/artscaleh;
-		art_y = art_y + flipmul_v*(e.clientY-startingY)/artscalev;
-		draw();
-		startingX = e.clientX;
-		startingY = e.clientY;
+		if (e.type == "touchmove")
+			{
+			art_x = art_x + flipmul_h*(e.touches[0].clientX-startingX)/artscaleh;
+			art_y = art_y + flipmul_v*(e.touches[0].clientY-startingY)/artscalev;
+			draw();
+			startingX = e.touches[0].clientX;
+			startingY = e.touches[0].clientY;
+			}
+		else
+			{
+			art_x = art_x + flipmul_h*(e.clientX-startingX)/artscaleh;
+			art_y = art_y + flipmul_v*(e.clientY-startingY)/artscalev;
+			draw();
+			startingX = e.clientX;
+			startingY = e.clientY;
+			}
 		if (e.type == "touchmove") e.preventDefault();
 		}
 	};
