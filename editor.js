@@ -398,16 +398,16 @@ function art_init()
 		startingX = e.clientX;
 		startingY = e.clientY;
 		artisDraggable = true;
-		e.preventDefault();
+		if (e.type == "touchstart") e.preventDefault();
 		}
 	};
 	canvas.onmouseup = canvas.ontouchend = function(e) {
 		artisDraggable = false;
-		e.preventDefault();
+		if (e.type == "touchend") e.preventDefault();
 	};
 	canvas.onmouseout = canvas.ontouchleave = function(e) {
 		artisDraggable = false;
-		e.preventDefault();
+		if (e.type == "touchleave") e.preventDefault();
 	};
 	canvas.onmousemove = canvas.ontouchmove = function(e) {
 		if (artisDraggable)
@@ -417,7 +417,7 @@ function art_init()
 		draw();
 		startingX = e.clientX;
 		startingY = e.clientY;
-		e.preventDefault();
+		if (e.type == "touchmove") e.preventDefault();
 		}
 	};
 	
