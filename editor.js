@@ -371,7 +371,8 @@ function art_init()
 			document.getElementById('imguploadform').reset();
 			
 			var artscalehslider = document.getElementById('artscalehslider'); artscalehslider.value = 1; artscalehslider.disabled = true;
-			var artscalehbox = document.getElementById('artscalehbox'); artscalehbox.value = 1; artscalehbox.disabled = true;var artscaleslider = document.getElementById('artscaleslider'); artscaleslider.value = 1; artscaleslider.disabled = true;
+			var artscalehbox = document.getElementById('artscalehbox'); artscalehbox.value = 1; artscalehbox.disabled = true;
+			var artscalevslider = document.getElementById('artscalevslider'); artscalevslider.value = 1; artscalevslider.disabled = true;
 			var artscalevbox = document.getElementById('artscalevbox'); artscalevbox.value = 1; artscalevbox.disabled = true;
 			var artrotationslider = document.getElementById('artrotationslider'); artrotationslider.value = 0; artrotationslider.disabled = true;
 			var artrotationbox = document.getElementById('artrotationbox'); artrotationbox.value = 0; artrotationbox.disabled = true;
@@ -391,21 +392,21 @@ function art_init()
 	var startingX, startingY;
 	var distX, distY;
 	var artisDraggable = false;
-	canvas.onmousedown = function(e) {
-		if (e.button == 0)
+	canvas.onmousedown = canvas.ontouchstart = function(e) {
+		if (e.button == 0 || event.type == "touchstart")
 		{
 		startingX = e.clientX;
 		startingY = e.clientY;
 		artisDraggable = true;
 		}
 	};
-	canvas.onmouseup = function(e) {
+	canvas.onmouseup = canvas.ontouchend = function(e) {
 		artisDraggable = false;
 	};
-	canvas.onmouseout = function(e) {
+	canvas.onmouseout = canvas.ontouchleave = function(e) {
 		artisDraggable = false;
 	};
-	canvas.onmousemove = function(e) {
+	canvas.onmousemove = canvas.ontouchmove = function(e) {
 		if (artisDraggable) {
 		art_x = art_x + flipmul_h*(e.clientX-startingX)/artscaleh;
 		art_y = art_y + flipmul_v*(e.clientY-startingY)/artscalev;
