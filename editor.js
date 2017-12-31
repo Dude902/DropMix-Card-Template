@@ -315,14 +315,20 @@ function art_init()
 		
 		artloaded = true;
 		
+		var canvas_art = document.getElementById('canvas_art').getContext('2d');
+		if (flipped_h == true) canvas_art.scale(-1, 1); flipped_h = false; flipmul_h = 1;
+		if (flipped_v == true) canvas_art.scale(1, -1); flipped_v = false; flipmul_v = 1;
+		canvas_art.scale(1/artscaleh, 1/artscalev);
+		canvas_art.transform(1,0,0,1,0,0);
+		artscaleh = 1; artscalev = 1; artrotation = 0;
+		
 		var artscalehslider = document.getElementById('artscalehslider'); artscalehslider.value = 1; artscalehslider.disabled = false;
 		var artscalehbox = document.getElementById('artscalehbox'); artscalehbox.value = 1; artscalehbox.disabled = false;
 		var artscalevslider = document.getElementById('artscalevslider'); artscalevslider.value = 1; artscalevslider.disabled = false;
 		var artscalevbox = document.getElementById('artscalevbox'); artscalevbox.value = 1; artscalevbox.disabled = false;
 		var artrotationslider = document.getElementById('artrotationslider'); artrotationslider.value = 0; //artrotationslider.disabled = false;
 		var artrotationbox = document.getElementById('artrotationbox'); artrotationbox.value = 0; //artrotationbox.disabled = false;
-		artscaleh = 1; artscalev = 1; artrotation = 0;
-		
+
 		var centerart = document.getElementById('centerart'); centerart.disabled = false;
 		var flipart_h = document.getElementById('flipart_h'); flipart_h.disabled = false;
 		var flipart_v = document.getElementById('flipart_v'); flipart_v.disabled = false;
@@ -332,10 +338,6 @@ function art_init()
 		art_x = Math.round(art_x1 + (art_x2-art_x1)/2 - artimg.width/2);
 		art_y = Math.round(art_y1 + (art_y2-art_y1)/2 - artimg.height/2);
 		
-		var canvas_art = document.getElementById('canvas_art').getContext('2d');
-		canvas_art.scale(1, 1);
-		if (flipped_h == true) canvas_art.scale(-1, 1); flipped_h = false; flipmul_h = 1;
-		if (flipped_v == true) canvas_art.scale(1, -1); flipped_v = false; flipmul_v = 1;
 		draw();
 	}, false);
 	
@@ -376,6 +378,8 @@ function art_init()
 			var artscalevbox = document.getElementById('artscalevbox'); artscalevbox.value = 1; artscalevbox.disabled = true;
 			var artrotationslider = document.getElementById('artrotationslider'); artrotationslider.value = 0; artrotationslider.disabled = true;
 			var artrotationbox = document.getElementById('artrotationbox'); artrotationbox.value = 0; artrotationbox.disabled = true;
+			canvas_art.scale(1/artscaleh, 1/artscalev);
+			canvas_art.transform(1,0,0,1,0,0);
 			artscaleh = 1; artscalev = 1; artrotation = 0;
 			
 			var centerart = document.getElementById('centerart'); centerart.disabled = true;
@@ -740,30 +744,34 @@ function artscalehchanged()
 	{
 		var artscalehslider = document.getElementById('artscalehslider');
 		var artscalehbox = document.getElementById('artscalehbox');
-		artscalehslider.value = Number(artscalehslider.value);
-		artscalehbox.value = Number(artscalehslider.value);
-		if (!isNaN(artscalehslider.value) && artscalehslider.value!=0)
+		if (artscalehslider.value!=0)
+		{
+		artscalehbox.value = artscalehslider.value;
+		if (!isNaN(artscalehslider.value))
 			{
 			var canvas_art = document.getElementById('canvas_art').getContext('2d');
 			canvas_art.scale(1/artscaleh, 1/artscalev);
-			artscaleh = Number(artscalehslider.value);
+			artscaleh = artscalehslider.value;
 			canvas_art.scale(artscaleh, artscalev);
 			}
+		}
 		draw();
 	}
 function artscalehboxchanged()
 	{
 		var artscalehslider = document.getElementById('artscalehslider');
 		var artscalehbox = document.getElementById('artscalehbox');
-		artscalehbox.value = Number(artscalehbox.value);
-		artscalehslider.value = Number(artscalehbox.value);
-		if (!isNaN(artscalehbox.value) && artscalehbox.value!=0)
+		if (artscalehbox.value!=0)
+		{
+		artscalehslider.value = artscalehbox.value;
+		if (!isNaN(artscalehbox.value))
 			{
 			var canvas_art = document.getElementById('canvas_art').getContext('2d');
 			canvas_art.scale(1/artscaleh, 1/artscalev);
-			artscaleh = Number(artscalehbox.value);
+			artscaleh = artscalehbox.value;
 			canvas_art.scale(artscaleh, artscalev);
 			}
+		}
 		draw();
 	}
 //ART SCALE VERTICAL CHANGED
@@ -771,30 +779,34 @@ function artscalevchanged()
 	{
 		var artscalevslider = document.getElementById('artscalevslider');
 		var artscalevbox = document.getElementById('artscalevbox');
-		artscalevslider.value = Number(artscalevslider.value);
-		artscalevbox.value = Number(artscalevslider.value);
-		if (!isNaN(artscalevslider.value) && artscalevslider.value!=0)
+		if (artscalevslider.value!=0)
+		{
+		artscalevbox.value = artscalevslider.value;
+		if (!isNaN(artscalevslider.value))
 			{
 			var canvas_art = document.getElementById('canvas_art').getContext('2d');
 			canvas_art.scale(1/artscaleh, 1/artscalev);
-			artscalev = Number(artscalevslider.value);
+			artscalev = artscalevslider.value;
 			canvas_art.scale(artscaleh, artscalev);
 			}
+		}
 		draw();
 	}
 function artscalevboxchanged()
 	{
 		var artscalevslider = document.getElementById('artscalevslider');
 		var artscalevbox = document.getElementById('artscalevbox');
-		artscalevbox.value = Number(artscalevbox.value);
-		artscalevslider.value = Number(artscalevbox.value);
-		if (!isNaN(artscalevbox.value) && artscalevbox.value!=0)
+		if (artscalevbox.value!=0) 
+		{
+		artscalevslider.value = artscalevbox.value;
+		if (!isNaN(artscalevbox.value))
 			{
 			var canvas_art = document.getElementById('canvas_art').getContext('2d');
 			canvas_art.scale(1/artscaleh, 1/artscalev);
-			artscalev = Number(artscalevbox.value);
+			artscalev = artscalevbox.value;
 			canvas_art.scale(artscaleh, artscalev);
 			}
+		}
 		draw();
 	}
 //ART ROTATION CHANGED
