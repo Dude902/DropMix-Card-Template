@@ -310,7 +310,7 @@ function art_init()
 	var resetart = document.getElementById('resetart'); resetart.disabled = true;
 	var clearart = document.getElementById('clearart'); clearart.disabled = true;
 	
-	//Draw card art when source image loads and reset it to the top left of card art window
+	//Draw card art when source image loads and reset it to the center of the card art window
 	artimg.addEventListener("load", function () {
 		
 		artloaded = true;
@@ -378,6 +378,8 @@ function art_init()
 			var artscalevbox = document.getElementById('artscalevbox'); artscalevbox.value = 1; artscalevbox.disabled = true;
 			var artrotationslider = document.getElementById('artrotationslider'); artrotationslider.value = 0; artrotationslider.disabled = true;
 			var artrotationbox = document.getElementById('artrotationbox'); artrotationbox.value = 0; artrotationbox.disabled = true;
+			
+			var canvas_art = document.getElementById('canvas_art').getContext('2d');
 			canvas_art.scale(1/artscaleh, 1/artscalev);
 			canvas_art.transform(1,0,0,1,0,0);
 			artscaleh = 1; artscalev = 1; artrotation = 0;
