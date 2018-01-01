@@ -335,8 +335,12 @@ function art_init()
 		var resetart = document.getElementById('resetart'); resetart.disabled = false;
 		var clearart = document.getElementById('clearart'); clearart.disabled = false;
 		
-		art_x = Math.round(art_x1 + (art_x2-art_x1)/2 - artimg.width/2);
-		art_y = Math.round(art_y1 + (art_y2-art_y1)/2 - artimg.height/2);
+		//no rounding, more accurate
+		art_x = art_x1 + (art_x2-art_x1)/2 - artimg.width/2;
+		art_y = art_y1 + (art_y2-art_y1)/2 - artimg.height/2;
+		//rounded results, sometimes off by a pixel
+		//art_x = Math.round(art_x1 + (art_x2-art_x1)/2 - artimg.width/2);
+		//art_y = Math.round(art_y1 + (art_y2-art_y1)/2 - artimg.height/2);
 		
 		draw();
 	}, false);
@@ -473,7 +477,6 @@ function init()
 	artloaded = false;
 	artimg = new Image();
 	art_init();
-	
 	
 	blankcard = new Image();	blankcard.src = 'resources/images/Blank_Card.png';
 	powerlevel = new Image();	//powerlevel.src = 'resources/images/Power_Levels/Wild_2.png';
@@ -878,8 +881,12 @@ function centerart()
 	{
 	if(confirm('Are you sure you want to move the card\'s artwork to the center?'))
 		{
-		art_x = Math.round((flipmul_h*art_x1 + flipmul_h*(art_x2-art_x1)/2 - artimg.width*artscaleh/2)/artscaleh);
-		art_y = Math.round((flipmul_v*art_y1 + flipmul_v*(art_y2-art_y1)/2 - artimg.height*artscalev/2)/artscalev);
+		//no rounding, more accurate
+		art_x = (flipmul_h*art_x1 + flipmul_h*(art_x2-art_x1)/2 - artimg.width*artscaleh/2)/artscaleh;
+		art_y = (flipmul_v*art_y1 + flipmul_v*(art_y2-art_y1)/2 - artimg.height*artscalev/2)/artscalev;
+		//rounded results, sometimes off by a pixel
+		//art_x = Math.round((flipmul_h*art_x1 + flipmul_h*(art_x2-art_x1)/2 - artimg.width*artscaleh/2)/artscaleh);
+		//art_y = Math.round((flipmul_v*art_y1 + flipmul_v*(art_y2-art_y1)/2 - artimg.height*artscalev/2)/artscalev);
 		draw();
 		}
 	}
@@ -938,13 +945,17 @@ function resetart()
 		if (flipped_h == true) canvas_art.scale(-1, 1); flipped_h = false; flipmul_h = 1;
 		if (flipped_v == true) canvas_art.scale(1, -1); flipped_v = false; flipmul_v = 1;
 		//Reset Position //NOT WORKING WITH ROTATION
-		art_x = Math.round(art_x1 + (art_x2-art_x1)/2 - artimg.width/2);
-		art_y = Math.round(art_y1 + (art_y2-art_y1)/2 - artimg.height/2);
+		//no rounding, more accurate
+		art_x = art_x1 + (art_x2-art_x1)/2 - artimg.width/2;
+		art_y = art_y1 + (art_y2-art_y1)/2 - artimg.height/2;
+		//rounded results, sometimes off by a pixel
+		//art_x = Math.round(art_x1 + (art_x2-art_x1)/2 - artimg.width/2);
+		//art_y = Math.round(art_y1 + (art_y2-art_y1)/2 - artimg.height/2);
 		draw();
 		}
 	}
 
-//RESET TO BLANK CARD WITH DEFAULT IF RESET BUTTON IS PRESSED
+//RESET TO BLANK CARD WITH DEFAULT TEXT IF RESET BUTTON IS PRESSED
 function resetcard()
 	{
 	if(confirm('Are you sure you want to erase this card and start from a blank card?'))
