@@ -191,9 +191,14 @@
 		Move the selected artwork by dragging anywhere on the card above.
 		<BR>
 		<input id="centerart" type='button' value="Center Artwork" onClick="centerart()" disabled=true> 
+		<input id="centerarth" type='button' value="Center Artwork Horizontally" onClick="centerarth()" disabled=true> 
+		<input id="centerartv" type='button' value="Center Artwork Vertically" onClick="centerartv()" disabled=true> 
+		<BR>
 		<input id="flipart_h" type='button' value="Flip Artwork Horizontally" onClick="flipart_h()" disabled=true> 
 		<input id="flipart_v" type='button' value="Flip Artwork Vertically" onClick="flipart_v()" disabled=true> 
-		<input id="resetart" type='button' value="Reset Artwork Adjustments" onClick="resetart()" disabled=true>
+		<BR><BR>
+		<input id="resetart" type='button' value="Reset Artwork Adjustments" onClick="resetart()" disabled=true> 
+		<input id="clearart" type='button' value="Clear Artwork" onClick="clearart()" disabled=true> 
 		<BR><BR>
 		Artwork Width Scale:&nbsp; 
 		<input id="artscalehslider" type="range" min="0.1" max="10" step="0.1" value="1"          onchange="artscalehchanged()" onblur="artscalehchanged()" disabled=true/>&nbsp;&nbsp;&nbsp;
@@ -207,8 +212,6 @@
 		<input id="artrotationslider" type="range" min="-360" max="360" step="0.01" value="0"          onchange="artrotationchanged()" onblur="artrotationchanged()" disabled=true/>&nbsp;&nbsp;&nbsp;
 		<input id="artrotationbox" type="number"   min="-360" max="360" step="0.01" value="0" size='6' onchange="artrotationboxchanged()" onblur="artrotationboxchanged()" onkeyup="artrotationboxchanged()" disabled=true>
 		<BR><BR>
-		<input id="clearart" type='button' value="Clear Artwork" onClick="clearart()" disabled=true>
-		<BR>
 		<input type='button' value="Reset Card to Blank" onClick="resetcard()">
 	</div>
 </div>
