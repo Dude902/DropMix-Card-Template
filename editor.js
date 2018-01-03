@@ -293,7 +293,7 @@ window.onbeforeunload = confirmdelete;
 
 
 
-//INITIALIZE CARD ARTWORK RELATED FUNCTIONS
+//CARD ARTWORK RELATED FUNCTIONS
 function art_init()
 {
 	disableartcontrols();
@@ -307,8 +307,8 @@ function art_init()
 		if (flipped_h == true) canvas_art.scale(-1, 1); flipped_h = false; flipmul_h = 1;
 		if (flipped_v == true) canvas_art.scale(1, -1); flipped_v = false; flipmul_v = 1;
 		canvas_art.scale(1/artscaleh, 1/artscalev);
-		canvas_art.transform(1,0,0,1,0,0);
 		artscaleh = 1; artscalev = 1; artrotation = 0;
+		canvas_art.transform(1,0,0,1,0,0);
 		
 		var artscalehslider = document.getElementById('artscalehslider'); artscalehslider.value = 1; artscalehslider.disabled = false;
 		var artscalehbox = document.getElementById('artscalehbox'); artscalehbox.value = 1; artscalehbox.disabled = false;
@@ -322,56 +322,55 @@ function art_init()
 		var centerartv = document.getElementById('centerartv'); centerartv.disabled = false;
 		var flipart_h = document.getElementById('flipart_h'); flipart_h.disabled = false;
 		var flipart_v = document.getElementById('flipart_v'); flipart_v.disabled = false;
+		var artscalehfit = document.getElementById('scalehfit'); artscalehfit.disabled = false;
+		var artscalevfit = document.getElementById('scalevfit'); artscalevfit.disabled = false;
+		var artscalehorig = document.getElementById('scalehorig'); artscalehorig.disabled = false;
+		var artscalevorig = document.getElementById('scalevorig'); artscalevorig.disabled = false;
+		var artscaletomin = document.getElementById('scaletomin'); artscaletomin.disabled = false;
 		var resetart = document.getElementById('resetart'); resetart.disabled = false;
 		var clearart = document.getElementById('clearart'); clearart.disabled = false;
 		
-		//no rounding, more accurate
-		art_x = art_x1 + (art_x2-art_x1)/2 - artimg.width/2;
-		art_y = art_y1 + (art_y2-art_y1)/2 - artimg.height/2;
-		//rounded results, sometimes off by a pixel
-		//art_x = Math.round(art_x1 + (art_x2-art_x1)/2 - artimg.width/2);
-		//art_y = Math.round(art_y1 + (art_y2-art_y1)/2 - artimg.height/2);
+		if (artimg.width/(art_x2-art_x1) < artimg.height/(art_y2-art_y1)) scalehorizontal(); else scalevertical(); //default scale to fit
+		//no rounding, more accurate (rounded results are sometimes off by a pixel)
+		art_x = (flipmul_h*(art_x2+art_x1)/2 - artimg.width*artscaleh/2)/artscaleh;
+		art_y = (flipmul_v*(art_y2+art_y1)/2 - artimg.height*artscalev/2)/artscalev;
 		
 		draw();
 	}, false);
 	
-	// To enable drag and drop image into canvas
-	canvas.addEventListener("dragover", function (evt) {
-		evt.preventDefault();
-		}, false);
-	// Handle dropped image file - (only Firefox and Google Chrome???)
-	canvas.addEventListener("drop", function (evt) {
-		//get new image but don't change until confirmed
+	//DRAG AND DROP IMAGE INTO CANVAS
+	canvas.addEventListener("dragover", function (evt) {evt.preventDefault();}, false);
+	canvas.addEventListener("drop", function (evt)
+	{
+		//GET NEW IMAGE (NOT CHANGED UNTIL CONFIRMED)
 		var newsrc;
 		var url = evt.dataTransfer.getData('text/plain');
 		var files = evt.dataTransfer.files;
-			if (files.length > 0) {
+			if (files.length > 0)
+			{
 				var file = files[0];
 				if (typeof FileReader !== "undefined" && file.type.indexOf("image") != -1)
 					{
 					var reader = new FileReader();
-					// Note: addEventListener doesn't work in Google Chrome for this event
-					reader.onload = function (evt) {
-						newsrc = evt.target.result;
-						};
+					reader.onload = function (evt) {newsrc = evt.target.result;};
 					reader.readAsDataURL(file);
 					}
 			}
 		evt.preventDefault();
-		//ask the user to confirm they want to replace the current card art image
+		//CONFIRM USER WANTS TO REPLACE THE CURRENT CARD ART IMAGE
 		if(confirm('Are you sure you want to change the current card art?'))
 		{
 			artloaded = false;
+			disableartcontrols();
 			if(url) artimg.src = url;
 			if(newsrc) artimg.src = newsrc;
 			document.getElementById('imguploadform').reset();
-			disableartcontrols();
 		}
 		draw();
 	}, false);
 
 	
-	//Movement of card art
+	//MOVEMENT OF CARD ART
 	var startingX, startingY;
 	var distX, distY;
 	var artisDraggable = false;
@@ -423,9 +422,33 @@ function art_init()
 		}
 	};
 	
-	//Reset the uploaded image file, has no effect but cosmetic
+	//Reset the uploaded image filename, has no effect but cosmetic
 	document.getElementById('imguploadform').reset();
 }
+
+function disableartcontrols()
+	{
+	var artscalehslider = document.getElementById('artscalehslider'); 		artscalehslider.value = 1; 	 artscalehslider.disabled = true; 	artscalehchanged();
+	var artscalevslider = document.getElementById('artscalevslider'); 		artscalevslider.value = 1; 	 artscalevslider.disabled = true; 	artscalevchanged();
+	var artscalehbox = document.getElementById('artscalehbox'); 			artscalehbox.value = 1; 	 artscalehbox.disabled = true; 		artscalehboxchanged();
+	var artscalevbox = document.getElementById('artscalevbox'); 			artscalevbox.value = 1; 	 artscalevbox.disabled = true; 		artscalevboxchanged()
+	var artrotationslider = document.getElementById('artrotationslider'); 	artrotationslider.value = 0; artrotationslider.disabled = true; artrotationchanged();
+	var artrotationbox = document.getElementById('artrotationbox'); 		artrotationbox.value = 0; 	 artrotationbox.disabled = true; 	artrotationboxchanged();
+	//artscaleh = 1; artscalev = 1; artrotation = 0; REDUNDANT WITH SETTING VALUES AND USING "changed" functions
+	
+	var centerart = document.getElementById('centerart'); centerart.disabled = true;
+	var centerarth = document.getElementById('centerarth'); centerarth.disabled = true;
+	var centerartv = document.getElementById('centerartv'); centerartv.disabled = true;
+	var flipart_h = document.getElementById('flipart_h'); flipart_h.disabled = true;
+	var flipart_v = document.getElementById('flipart_v'); flipart_v.disabled = true;
+	var artscalehfit = document.getElementById('scalehfit'); artscalehfit.disabled = true;
+	var artscalevfit = document.getElementById('scalevfit'); artscalevfit.disabled = true;
+	var artscalehorig = document.getElementById('scalehorig'); artscalehorig.disabled = true;
+	var artscalevorig = document.getElementById('scalevorig'); artscalevorig.disabled = true;
+	var artscaletomin = document.getElementById('scaletomin'); artscaletomin.disabled = true;
+	var resetart = document.getElementById('resetart'); resetart.disabled = true;
+	var clearart = document.getElementById('clearart'); clearart.disabled = true;
+	}
 
 //ENABLE INPUT BUTTON FOR UPLOADING IMAGE FILE
 function imguploaded(e)
@@ -452,7 +475,7 @@ function init()
 	art_init();
 	
 	blankcard = new Image();	blankcard.src = 'resources/images/Blank_Card.png';
-	powerlevel = new Image();	//powerlevel.src = 'resources/images/Power_Levels/Wild_2.png';
+	powerlevel = new Image();	//powerlevel.src = 'resources/images/Power_Levels/Wild_2.png'; //MAY SHOW WILD BY DEFAULT INSTEAD OF BLANK
 	instrument1 = new Image();
 	instrument2 = new Image();
 	instrument3 = new Image();
@@ -469,9 +492,10 @@ function init()
 	def_series_id = 'S##';
 	def_card_id = 'C###';
 	def_copyright = '\u2122 \u0026 \u00A9 2017 HARMONIX  \u00A9 2017 HASBROTHER';
+	//ABOVE IS MOST CONSISTENT FOR ACCURATELY SHOWING TRADEMARK AND COPYRIGHT SYMBOLS
 	//def_copyright = '™ & © 2017 HARMONIX  © 2017 HASBROTHER';
 	//def_copyright = '&trade; &amp; &copy; 2017 HARMONIX  &copy; 2017 HASBROTHER';
-	//FOR REFERENCE FOR def_copyright
+	//FOR REFERENCE FOR def_copyright (ASCII, UTF-8, ALT CODE)
 	//Ampersand & &amp;   U=0026 alt+38
 	//Trademark ™ &trade; U+2122 alt+0153
 	//Copyright © &copy;  U+00A9 alt+0169
@@ -717,6 +741,7 @@ function playlistchanged()
 	draw();
 	}
 
+//DETECT ART-RELATED CHANGES AND REDRAW
 //ART SCALE HORIZONTAL CHANGED
 function artscalehchanged()
 	{
@@ -819,59 +844,121 @@ function artrotationboxchanged()
 		draw();
 	}
 
-
-//CLEAR CARD ART
-function clearart()
+//SCALE CARD ART WIDTH/HEIGHT PROPORTIONALLY TO FIT (WHEN IMAGE INITIALLY LOADS)
+	//SCALE TO FIT WIDTH PROPORTIONALLY
+	function scalehorizontal()
 	{
-	if(confirm('Are you sure you want to erase the card\'s current artwork?'))
-		{
-		artloaded = false;
-		artimg.src = "";
-		document.getElementById('imguploadform').reset();
-		art_x = art_x1;
-		art_y = art_y1;
-		disableartcontrols();
-		draw();
-		}
+		var usescale = ((art_x2-art_x1) / artimg.width) ; //only difference with scalevertical
+		var canvas_art = document.getElementById('canvas_art').getContext('2d');
+			canvas_art.scale(1/artscaleh, 1/artscalev);
+			artscaleh = usescale; artscalev = usescale;
+			canvas_art.scale(artscaleh, artscalev);
+		var artscalehslider = document.getElementById('artscalehslider'); var artscalehbox = document.getElementById('artscalehbox'); var artscalevslider = document.getElementById('artscalevslider'); var artscalevbox = document.getElementById('artscalevbox');
+		artscalehslider.value = usescale; artscalehbox.value = usescale; artscalevslider.value = usescale; artscalevbox.value = usescale;
+		artscalehboxchanged(); artscalevboxchanged();
+	}
+	//SCALE TO FIT HEIGHT PROPORTIONALLY
+	function scalevertical()
+	{
+		var usescale = ((art_y2-art_y1) / artimg.height); //only difference with scalehorizontal
+		var canvas_art = document.getElementById('canvas_art').getContext('2d');
+			canvas_art.scale(1/artscaleh, 1/artscalev);
+			artscaleh = usescale; artscalev = usescale;
+			canvas_art.scale(artscaleh, artscalev);
+		var artscalehslider = document.getElementById('artscalehslider'); var artscalehbox = document.getElementById('artscalehbox'); var artscalevslider = document.getElementById('artscalevslider'); var artscalevbox = document.getElementById('artscalevbox');
+		artscalehslider.value = usescale; artscalehbox.value = usescale; artscalevslider.value = usescale; artscalevbox.value = usescale;
+		artscalehboxchanged(); artscalevboxchanged();
+	}
+	//SCALE TO MINIMUM WIDTH AND HEIGHT PROPORTIONALLY
+	function scaletominimum()
+	{
+		if (artimg.width/(art_x2-art_x1) < artimg.height/(art_y2-art_y1)) scalehorizontal(); else scalevertical(); //default scale to fit
+	}
+	
+//SCALE CARD ART WIDTH/HEIGHT TO FIT INDEPENDENTLY
+	//SCALE WIDTH TO FIT
+	function scalehfit()
+	{
+		var usescale = ((art_x2-art_x1) / artimg.width);
+		var canvas_art = document.getElementById('canvas_art').getContext('2d');
+			canvas_art.scale(1/artscaleh, 1/artscalev);
+			artscaleh = usescale;
+			canvas_art.scale(artscaleh, artscalev);
+		var artscalehslider = document.getElementById('artscalehslider'); var artscalehbox = document.getElementById('artscalehbox');
+		artscalehslider.value = usescale; artscalehbox.value = usescale;
+		artscalehboxchanged();
+	}
+	//SCALE HEIGHT TO FIT
+	function scalevfit()
+	{
+		var usescale = ((art_y2-art_y1) / artimg.height);
+		var canvas_art = document.getElementById('canvas_art').getContext('2d');
+			canvas_art.scale(1/artscaleh, 1/artscalev);
+			artscalev = usescale;
+			canvas_art.scale(artscaleh, artscalev);
+		var artscalevslider = document.getElementById('artscalevslider'); var artscalevbox = document.getElementById('artscalevbox');
+		artscalevslider.value = usescale; artscalevbox.value = usescale;
+		artscalevboxchanged();
+	}
+	
+//SCALE CARD ART WIDTH/HEIGHT TO ORIGINAL SIZE
+	//SCALE WIDTH TO ORIGINAL SIZE
+	function scalehoriginal()
+	{
+		var canvas_art = document.getElementById('canvas_art').getContext('2d');
+			canvas_art.scale(1/artscaleh, 1); artscaleh = 1;
+		var artscalehslider = document.getElementById('artscalehslider'); var artscalehbox = document.getElementById('artscalehbox');
+		artscalehslider.value = 1; artscalehbox.value = 1;
+		artscalehboxchanged();
+	}
+	//SCALE HEIGHT TO ORIGINAL SIZE
+	function scalevoriginal()
+	{
+		var canvas_art = document.getElementById('canvas_art').getContext('2d');
+			canvas_art.scale(1, 1/artscalev); artscalev = 1;
+		var artscalevslider = document.getElementById('artscalevslider'); var artscalevbox = document.getElementById('artscalevbox');
+		artscalevslider.value = 1; artscalevbox.value = 1;
+		artscalevboxchanged();
 	}
 
 //CENTER CARD ART //NOT WORKING WITH ROTATION
-function centerart()
-	{
-	if(confirm('Are you sure you want to move the card\'s artwork to the center?'))
+	//CENTER CARD ART HORIZONTALLY
+	function centerarth()
 		{
-		//no rounding, more accurate
-		art_x = (flipmul_h*art_x1 + flipmul_h*(art_x2-art_x1)/2 - artimg.width*artscaleh/2)/artscaleh;
-		art_y = (flipmul_v*art_y1 + flipmul_v*(art_y2-art_y1)/2 - artimg.height*artscalev/2)/artscalev;
-		//rounded results, sometimes off by a pixel
-		//art_x = Math.round((flipmul_h*art_x1 + flipmul_h*(art_x2-art_x1)/2 - artimg.width*artscaleh/2)/artscaleh);
-		//art_y = Math.round((flipmul_v*art_y1 + flipmul_v*(art_y2-art_y1)/2 - artimg.height*artscalev/2)/artscalev);
-		draw();
+		if(confirm('Are you sure you want to move the card\'s artwork to the center horizontally?'))
+			{
+			//no rounding, more accurate
+			art_x = (flipmul_h*(art_x2+art_x1)/2 - artimg.width*artscaleh/2)/artscaleh;
+			draw();
+			}
 		}
-	}
-//CENTER CARD ART HORIZONTALLY
-function centerarth()
-	{
-	if(confirm('Are you sure you want to move the card\'s artwork to the center horizontally?'))
+	//CENTER CARD ART HORIZONTALLY
+	function centerartv()
 		{
-		//no rounding, more accurate
-		art_x = (flipmul_h*art_x1 + flipmul_h*(art_x2-art_x1)/2 - artimg.width*artscaleh/2)/artscaleh;
-		draw();
+		if(confirm('Are you sure you want to move the card\'s artwork to the center vertically?'))
+			{
+			//no rounding, more accurate
+			art_y = (flipmul_v*(art_y2+art_y1)/2 - artimg.height*artscalev/2)/artscalev;
+			draw();
+			}
 		}
-	}
-//CENTER CARD ART HORIZONTALLY
-function centerartv()
-	{
-	if(confirm('Are you sure you want to move the card\'s artwork to the center vertically?'))
+	//CENTER BOTH
+	function centerart()
 		{
-		//no rounding, more accurate
-		art_y = (flipmul_v*art_y1 + flipmul_v*(art_y2-art_y1)/2 - artimg.height*artscalev/2)/artscalev;
-		draw();
+		if(confirm('Are you sure you want to move the card\'s artwork to the center?'))
+			{
+			//no rounding, more accurate
+			art_x = (flipmul_h*(art_x2+art_x1)/2 - artimg.width*artscaleh/2)/artscaleh;
+			art_y = (flipmul_v*(art_y2+art_y1)/2 - artimg.height*artscalev/2)/artscalev;
+			//rounded results, sometimes off by a pixel
+			//art_x = Math.round((flipmul_h*art_x1 + flipmul_h*(art_x2-art_x1)/2 - artimg.width*artscaleh/2)/artscaleh);
+			//art_y = Math.round((flipmul_v*art_y1 + flipmul_v*(art_y2-art_y1)/2 - artimg.height*artscalev/2)/artscalev);
+			draw();
+			}
 		}
-	}
 
 //FLIP CARD ART
-	//Horizontal Flip
+	//HORIZONTAL FLIP
 	function flipart_h()
 		{
 		var canvas_art = document.getElementById('canvas_art').getContext('2d');
@@ -886,7 +973,7 @@ function centerartv()
 		var artrotationbox = document.getElementById('artrotationbox'); artrotationbox.value = 180-artrotationbox.value;
 			if (artrotationbox.value <= -360) artrotationbox.value += 360; if (artrotationbox.value >= 360) artrotationbox.value -= 360;
 		}
-	//Vertical Flip
+	//VERTICAL FLIP
 	function flipart_v()
 		{
 		var canvas_art = document.getElementById('canvas_art').getContext('2d');
@@ -909,15 +996,15 @@ function resetart()
 		var canvas_art = document.getElementById('canvas_art').getContext('2d');
 		//Reset Size
 		canvas_art.scale(1/artscaleh, 1/artscalev);
-		canvas_art.transform(1,0,0,1,0,0);
-		var artscalehslider = document.getElementById('artscalehslider'); artscalehslider.value = 1; artscalehslider.disabled = false;
-		var artscalehbox = document.getElementById('artscalehbox'); artscalehbox.value = 1; artscalehbox.disabled = false;
-		var artscalevslider = document.getElementById('artscalevslider'); artscalevslider.value = 1; artscalevslider.disabled = false;
-		var artscalevbox = document.getElementById('artscalevbox'); artscalevbox.value = 1; artscalevbox.disabled = false;
 		artscaleh = 1; artscalev = 1;
+		canvas_art.transform(1,0,0,1,0,0);
+		var artscalehslider = document.getElementById('artscalehslider'); artscalehslider.value = 1;
+		var artscalehbox = document.getElementById('artscalehbox'); artscalehbox.value = 1;
+		var artscalevslider = document.getElementById('artscalevslider'); artscalevslider.value = 1;
+		var artscalevbox = document.getElementById('artscalevbox'); artscalevbox.value = 1;
 		//Reset Rotation
-		var artrotationslider = document.getElementById('artrotationslider'); artrotationslider.value = 0; //artrotationslider.disabled = false;
-		var artrotationbox = document.getElementById('artrotationbox'); artrotationbox.value = 0; //artrotationbox.disabled = false;
+		var artrotationslider = document.getElementById('artrotationslider'); artrotationslider.value = 0;
+		var artrotationbox = document.getElementById('artrotationbox'); artrotationbox.value = 0;
 		canvas_art.rotate(-1*artrotation);
 		artrotation = 0;
 		//Reset Flipping
@@ -934,29 +1021,41 @@ function resetart()
 		}
 	}
 
-function disableartcontrols()
+//CLEAR CARD ART
+function clearart()
 	{
-	var artscalehslider = document.getElementById('artscalehslider'); artscalehslider.value = 1; artscalehslider.disabled = true;
-	var artscalehbox = document.getElementById('artscalehbox'); artscalehbox.value = 1; artscalehbox.disabled = true;
-	var artscalevslider = document.getElementById('artscalevslider'); artscalevslider.value = 1; artscalevslider.disabled = true;
-	var artscalevbox = document.getElementById('artscalevbox'); artscalevbox.value = 1; artscalevbox.disabled = true;
-	var artrotationslider = document.getElementById('artrotationslider'); artrotationslider.value = 0; artrotationslider.disabled = true;
-	var artrotationbox = document.getElementById('artrotationbox'); artrotationbox.value = 0; artrotationbox.disabled = true;
-	artscaleh = 1; artscalev = 1; artrotation = 0;
-	
-	var centerart = document.getElementById('centerart'); centerart.disabled = true;
-	var centerarth = document.getElementById('centerarth'); centerarth.disabled = true;
-	var centerartv = document.getElementById('centerartv'); centerartv.disabled = true;
-	var flipart_h = document.getElementById('flipart_h'); flipart_h.disabled = true;
-	var flipart_v = document.getElementById('flipart_v'); flipart_v.disabled = true;
-	var resetart = document.getElementById('resetart'); resetart.disabled = true;
-	var clearart = document.getElementById('clearart'); clearart.disabled = true;
+	if(confirm('Are you sure you want to erase the card\'s current artwork?'))
+		{
+		artloaded = false;
+		artimg.src = "";
+		document.getElementById('imguploadform').reset();
+		art_x = art_x1;
+		art_y = art_y1;
+		disableartcontrols();
+		draw();
+		}
+	}
+
+//RESET TO DEFAULT TEXT
+function resettext()
+	{
+	if(confirm('Are you sure you want to reset all text on this card to the default?)'))
+		{
+		//Reset text
+		document.getElementById('text_artist').value 	= def_artist;
+		document.getElementById('text_title').value 	= def_title;
+		document.getElementById('text_series_id').value = def_series_id;
+		document.getElementById('text_card_id').value 	= def_card_id;
+		document.getElementById('text_copyright').value = def_copyright;
+		document.getElementById('text_card_num').value	= def_card_num;
+		textchanged();
+		}
 	}
 
 //RESET TO BLANK CARD WITH DEFAULT TEXT IF RESET BUTTON IS PRESSED
 function resetcard()
 	{
-	if(confirm('Are you sure you want to erase this card and start from a blank card?'))
+	if(confirm('Are you sure you want to erase this card and start from a blank card? (Artwork, Power Level, Instruments, Playlist Icon will all be removed. Text will be reset to the default)'))
 		{
 		//Reset text
 		document.getElementById('text_artist').value 	= def_artist;

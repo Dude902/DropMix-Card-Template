@@ -176,6 +176,12 @@
 				<option value="sweets">Sweets</option>
 			</select>
 		</P>
+		<P><BR><BR><BR></P>
+		<P>
+			<H1>Reset:</H1>
+			<input type='button' value="Reset Text" onClick="resettext()"><BR><BR>
+			<input type='button' value="Reset Entire Card" onClick="resetcard()">
+		</P>
 	</div>
 	<div style="display:table-cell;vertical-align:middle; text-align:center; padding:40px 0px 40px 20px;">
 		<canvas id="canvas_art" 	width="562" height="780" style="width:562px; height:780px; border:1px solid #000000;" hidden></canvas>
@@ -183,36 +189,59 @@
 		<canvas id="canvas_text" 	width="562" height="780" style="width:562px; height:780px; border:1px solid #000000;" hidden></canvas>
 		<canvas id="canvas" 		width="562" height="780" style="width:562px; height:780px; border:1px solid #000000;"></canvas>
 		<BR><BR>
-		(Right click the card and "save image as" .png)<a id="savelink" hidden=true href="" download target="_blank" onclick="updatecardlink();"><BR>Download Link</a>
+		(Right click the card and "save image as" .png)
+		<BR><a id="savelink" hidden=true href="" download target="_blank" onclick="updatecardlink();">Download Link</a>
 		<BR><BR>
-		<form id="imguploadform"><label for="imgupload">Upload card artwork image: </label><input type="file" id="imgupload" name="uploadedimg" accept="image/*" onchange="imguploaded(event)"></form>
-		(or drag and drop an image onto the card above)
-		<BR><BR>
-		Move the selected artwork by dragging anywhere on the card above.
-		<BR>
-		<input id="centerart" type='button' value="Center Artwork" onClick="centerart()" disabled=true> 
-		<input id="centerarth" type='button' value="Center Artwork Horizontally" onClick="centerarth()" disabled=true> 
-		<input id="centerartv" type='button' value="Center Artwork Vertically" onClick="centerartv()" disabled=true> 
-		<BR>
-		<input id="flipart_h" type='button' value="Flip Artwork Horizontally" onClick="flipart_h()" disabled=true> 
-		<input id="flipart_v" type='button' value="Flip Artwork Vertically" onClick="flipart_v()" disabled=true> 
-		<BR><BR>
-		<input id="resetart" type='button' value="Reset Artwork Adjustments" onClick="resetart()" disabled=true> 
-		<input id="clearart" type='button' value="Clear Artwork" onClick="clearart()" disabled=true> 
-		<BR><BR>
-		Artwork Width Scale:&nbsp; 
-		<input id="artscalehslider" type="range" min="0.1" max="10" step="0.1" value="1"          onchange="artscalehchanged()" onblur="artscalehchanged()" disabled=true/>&nbsp;&nbsp;&nbsp;
-		<input id="artscalehbox" type="number"   min="0.01" max="100" step="0.01" value="1" size='6' onchange="artscalehboxchanged()" onblur="artscalehboxchanged()" onkeyup="artscalehboxchanged()" disabled=true>
-		<BR>
-		Artwork Height Scale: 
-		<input id="artscalevslider" type="range" min="0.1" max="10" step="0.1" value="1"          onchange="artscalevchanged()" onblur="artscalevchanged()" disabled=true/>&nbsp;&nbsp;&nbsp;
-		<input id="artscalevbox" type="number"   min="0.01" max="100" step="0.01" value="1" size='6' onchange="artscalevboxchanged()" onblur="artscalevboxchanged()" onkeyup="artscalevboxchanged()" disabled=true>
-		<BR>
-		Disabled due to bugs <strike>Artwork Rotation (&deg;)</strike>: 
-		<input id="artrotationslider" type="range" min="-360" max="360" step="0.01" value="0"          onchange="artrotationchanged()" onblur="artrotationchanged()" disabled=true/>&nbsp;&nbsp;&nbsp;
-		<input id="artrotationbox" type="number"   min="-360" max="360" step="0.01" value="0" size='6' onchange="artrotationboxchanged()" onblur="artrotationboxchanged()" onkeyup="artrotationboxchanged()" disabled=true>
-		<BR><BR>
-		<input type='button' value="Reset Card to Blank" onClick="resetcard()">
+		<P>
+		<H1>Artwork:</H1>
+			<B>Add file:</B>
+			<BR>
+			<form id="imguploadform"><label for="imgupload">Upload card artwork image: </label><input type="file" id="imgupload" name="uploadedimg" accept="image/*" onchange="imguploaded(event)"></form>
+			(or drag and drop an image onto the card above)
+			<BR>
+			Currently only 1 image file is possible at a time.
+			<BR><BR>
+			<B>Positioning:</B>
+			<BR>
+			Move the selected artwork by dragging anywhere on the card above.
+			<BR>
+			<input id="centerart" type='button' value="Center Artwork" onClick="centerart()" disabled=true> 
+			<input id="centerarth" type='button' value="Center Artwork Horizontally" onClick="centerarth()" disabled=true> 
+			<input id="centerartv" type='button' value="Center Artwork Vertically" onClick="centerartv()" disabled=true> 
+			<BR><BR>
+			<B>Scale:</B>
+			<BR>
+			Artwork Width Scale:&nbsp; 
+			<input id="artscalehslider" type="range" min="0.1" max="10" step="0.1" value="1"          onchange="artscalehchanged()" onblur="artscalehchanged()" disabled=true/>&nbsp;&nbsp;&nbsp;
+			<input id="artscalehbox" type="number"   min="0.01" max="100" step="0.01" value="1" style="width:100px" onchange="artscalehboxchanged()" onblur="artscalehboxchanged()" onkeyup="artscalehboxchanged()" disabled=true> 
+			<input id="scalehfit" type='button' value="Scale to fit" onClick="scalehfit()" disabled=true> 
+			<input id="scalehorig" type='button' value="Original Size" onClick="scalehoriginal()" disabled=true> 
+			<BR>
+			Artwork Height Scale: 
+			<input id="artscalevslider" type="range" min="0.1" max="10" step="0.1" value="1"          onchange="artscalevchanged()" onblur="artscalevchanged()" disabled=true/>&nbsp;&nbsp;&nbsp;
+			<input id="artscalevbox" type="number"   min="0.01" max="100" step="0.01" value="1" style="width:100px" onchange="artscalevboxchanged()" onblur="artscalevboxchanged()" onkeyup="artscalevboxchanged()" disabled=true>
+			<input id="scalevfit" type='button' value="Scale to fit" onClick="scalevfit()" disabled=true> 
+			<input id="scalevorig" type='button' value="Original Size" onClick="scalevoriginal()" disabled=true> 
+			<BR>
+			<!-- Scale to minimum -->
+			<input id="scaletomin" type='button' value="Scale to minimum size while keeping original aspect ratio" onClick="scaletominimum()" disabled=true> 
+			<BR><BR>
+			<B>Flip / Mirror:</B>
+			<BR>
+			<input id="flipart_h" type='button' value="Flip Artwork Horizontally" onClick="flipart_h()" disabled=true> 
+			<input id="flipart_v" type='button' value="Flip Artwork Vertically" onClick="flipart_v()" disabled=true> 
+			<BR><BR>
+			<B>Rotation:</B>
+			<BR>
+			Disabled due to bugs <BR><strike>Artwork Rotation (&deg;)</strike>: 
+			<input id="artrotationslider" type="range" min="-360" max="360" step="0.01" value="0"          onchange="artrotationchanged()" onblur="artrotationchanged()" disabled=true/>&nbsp;&nbsp;&nbsp;
+			<input id="artrotationbox" type="number"   min="-360" max="360" step="0.01" value="0" size='6' onchange="artrotationboxchanged()" onblur="artrotationboxchanged()" onkeyup="artrotationboxchanged()" disabled=true>
+			<BR><BR>
+			<B>Reset:</B>
+			<BR>
+			<input id="resetart" type='button' value="Reset Artwork Adjustments" onClick="resetart()" disabled=true> 
+			<input id="clearart" type='button' value="Clear Artwork" onClick="clearart()" disabled=true> 
+		</P>
 	</div>
 </div>
 </div>
