@@ -549,7 +549,7 @@ function init()
 	copyright = document.getElementById('text_copyright').value;
 	card_num = document.getElementById('text_card_num').value;
 
-	//Create text canvas
+	//Create text canvas (using fabric.js to improve text rendering over native html5 functions FOR TEXT CANVAS ONLY)
 	textcanvas  = new fabric.Canvas('canvas_text',  { width: def_width, height: def_height });
 	//Resize the canvas depending on zoom (for most accurate results, browser zoom should be set to regular/100%
 	//---
@@ -707,6 +707,10 @@ function instrumentchanged()
 		case 'gsampler': instrument4.src = 'resources/images/Instrument_Slot_4/Green_Sampler.png'; break;
 		case 'gdrums': instrument4.src = 'resources/images/Instrument_Slot_4/Green_Drums.png'; break;
 		}
+	i1.className = i1.options[i1.selectedIndex].className;
+	i2.className = i2.options[i2.selectedIndex].className;
+	i3.className = i3.options[i3.selectedIndex].className;
+	i4.className = i4.options[i4.selectedIndex].className;
 	draw();
 	}
 function playlistchanged()
