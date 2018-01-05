@@ -22,7 +22,7 @@ The world's first and only Dropmix card mockup template.
   <LI><strike>Kerning is wrong but is correct after soft-refreshing (maybe fonts loaded incorrectly? potentially switch to typekit font loader https://github.com/typekit/webfontloader#custom instead of current "font observer")</strike>
     <BR>  - FIXED - Fonts load correctly and don't draw until loaded.</LI>
   <LI><strike>Text draws at the wrong size and location if browser zoom is not regular/100%.</strike>
-    <BR>  - FIXED - Text draws at the same size regardless of browser zoom.</LI>
+    <BR>  - FIXED - Text draws at the same size (or as close an approximation as possible) regardless of browser zoom.</LI>
   <LI><strike>Manipulating card art is untested on mobile.</strike>
     <BR>  - FIXED -  Manipulating card art on mobile is functional. Mouse events were given touch event equivalents.</LI>
   <LI>Probably more.</LI>
