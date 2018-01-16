@@ -1,5 +1,5 @@
 # DropMix Card Mockup Template
-Conversion of my photoshop-based template for Dropmix musical trading card mockups to a web-based image creator.
+Conversion of my photoshop-based template for Dropmix musical trading card mockups to a web-based image creator. Made by Adam N. A. (@AdamUnavailable).
 <BR>
 The world's first and only Dropmix card mockup template.
 <BR>
@@ -15,7 +15,8 @@ The world's first and only Dropmix card mockup template.
   <LI>Make the text boxes and other inputs more immediately responsive to changes.</LI>
   <BR>
   <LI>*Add remaining missing assets if possible.</LI>
-  <LI>*Add mobile support (partially in place).</LI>
+  <LI>*Add mobile support (partially in place).
+    <BR>  - All major features work on mobile, but may have issues and be less responsive in updating changes. Tapping/clicking in most places should force it to update.</LI>
 </UL>
   * - mostly done
 <BR><BR>
