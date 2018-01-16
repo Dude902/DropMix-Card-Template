@@ -10,7 +10,8 @@ The world's first and only Dropmix card mockup template.
     <BR>* Rotation sliders functional but buggy. Disabled for now.
       <BR>- Shifting rotated images moves them with respect to the rotation, instead of moving straight with respect to the card.
       <BR>- Resetting or centering a rotated and scaled or flipped image causes skewing</LI>
-  <LI>*Allow uploading transparent images as playlist icons, automatically recoloring the non-transparent part to a white silhouette and resizing to approximately the right size
+  <LI>*Allow uploading transparent images as playlist icons, automatically recoloring the non-transparent part to a white silhouette and resizing to approximately the right size</LI>
+  <LI>Reset buttons for each text box</LI>
   <LI>Draw text as soon as it loads instead of waiting.</LI>
   <LI>Make the text boxes and other inputs more immediately responsive to changes.</LI>
   <BR>
