@@ -79,7 +79,7 @@ imagestoload = [
 'resources/images/Instrument_Slot_4/Green_Sampler.png',
 'resources/images/Instrument_Slot_4/Green_Drums.png',
 'resources/images/Playlist_Icons/Astro.png',
-//'resources/images/Playlist_Icons/Baffler.png',
+'resources/images/Playlist_Icons/Baffler.png',
 'resources/images/Playlist_Icons/The_Blade.png',
 'resources/images/Playlist_Icons/Bomb.png',
 'resources/images/Playlist_Icons/Breaker.png',
@@ -87,7 +87,7 @@ imagestoload = [
 'resources/images/Playlist_Icons/Controller.png',
 'resources/images/Playlist_Icons/Dapper.png',
 'resources/images/Playlist_Icons/Derby.png',
-//'resources/images/Playlist_Icons/DM_Icon.png',
+'resources/images/Playlist_Icons/DM_Icon.png',
 //'resources/images/Playlist_Icons/Fever.png',
 'resources/images/Playlist_Icons/Flawless.png',
 'resources/images/Playlist_Icons/Highness.png',
@@ -720,7 +720,7 @@ function playlistchanged()
 		{
 		case 'none': playlist.src = ''; break;
 		case 'astro': playlist.src = 'resources/images/Playlist_Icons/Astro.png'; break;
-		//case 'baffler': playlist.src = 'resources/images/Playlist_Icons/Baffler.png'; break;
+		case 'baffler': playlist.src = 'resources/images/Playlist_Icons/Baffler.png'; break;
 		case 'blade': playlist.src = 'resources/images/Playlist_Icons/The_Blade.png'; break;
 		case 'bomb': playlist.src = 'resources/images/Playlist_Icons/Bomb.png'; break;
 		case 'breaker': playlist.src = 'resources/images/Playlist_Icons/Breaker.png'; break;
@@ -728,7 +728,7 @@ function playlistchanged()
 		case 'controller': playlist.src = 'resources/images/Playlist_Icons/Controller.png'; break;
 		case 'dapper': playlist.src = 'resources/images/Playlist_Icons/Dapper.png'; break;
 		case 'derby': playlist.src = 'resources/images/Playlist_Icons/Derby.png'; break;
-		//case 'dm': playlist.src = 'resources/images/Playlist_Icons/DM_Icon.png'; break;
+		case 'dm': playlist.src = 'resources/images/Playlist_Icons/DM_Icon.png'; break;
 		//case 'fever': playlist.src = 'resources/images/Playlist_Icons/Fever.png'; break;
 		case 'flawless': playlist.src = 'resources/images/Playlist_Icons/Flawless.png'; break;
 		case 'highness': playlist.src = 'resources/images/Playlist_Icons/Highness.png'; break;
@@ -1080,7 +1080,16 @@ function resetcard()
 		var i3 = document.getElementById('instrument3'); i3.selectedIndex = 0;
 		instrumentchanged();
 		//Reset playlist
-		var pl = document.getElementById('playlist'); pl.selectedIndex = 0;
+		var pl = document.getElementById('playlist');
+			//pl.selectedIndex = 0; //set to DM Icon by default instead of blank using below
+			//set to DM Icon by default
+			var ploptions= pl.options;
+			for (var i=0; i<ploptions.length; i++) {
+				if (ploptions[i].value=='dm') {
+					pl.selectedIndex = i;
+					break;
+				}
+			}
 		playlistchanged();
 		//Reset card art
 		artloaded = false;
