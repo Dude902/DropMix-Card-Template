@@ -6,10 +6,10 @@ The world's first and only Dropmix card mockup template.
 <UL>To do list (loosely in order):
   <LI>*Allow uploading card art and moving/resizing/rotating.
     <BR>*Moving and resizing work as intended.
-      <BR>  - Resizing with sliders and text boxes is not as intuitive as I would like. Transform controls overlayed on the image would be ideal.
-    <BR>* Rotation sliders functional but buggy.
-      <BR>  - Shifting rotated images moves them with respect to the rotation, instead of moving straight with respect to the card.
-      <BR>  - Resetting or centering a rotated and scaled or flipped image causes skewing</LI>
+      <BR>- Resizing with sliders and text boxes is not as intuitive as I would like. Transform controls overlayed on the image would be ideal.
+    <BR>* Rotation sliders functional but buggy. Disabled for now.
+      <BR>- Shifting rotated images moves them with respect to the rotation, instead of moving straight with respect to the card.
+      <BR>- Resetting or centering a rotated and scaled or flipped image causes skewing</LI>
   <LI>Draw text as soon as it loads instead of waiting.</LI>
   <LI>Make the text boxes and other inputs more immediately responsive to changes.</LI>
   <BR>
