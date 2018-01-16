@@ -1053,6 +1053,7 @@ function resettext()
 		document.getElementById('text_copyright').value = def_copyright;
 		document.getElementById('text_card_num').value	= def_card_num;
 		textchanged();
+		draw();
 		}
 	}
 
