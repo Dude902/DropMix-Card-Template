@@ -27,7 +27,6 @@ body { font-kerning: none; }
 	font-size: 15.5px;
 	}
 #text_copyright {
-	text-transform: uppercase !important;
 	letter-spacing: 0.08em;
 	font-family: "lighttext";
 	font-size: 12px;
