@@ -88,7 +88,7 @@ imagestoload = [
 'resources/images/Playlist_Icons/Dapper.png',
 'resources/images/Playlist_Icons/Derby.png',
 'resources/images/Playlist_Icons/DM_Icon.png',
-//'resources/images/Playlist_Icons/Fever.png',
+'resources/images/Playlist_Icons/Fever.png',
 'resources/images/Playlist_Icons/Flawless.png',
 'resources/images/Playlist_Icons/Highness.png',
 'resources/images/Playlist_Icons/Hightower.png',
@@ -98,7 +98,7 @@ imagestoload = [
 'resources/images/Playlist_Icons/Ouroboros.png',
 'resources/images/Playlist_Icons/Puff.png',
 'resources/images/Playlist_Icons/Seer.png',
-//'resources/images/Playlist_Icons/Socket.png',
+'resources/images/Playlist_Icons/Socket.png',
 'resources/images/Playlist_Icons/Sweets.png',
 ];
 function loadImages(images, onComplete)
@@ -729,7 +729,7 @@ function playlistchanged()
 		case 'dapper': playlist.src = 'resources/images/Playlist_Icons/Dapper.png'; break;
 		case 'derby': playlist.src = 'resources/images/Playlist_Icons/Derby.png'; break;
 		case 'dm': playlist.src = 'resources/images/Playlist_Icons/DM_Icon.png'; break;
-		//case 'fever': playlist.src = 'resources/images/Playlist_Icons/Fever.png'; break;
+		case 'fever': playlist.src = 'resources/images/Playlist_Icons/Fever.png'; break;
 		case 'flawless': playlist.src = 'resources/images/Playlist_Icons/Flawless.png'; break;
 		case 'highness': playlist.src = 'resources/images/Playlist_Icons/Highness.png'; break;
 		case 'hightower': playlist.src = 'resources/images/Playlist_Icons/Hightower.png'; break;
@@ -739,7 +739,7 @@ function playlistchanged()
 		case 'ouroboros': playlist.src = 'resources/images/Playlist_Icons/Ouroboros.png'; break;
 		case 'puff': playlist.src = 'resources/images/Playlist_Icons/Puff.png'; break;
 		case 'seer': playlist.src = 'resources/images/Playlist_Icons/Seer.png'; break;
-		//case 'socket': playlist.src = 'resources/images/Playlist_Icons/Socket.png'; break;
+		case 'socket': playlist.src = 'resources/images/Playlist_Icons/Socket.png'; break;
 		case 'sweets': playlist.src = 'resources/images/Playlist_Icons/Sweets.png'; break;
 		}
 	draw();
