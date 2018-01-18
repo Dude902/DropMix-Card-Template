@@ -27,11 +27,39 @@
 <div id="header" style="margin:auto; text-align:center; padding:0px 40px 0px 40px;">
 	<A href="https://dropmix.hasbro.com"><img width=25% height=25% align=middle src="resources/images/DMX_logo_color.png"></A>
 	<span style="font-size:2em; line-height:2em; vertical-align:middle;"> Card Mockup Template</span>
-	<div id="version" style="font-size:14px; margin:-20px auto -15px 375px;">(Version Beta - Work in Progress, may break on occasion)</div>
+	<div id="version" style="font-size:14px; margin:-20px auto -15px 375px;">(Version Beta - Work in Progress, may break on occasion)
+	</div>
+	<BR>
+	Cards made with this template are unofficial concepts and can not be used in-game.
+	<BR>
+	Clearly label all shared cards as being mockups.
 	<BR>
 	<img src="resources/images/divider-bg.png">
 </div>
- 
+
+<!--Accept conditions before using-->
+<div id="overlay" style="position:fixed; padding:0; margin:0; top:0; left:0; width: 100%; height: 100%; background:rgba(0,0,0,0.5); z-index:2;">
+	<div id="terms" style="background-color:white; width:75%; height:75%; max-width:600px; max-height:350px; border: 4px solid black; margin: 10px auto; padding: 15px; text-align:center; position:absolute; top:20%; left:0; right:0; overflow-y: auto;">
+	<B>To use this template, you must agree to the following:</B>
+	<HR>
+	<UL style="padding:15px;">You will not use any part of this page to do any of the following:
+	<BR>
+	<BR>
+	<LI>share any images created with this site without clearly labeling them as a "Mockup" or "Mockups" and making it clear that they are not usable with the DropMix app</LI>
+	<BR>
+	<LI>intentionally mislead anyone into thinking this site or images created with it are official DropMix, Harmonix, or Hasbro products, or are endorsed by or affiliated with Harmonix or Hasbro</LI>
+	<BR>
+	<LI>use this template to produce counterfeit DropMix cards</LI>
+	<!--<LI></LI>-->
+
+	<BR>
+	<HR>
+	By checking this box you agree to the above terms: <input type="checkbox" value="false" id="acceptcheckbox">
+	<input type="button" value="Accept terms" onclick="checkaccept();draw();">
+	</div>
+</div>
+<!---------------------------------->
+
 <div style="display:table; margin:auto;">
 <div style="display:table-row;">
 	<div style="display:table-cell;vertical-align:top;padding:40px 0px 0px 20px;">
@@ -255,7 +283,6 @@
 	</div>
 </div>
 </div>
-
 <div id="footer" style="margin:auto;padding:0px 40px 0px 40px;text-align:center;">
 	<img src="resources/images/divider-bg.png">
 		<P style="width:750px; margin-left:auto; margin-right:auto;">

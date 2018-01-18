@@ -1,5 +1,6 @@
 //INIT LOADING VARIABLES
 var doneloading = false;
+var acceptedterms = false;
 var art_x1, art_x2, art_y1, art_y2, art_x, art_y, artloaded;
 var flipped_h, flipped_v, flipmul_h, flipmul_v;
 var artscaleh, artscalev, artrotation;
@@ -238,12 +239,32 @@ function updatecardlink()
 		}
 }
 
+//ONLY ENABLE AFTER USER ACCEPTS TERMS
+function checkaccept()
+{
+var acceptcheckbox = document.getElementById('acceptcheckbox');
+if (acceptcheckbox.checked == false )
+	{
+	alert('Please accept the terms and check the box to continue.');
+	return false;
+	}
+else
+	{
+	document.getElementById('overlay').hidden=true;
+	document.getElementById('terms').hidden=true;
+	acceptedterms = true;
+	draw();
+	setTimeout(draw, 250); //0.25 sec
+	return true;
+	}
+}
+
 //WARN USER BEFORE EXITING
 var confirmed = false;
 var allowPrompt = true;
 function confirmdelete()
 {
-	if (doneloading)
+	if (doneloading && acceptedterms)
 	{
 		if (allowPrompt)
 			{
@@ -1252,7 +1273,7 @@ function drawtext()
 //MAIN DRAW FUNCTION
 function draw()
 	{
-		if (doneloading)
+		if (doneloading && acceptedterms)
 		{
 		drawtext();
 		//Reset canvases
