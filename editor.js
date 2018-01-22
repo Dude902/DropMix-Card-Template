@@ -79,28 +79,7 @@ imagestoload = [
 'resources/images/Instrument_Slot_4/Green_Strings.png',
 'resources/images/Instrument_Slot_4/Green_Sampler.png',
 'resources/images/Instrument_Slot_4/Green_Drums.png',
-'resources/images/Playlist_Icons/Astro.png',
-'resources/images/Playlist_Icons/Baffler.png',
-'resources/images/Playlist_Icons/The_Blade.png',
-'resources/images/Playlist_Icons/Bomb.png',
-'resources/images/Playlist_Icons/Breaker.png',
-'resources/images/Playlist_Icons/Chiller.png',
-'resources/images/Playlist_Icons/Controller.png',
-'resources/images/Playlist_Icons/Dapper.png',
-'resources/images/Playlist_Icons/Derby.png',
 'resources/images/Playlist_Icons/DM_Icon.png',
-'resources/images/Playlist_Icons/Fever.png',
-'resources/images/Playlist_Icons/Flawless.png',
-'resources/images/Playlist_Icons/Highness.png',
-'resources/images/Playlist_Icons/Hightower.png',
-'resources/images/Playlist_Icons/Lucky.png',
-'resources/images/Playlist_Icons/Mirrors.png',
-'resources/images/Playlist_Icons/Moonlight.png',
-'resources/images/Playlist_Icons/Ouroboros.png',
-'resources/images/Playlist_Icons/Puff.png',
-'resources/images/Playlist_Icons/Seer.png',
-'resources/images/Playlist_Icons/Socket.png',
-'resources/images/Playlist_Icons/Sweets.png',
 ];
 function loadImages(images, onComplete)
 	{
@@ -512,14 +491,6 @@ function init()
 	def_title4 = '';
 	def_series_id = 'S##';
 	def_card_id = 'C###';
-	def_copyright = '\u2122 \u0026 \u00A9 2017 HARMONIX  \u00A9 2017 HASBROTHER';
-	//ABOVE IS MOST CONSISTENT FOR ACCURATELY SHOWING TRADEMARK AND COPYRIGHT SYMBOLS
-	//def_copyright = '™ & © 2017 HARMONIX  © 2017 HASBROTHER';
-	//def_copyright = '&trade; &amp; &copy; 2017 HARMONIX  &copy; 2017 HASBROTHER';
-	//FOR REFERENCE FOR def_copyright (ASCII, UTF-8, ALT CODE)
-	//Ampersand & &amp;   U=0026 alt+38
-	//Trademark ™ &trade; U+2122 alt+0153
-	//Copyright © &copy;  U+00A9 alt+0169
 	def_card_num = '##/##';
 
 	//Text position coordinates
@@ -531,7 +502,6 @@ function init()
 	pos_title4 = [40.2,597.6+27+27+27];
 	pos_series_id = [39.3, 725];
 	pos_card_id = [74.2, 725];
-	pos_copyright = [120.6, 727.8];
 	pos_card_num = [489.4, 725.8];
 
 	//Font size
@@ -539,7 +509,6 @@ function init()
 	fs_title = 23;
 	fs_series_id = 15.5;
 	fs_card_id = 15.5;
-	fs_copyright = 12;
 	fs_card_num = 14.5;
 
 	//Text spacing
@@ -547,7 +516,6 @@ function init()
 	sp_title = 100;
 	sp_series_id = 60;
 	sp_card_id = 60;
-	sp_copyright = 80;
 	sp_card_num = 80;
 	
 	//Initial text
@@ -567,7 +535,6 @@ function init()
 	if (tokens[3]) title4 = tokens[3]; else title4 = '';
 	series_id = document.getElementById('text_series_id').value;
 	card_id = document.getElementById('text_card_id').value;
-	copyright = document.getElementById('text_copyright').value;
 	card_num = document.getElementById('text_card_num').value;
 
 	//Create text canvas (using fabric.js to improve text rendering over native html5 functions FOR TEXT CANVAS ONLY)
@@ -622,7 +589,6 @@ function textchanged()
 		title4 = tokens[3];
 	series_id = document.getElementById('text_series_id').value;
 	card_id = document.getElementById('text_card_id').value;
-	copyright = document.getElementById('text_copyright').value;
 	card_num = document.getElementById('text_card_num').value;
 	draw();
 	}
@@ -740,28 +706,7 @@ function playlistchanged()
 	switch (pl.options[pl.selectedIndex].value)
 		{
 		case 'none': playlist.src = ''; break;
-		case 'astro': playlist.src = 'resources/images/Playlist_Icons/Astro.png'; break;
-		case 'baffler': playlist.src = 'resources/images/Playlist_Icons/Baffler.png'; break;
-		case 'blade': playlist.src = 'resources/images/Playlist_Icons/The_Blade.png'; break;
-		case 'bomb': playlist.src = 'resources/images/Playlist_Icons/Bomb.png'; break;
-		case 'breaker': playlist.src = 'resources/images/Playlist_Icons/Breaker.png'; break;
-		case 'chiller': playlist.src = 'resources/images/Playlist_Icons/Chiller.png'; break;
-		case 'controller': playlist.src = 'resources/images/Playlist_Icons/Controller.png'; break;
-		case 'dapper': playlist.src = 'resources/images/Playlist_Icons/Dapper.png'; break;
-		case 'derby': playlist.src = 'resources/images/Playlist_Icons/Derby.png'; break;
 		case 'dm': playlist.src = 'resources/images/Playlist_Icons/DM_Icon.png'; break;
-		case 'fever': playlist.src = 'resources/images/Playlist_Icons/Fever.png'; break;
-		case 'flawless': playlist.src = 'resources/images/Playlist_Icons/Flawless.png'; break;
-		case 'highness': playlist.src = 'resources/images/Playlist_Icons/Highness.png'; break;
-		case 'hightower': playlist.src = 'resources/images/Playlist_Icons/Hightower.png'; break;
-		case 'lucky': playlist.src = 'resources/images/Playlist_Icons/Lucky.png'; break;
-		case 'mirrors': playlist.src = 'resources/images/Playlist_Icons/Mirrors.png'; break;
-		case 'moonlight': playlist.src = 'resources/images/Playlist_Icons/Moonlight.png'; break;
-		case 'ouroboros': playlist.src = 'resources/images/Playlist_Icons/Ouroboros.png'; break;
-		case 'puff': playlist.src = 'resources/images/Playlist_Icons/Puff.png'; break;
-		case 'seer': playlist.src = 'resources/images/Playlist_Icons/Seer.png'; break;
-		case 'socket': playlist.src = 'resources/images/Playlist_Icons/Socket.png'; break;
-		case 'sweets': playlist.src = 'resources/images/Playlist_Icons/Sweets.png'; break;
 		}
 	draw();
 	}
@@ -1071,7 +1016,6 @@ function resettext()
 		document.getElementById('text_title').value 	= def_title;
 		document.getElementById('text_series_id').value = def_series_id;
 		document.getElementById('text_card_id').value 	= def_card_id;
-		document.getElementById('text_copyright').value = def_copyright;
 		document.getElementById('text_card_num').value	= def_card_num;
 		textchanged();
 		draw();
@@ -1088,7 +1032,6 @@ function resetcard()
 		document.getElementById('text_title').value 	= def_title;
 		document.getElementById('text_series_id').value = def_series_id;
 		document.getElementById('text_card_id').value 	= def_card_id;
-		document.getElementById('text_copyright').value = def_copyright;
 		document.getElementById('text_card_num').value	= def_card_num;
 		textchanged();
 		//Reset power level
@@ -1147,7 +1090,6 @@ function drawtext()
 	if (text_title4) textcanvas.remove(text_title4);
 	if (text_series_id) textcanvas.remove(text_series_id);
 	if (text_card_id) textcanvas.remove(text_card_id);
-	if (text_copyright) textcanvas.remove(text_copyright);
 	if (text_card_num) textcanvas.remove(text_card_num);
 
 	text_artist = new fabric.Text(artist.toUpperCase(), {
@@ -1228,15 +1170,6 @@ function drawtext()
 	  fill:"white",
 	});
 
-	text_copyright = new fabric.Text(copyright, {
-	  fontFamily: 'lighttext',
-	  fontWeight:400,
-	  fontSize:fs_copyright,
-	  charSpacing:sp_copyright,
-	  fontKerning: 'none !important',
-	  fill:"white",
-	});
-
 	text_card_num = new fabric.Text(card_num, {
 	  fontFamily: 'boldtext',
 	  fontWeight:400,
@@ -1256,7 +1189,6 @@ function drawtext()
 	if (typeof title4 != 'undefined') textcanvas.add(text_title4);
 	textcanvas.add(text_series_id);
 	textcanvas.add(text_card_id);
-	textcanvas.add(text_copyright);
 	textcanvas.add(text_card_num);
 
 	text_artist.set({ 		left: pos_artist[0], 	top: pos_artist[1] });
@@ -1266,7 +1198,6 @@ function drawtext()
 	if (typeof title4 != 'undefined') text_title4.set({ 		left: pos_title4[0], 	top: pos_title4[1] });
 	text_series_id.set({ 	left: pos_series_id[0], top: pos_series_id[1] });
 	text_card_id.set({ 		left: pos_card_id[0], 	top: pos_card_id[1] });
-	text_copyright.set({ 	left: pos_copyright[0], top: pos_copyright[1] });
 	text_card_num.set({ 	left: pos_card_num[0], 	top: pos_card_num[1] });
 	}
 
