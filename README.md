@@ -7,6 +7,7 @@ The world's first and only Dropmix card mockup template.
   <LI>- Harmonix staff have asked me to remove playlist icons except for the "DM" icon, and suggested adding made-up playlist icons in their place.</LI>
   <LI>- Harmonix staff also asked me to remove the editable copyright text for legal reasons and to replace it with text stating the card is unofficial.</Li>
   <BR>Overall, it is a good thing that Harmonix has acknowledged the existance of the mockup creator and asked for reasonable changes rather than the alternative of shutting it down. I have fully complied with their requests.
+</UL>
 <UL>To do list (loosely in order):
   <LI>*Allow uploading card art and moving/resizing/rotating.
     <BR>*Moving and resizing work as intended.
