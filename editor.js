@@ -80,6 +80,31 @@ imagestoload = [
 'resources/images/Instrument_Slot_4/Green_Sampler.png',
 'resources/images/Instrument_Slot_4/Green_Drums.png',
 'resources/images/Playlist_Icons/DM_Icon.png',
+'resources/images/Playlist_Icons/spdy4/Beast.png',
+'resources/images/Playlist_Icons/spdy4/Burst.png',
+'resources/images/Playlist_Icons/spdy4/Cactus.png',
+'resources/images/Playlist_Icons/spdy4/Chain.png',
+'resources/images/Playlist_Icons/spdy4/Crystal.png',
+'resources/images/Playlist_Icons/spdy4/Disc.png',
+'resources/images/Playlist_Icons/spdy4/Disco.png',
+'resources/images/Playlist_Icons/spdy4/Dollar.png',
+'resources/images/Playlist_Icons/spdy4/Flame.png',
+'resources/images/Playlist_Icons/spdy4/Floppy.png',
+'resources/images/Playlist_Icons/spdy4/Galaxy.png',
+'resources/images/Playlist_Icons/spdy4/Glitch.png',
+'resources/images/Playlist_Icons/spdy4/Headphone.png',
+'resources/images/Playlist_Icons/spdy4/Heartbreaker.png',
+'resources/images/Playlist_Icons/spdy4/Knight.png',
+'resources/images/Playlist_Icons/spdy4/Longhorn.png',
+'resources/images/Playlist_Icons/spdy4/Phone.png',
+'resources/images/Playlist_Icons/spdy4/Ring.png',
+'resources/images/Playlist_Icons/spdy4/Rodeo.png',
+'resources/images/Playlist_Icons/spdy4/Sheriff.png',
+'resources/images/Playlist_Icons/spdy4/Snowflake.png',
+'resources/images/Playlist_Icons/spdy4/Starship.png',
+'resources/images/Playlist_Icons/spdy4/Strong.png',
+'resources/images/Playlist_Icons/spdy4/Vinyl.png',
+'resources/images/Playlist_Icons/spdy4/Wrench.png',
 ];
 function loadImages(images, onComplete)
 	{
@@ -707,6 +732,31 @@ function playlistchanged()
 		{
 		case 'none': playlist.src = ''; break;
 		case 'dm': playlist.src = 'resources/images/Playlist_Icons/DM_Icon.png'; break;
+		case 'beast': playlist.src = 'resources/images/Playlist_Icons/spdy4/Beast.png'; break;
+		case 'burst': playlist.src = 'resources/images/Playlist_Icons/spdy4/Burst.png'; break;
+		case 'cactus': playlist.src = 'resources/images/Playlist_Icons/spdy4/Cactus.png'; break;
+		case 'chain': playlist.src = 'resources/images/Playlist_Icons/spdy4/Chain.png'; break;
+		case 'crystal': playlist.src = 'resources/images/Playlist_Icons/spdy4/Crystal.png'; break;
+		case 'disc': playlist.src = 'resources/images/Playlist_Icons/spdy4/Disc.png'; break;
+		case 'disco': playlist.src = 'resources/images/Playlist_Icons/spdy4/Disco.png'; break;
+		case 'dollar': playlist.src = 'resources/images/Playlist_Icons/spdy4/Dollar.png'; break;
+		case 'flame': playlist.src = 'resources/images/Playlist_Icons/spdy4/Flame.png'; break;
+		case 'floppy': playlist.src = 'resources/images/Playlist_Icons/spdy4/Floppy.png'; break;
+		case 'galaxy': playlist.src = 'resources/images/Playlist_Icons/spdy4/Galaxy.png'; break;
+		case 'glitch': playlist.src = 'resources/images/Playlist_Icons/spdy4/Glitch.png'; break;
+		case 'headphone': playlist.src = 'resources/images/Playlist_Icons/spdy4/Headphone.png'; break;
+		case 'heartbreaker': playlist.src = 'resources/images/Playlist_Icons/spdy4/Heartbreaker.png'; break;
+		case 'knight': playlist.src = 'resources/images/Playlist_Icons/spdy4/Knight.png'; break;
+		case 'longhorn': playlist.src = 'resources/images/Playlist_Icons/spdy4/Longhorn.png'; break;
+		case 'phone': playlist.src = 'resources/images/Playlist_Icons/spdy4/Phone.png'; break;
+		case 'ring': playlist.src = 'resources/images/Playlist_Icons/spdy4/Ring.png'; break;
+		case 'rodeo': playlist.src = 'resources/images/Playlist_Icons/spdy4/Rodeo.png'; break;
+		case 'sheriff': playlist.src = 'resources/images/Playlist_Icons/spdy4/Sheriff.png'; break;
+		case 'snowflake': playlist.src = 'resources/images/Playlist_Icons/spdy4/Snowflake.png'; break;
+		case 'starship': playlist.src = 'resources/images/Playlist_Icons/spdy4/Starship.png'; break;
+		case 'strong': playlist.src = 'resources/images/Playlist_Icons/spdy4/Strong.png'; break;
+		case 'vinyl': playlist.src = 'resources/images/Playlist_Icons/spdy4/Vinyl.png'; break;
+		case 'wrench': playlist.src = 'resources/images/Playlist_Icons/spdy4/Wrench.png'; break;
 		}
 	draw();
 	}
