@@ -63,12 +63,12 @@
 	<div style="display:table-cell;vertical-align:top;padding:40px 0px 0px 20px;">
 		<P>
 			<H1>Card Text:</H1>
-			Artist: 		<BR><input size='50'	onchange="textchanged();" onblur="textchanged();" id="text_artist" 		value="Artist" style="width:500px;"><BR><BR>
-			Title: 			<BR><textarea rows="4"	onchange="textchanged();" onblur="textchanged();" id="text_title" 		value="Title" style="width:500px;">Title</textarea><BR><BR>
-			<!--<input size='50' onchange="textchanged();" onblur="textchanged();" id="text_title" 		value="Title"><BR><BR>-->
-			Series ID #: 	<BR><input size='50'	onchange="textchanged();" onblur="textchanged();" id="text_series_id" 	value="S##" style="width:500px;"><BR><BR>
-			Card ID #: 		<BR><input size='50'	onchange="textchanged();" onblur="textchanged();" id="text_card_id" 	value="C###" style="width:500px;"><BR><BR>
-			Card #: 		<BR><input size='50'	onchange="textchanged();" onblur="textchanged();" id="text_card_num" 	value="##/##" style="width:500px;"><BR><BR>
+			Artist: 		<BR><input size='50'	onchange="textchanged();" onblur="textchanged();" id="text_artist" 		name="text_artist"		value="Artist" style="width:500px;"><BR><BR>
+			Title: 			<BR><textarea rows="4"	onchange="textchanged();" onblur="textchanged();" id="text_title" 		name="text_title"		value="Title" style="width:500px;">Title</textarea><BR><BR>
+			<!--<input size='50' onchange="textchanged();" onblur="textchanged();" id="text_title" 		name="text_title" value="Title"><BR><BR>-->
+			Series ID #: 	<BR><input size='50'	onchange="textchanged();" onblur="textchanged();" id="text_series_id" 	name="text_series_id"	value="S##" style="width:500px;"><BR><BR>
+			Card ID #: 		<BR><input size='50'	onchange="textchanged();" onblur="textchanged();" id="text_card_id" 	name="text_card_id"		value="C###" style="width:500px;"><BR><BR>
+			Card #: 		<BR><input size='50'	onchange="textchanged();" onblur="textchanged();" id="text_card_num" 	name="text_card_num"	value="##/##" style="width:500px;"><BR><BR>
 			<!--For compatibility with canvas library fabric.js-->
 			<!--(returns "ReferenceError: text_titleX is not defined, based on existing id's"-->
 			<a id="text_title1"></a><a id="text_title2"></a><a id="text_title3"></a><a id="text_title4"></a>
