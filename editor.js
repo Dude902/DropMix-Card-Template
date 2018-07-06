@@ -285,20 +285,42 @@ window.onbeforeunload = confirmdelete;
 //Optionally pre-fill variables based on URL parameters (parameters are written the same as input id's and values)
 //Fallback Method - newest method was not compatible with my ios7 device, so using this instead
 
-function getUrlParameter(search_for) { var query = window.location.search.substring(1); var parms = query.split('&'); for (var i = 0; i < parms.length; i++) { var pos = parms[i].indexOf('='); if (pos > 0 && search_for == parms[i].substring(0, pos)) { return parms[i].substring(pos + 1);; } } return ""; }
+function parse_query_string(query) {
+  var vars = query.split("&");
+  var query_string = {};
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split("=");
+    var key = decodeURIComponent(pair[0]);
+    var value = decodeURIComponent(pair[1]);
+    // If first entry with this name
+    if (typeof query_string[key] === "undefined") {
+      query_string[key] = decodeURIComponent(value);
+      // If second entry with this name
+    } else if (typeof query_string[key] === "string") {
+      var arr = [query_string[key], decodeURIComponent(value)];
+      query_string[key] = arr;
+      // If third or later entry with this name
+    } else {
+      query_string[key].push(decodeURIComponent(value));
+    }
+  }
+  return query_string;
+}
 
-if (getUrlParameter("text_artist"))		document.getElementById("text_artist").value = getUrlParameter("text_artist");			//eg: Artist's name as it is normally written
-if (getUrlParameter("text_title"))		document.getElementById("text_title").value = getUrlParameter("text_title");			//eg: Song title as it is normally written
-if (getUrlParameter("text_series_id")) 	document.getElementById("text_series_id").value = getUrlParameter("text_series_id");	//eg: S01
-if (getUrlParameter("text_card_id")) 	document.getElementById("text_card_id").value = getUrlParameter("text_card_id");		//eg: C001
-if (getUrlParameter("text_card_num")) 	document.getElementById("text_card_num").value = getUrlParameter("text_card_num");		//eg: 1/15
+var parsed_qs = parse_query_string(window.location.search.substring(1));
 
-if (getUrlParameter("level")) 			if (document.getElementById(getUrlParameter("level"))) document.getElementById(getUrlParameter("level")).checked = true;//slightly different code	//eg: w2 (color's first letter followed by a number 1-3, white represented by letter "f" for fx, "w" is for wild)
-if (getUrlParameter("instrument1")) 	document.getElementById("instrument1").value = getUrlParameter("instrument1");			//eg: ysampler (color's first letter followed by instrument including "vocals", "guitar", "keys", "horns", "strings", "sampler", "drums")
-if (getUrlParameter("instrument2")) 	document.getElementById("instrument2").value = getUrlParameter("instrument2");			//eg: same as instrument 1, but only red ("r")
-if (getUrlParameter("instrument3")) 	document.getElementById("instrument3").value = getUrlParameter("instrument3");			//eg: same as instrument 1, but only blue ("b")
-if (getUrlParameter("instrument4")) 	document.getElementById("instrument4").value = getUrlParameter("instrument4");			//eg: same as instrument 1, but only green ("g")
-if (getUrlParameter("playlist")) 		document.getElementById("playlist").value = getUrlParameter("playlist");				//eg: beast (name of listed playlist in lowercase with spaces replace with underscores (DM Icon is "dm_icon"), does not include official playlists)
+if (parsed_qs.text_artist)		document.getElementById("text_artist").value = parsed_qs.text_artist;			//eg: Artist's name as it is normally written
+if (parsed_qs.text_title)		document.getElementById("text_title").value = parsed_qs.text_title;			//eg: Song title as it is normally written
+if (parsed_qs.text_series_id) 	document.getElementById("text_series_id").value = parsed_qs.text_series_id;	//eg: S01
+if (parsed_qs.text_card_id) 	document.getElementById("text_card_id").value = parsed_qs.text_card_id;		//eg: C001
+if (parsed_qs.text_card_num) 	document.getElementById("text_card_num").value = parsed_qs.text_card_num;		//eg: 1/15
+
+if (parsed_qs.level) 			if (document.getElementById(parsed_qs.level)) document.getElementById(parsed_qs.level).checked = true;//slightly different code	//eg: w2 (color's first letter followed by a number 1-3, white represented by letter "f" for fx, "w" is for wild)
+if (parsed_qs.instrument1) 	document.getElementById("instrument1").value = parsed_qs.instrument1;			//eg: ysampler (color's first letter followed by instrument including "vocals", "guitar", "keys", "horns", "strings", "sampler", "drums")
+if (parsed_qs.instrument2) 	document.getElementById("instrument2").value = parsed_qs.instrument2;			//eg: same as instrument 1, but only red ("r")
+if (parsed_qs.instrument3) 	document.getElementById("instrument3").value = parsed_qs.instrument3;			//eg: same as instrument 1, but only blue ("b")
+if (parsed_qs.instrument4) 	document.getElementById("instrument4").value = parsed_qs.instrument4;			//eg: same as instrument 1, but only green ("g")
+if (parsed_qs.playlist) 		document.getElementById("playlist").value = parsed_qs.playlist;				//eg: beast (name of listed playlist in lowercase with spaces replace with underscores (DM Icon is "dm_icon"), does not include official playlists)
 
 
 
