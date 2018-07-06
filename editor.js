@@ -282,10 +282,20 @@ function confirmdelete()
 }
 window.onbeforeunload = confirmdelete;
 
+//Optionally preset variables based on URL parameters (same as input id's and values)
+let params = (new URL(document.location)).searchParams;
+if (params.get("text_artist")) 		document.getElementById("text_artist").value = params.get("text_artist"); 				//eg: Artist's name as it is normally written
+if (params.get("text_title")) 		document.getElementById("text_title").value = params.get("text_title");					//eg: Song title as it is normally written
+if (params.get("text_series_id")) 	document.getElementById("text_series_id").value = params.get("text_series_id");			//eg: S01
+if (params.get("text_card_id")) 	document.getElementById("text_card_id").value = params.get("text_card_id");				//eg: C001
+if (params.get("text_card_num")) 	document.getElementById("text_card_num").value = params.get("text_card_num");			//eg: 1/15
 
-
-
-
+if (params.get("level")) 			if (document.getElementById(params.get("level"))) document.getElementById(params.get("level")).checked = true;//slightly different code	//eg: w2 (color's first letter followed by a number 1-3, white represented by letter "f" for fx, "w" is for wild)
+if (params.get("instrument1")) 		document.getElementById("instrument1").value = params.get("instrument1");				//eg: ysampler (color's first letter followed by instrument including "vocals", "guitar", "keys", "horns", "strings", "sampler", "drums")
+if (params.get("instrument2")) 		document.getElementById("instrument2").value = params.get("instrument2");				//eg: same as instrument 1, but only red ("r")
+if (params.get("instrument3")) 		document.getElementById("instrument3").value = params.get("instrument3");				//eg: same as instrument 1, but only blue ("b")
+if (params.get("instrument4")) 		document.getElementById("instrument4").value = params.get("instrument4");				//eg: same as instrument 1, but only green ("g")
+if (params.get("playlist")) 		document.getElementById("playlist").value = params.get("playlist");						//eg: beast (name of listed playlist in lowercase with spaces replace with underscores (DM Icon is "dm_icon"), does not include official playlists)
 
 
 
@@ -542,7 +552,7 @@ function init()
 	sp_series_id = 60;
 	sp_card_id = 60;
 	sp_card_num = 80;
-	
+
 	//Initial text
 	artist = document.getElementById('text_artist').value;
 	title  = document.getElementById('text_title').value;
@@ -731,7 +741,7 @@ function playlistchanged()
 	switch (pl.options[pl.selectedIndex].value)
 		{
 		case 'none': playlist.src = ''; break;
-		case 'dm': playlist.src = 'resources/images/Playlist_Icons/DM_Icon.png'; break;
+		case 'dm_icon': playlist.src = 'resources/images/Playlist_Icons/DM_Icon.png'; break;
 		case 'beast': playlist.src = 'resources/images/Playlist_Icons/spdy4/Beast.png'; break;
 		case 'burst': playlist.src = 'resources/images/Playlist_Icons/spdy4/Burst.png'; break;
 		case 'cactus': playlist.src = 'resources/images/Playlist_Icons/spdy4/Cactus.png'; break;
