@@ -284,31 +284,24 @@ window.onbeforeunload = confirmdelete;
 
 //Optionally pre-fill variables based on URL parameters (parameters are written the same as input id's and values)
 //Fallback Method - newest method was not compatible with my ios7 device, so using this instead
-
-function parse_query_string(query) {
-  var vars = query.split("&");
-  var query_string = {};
+  var vars = location.search.substring(1).split("&");
+  var parsed_qs = {};
   for (var i = 0; i < vars.length; i++) {
     var pair = vars[i].split("=");
     var key = decodeURIComponent(pair[0]);
     var value = decodeURIComponent(pair[1]);
     // If first entry with this name
-    if (typeof query_string[key] === "undefined") {
-      query_string[key] = decodeURIComponent(value);
+    if (typeof parsed_qs[key] === "undefined") {
+      parsed_qs[key] = decodeURIComponent(value);
 //      // If second entry with this name
-//    } else if (typeof query_string[key] === "string") {
-//      var arr = [query_string[key], decodeURIComponent(value)];
-//      query_string[key] = arr;
+//    } else if (typeof parsed_qs[key] === "string") {
+//      var arr = [parsed_qs[key], decodeURIComponent(value)];
+//      parsed_qs[key] = arr;
 //      // If third or later entry with this name
 //    } else {
-//      query_string[key].push(decodeURIComponent(value));
+//      parsed_qs[key].push(decodeURIComponent(value));
     }
   }
-  return query_string;
-}
-
-var parsed_qs = {};
-parsed_qs = parse_query_string(location.search.substring(1));
 
 if (parsed_qs["text_artist"])		document.getElementById('text_artist').value = parsed_qs["text_artist"];		//eg: Artist's name as it is normally written
 if (parsed_qs["text_title"])		document.getElementById('text_title').value = parsed_qs["text_title"];			//eg: Song title as it is normally written
