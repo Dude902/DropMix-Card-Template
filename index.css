@@ -21,7 +21,7 @@ body { font-kerning: none; }
 	white-space: pre;
 	overflow: auto;
 	}
-#text_series_id, #text_card_id {
+#text_season_id, #text_card_id {
 	letter-spacing: 0.06em;
 	font-family: "boldtext";
 	font-size: 15.5px;

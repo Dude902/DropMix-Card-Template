@@ -311,7 +311,7 @@ function parse_query_string(query) {
 
 if (typeof parse_query_string("text_artist") != "undefined")	document.getElementById('text_artist').value = parse_query_string("text_artist");		//eg: Artist's name as it is normally written
 if (typeof parse_query_string("text_title") != "undefined")		document.getElementById('text_title').value = parse_query_string("text_title");			//eg: Song title as it is normally written
-if (typeof parse_query_string("text_series_id") != "undefined") document.getElementById('text_series_id').value = parse_query_string("text_series_id");	//eg: S01
+if (typeof parse_query_string("text_season_id") != "undefined") document.getElementById('text_season_id').value = parse_query_string("text_season_id");	//eg: S01
 if (typeof parse_query_string("text_card_id") != "undefined") 	document.getElementById('text_card_id').value = parse_query_string("text_card_id");		//eg: C001
 if (typeof parse_query_string("text_card_num") != "undefined") 	document.getElementById('text_card_num').value = parse_query_string("text_card_num");	//eg: 1/15
 
@@ -341,7 +341,7 @@ if (typeof parse_query_string("playlist") != "undefined") 		document.getElementB
 let params = (new URL(document.location)).searchParams;
 if (params.get("text_artist")) 		document.getElementById("text_artist").value = params.get("text_artist"); 				//eg: Artist's name as it is normally written
 if (params.get("text_title")) 		document.getElementById("text_title").value = params.get("text_title");					//eg: Song title as it is normally written
-if (params.get("text_series_id")) 	document.getElementById("text_series_id").value = params.get("text_series_id");			//eg: S01
+if (params.get("text_season_id")) 	document.getElementById("text_season_id").value = params.get("text_season_id");			//eg: S01
 if (params.get("text_card_id")) 	document.getElementById("text_card_id").value = params.get("text_card_id");				//eg: C001
 if (params.get("text_card_num")) 	document.getElementById("text_card_num").value = params.get("text_card_num");			//eg: 1/15
 
@@ -579,7 +579,7 @@ function init()
 	def_title2 = '';
 	def_title3 = '';
 	def_title4 = '';
-	def_series_id = 'S##';
+	def_season_id = 'S##';
 	def_card_id = 'C###';
 	def_card_num = '##/##';
 
@@ -590,21 +590,21 @@ function init()
 	pos_title2 = [40.2,597.6+27];
 	pos_title3 = [40.2,597.6+27+27];
 	pos_title4 = [40.2,597.6+27+27+27];
-	pos_series_id = [39.3, 725];
+	pos_season_id = [39.3, 725];
 	pos_card_id = [74.2, 725];
 	pos_card_num = [489.4, 725.8];
 
 	//Font size
 	fs_artist = 24;
 	fs_title = 23;
-	fs_series_id = 15.5;
+	fs_season_id = 15.5;
 	fs_card_id = 15.5;
 	fs_card_num = 14.5;
 
 	//Text spacing
 	sp_artist = 80;
 	sp_title = 100;
-	sp_series_id = 60;
+	sp_season_id = 60;
 	sp_card_id = 60;
 	sp_card_num = 80;
 
@@ -623,7 +623,7 @@ function init()
 	if (tokens[1]) title2 = tokens[1]; else title2 = '';
 	if (tokens[2]) title3 = tokens[2]; else title3 = '';
 	if (tokens[3]) title4 = tokens[3]; else title4 = '';
-	series_id = document.getElementById('text_series_id').value;
+	season_id = document.getElementById('text_season_id').value;
 	card_id = document.getElementById('text_card_id').value;
 	card_num = document.getElementById('text_card_num').value;
 
@@ -677,7 +677,7 @@ function textchanged()
 		title2 = tokens[1];
 		title3 = tokens[2];
 		title4 = tokens[3];
-	series_id = document.getElementById('text_series_id').value;
+	season_id = document.getElementById('text_season_id').value;
 	card_id = document.getElementById('text_card_id').value;
 	card_num = document.getElementById('text_card_num').value;
 	draw();
@@ -1129,7 +1129,7 @@ function resettext()
 		//Reset text
 		document.getElementById('text_artist').value 	= def_artist;
 		document.getElementById('text_title').value 	= def_title;
-		document.getElementById('text_series_id').value = def_series_id;
+		document.getElementById('text_season_id').value = def_season_id;
 		document.getElementById('text_card_id').value 	= def_card_id;
 		document.getElementById('text_card_num').value	= def_card_num;
 		textchanged();
@@ -1145,7 +1145,7 @@ function resetcard()
 		//Reset text
 		document.getElementById('text_artist').value 	= def_artist;
 		document.getElementById('text_title').value 	= def_title;
-		document.getElementById('text_series_id').value = def_series_id;
+		document.getElementById('text_season_id').value = def_season_id;
 		document.getElementById('text_card_id').value 	= def_card_id;
 		document.getElementById('text_card_num').value	= def_card_num;
 		textchanged();
@@ -1203,7 +1203,7 @@ function drawtext()
 	if (text_title2) textcanvas.remove(text_title2);
 	if (text_title3) textcanvas.remove(text_title3);
 	if (text_title4) textcanvas.remove(text_title4);
-	if (text_series_id) textcanvas.remove(text_series_id);
+	if (text_season_id) textcanvas.remove(text_season_id);
 	if (text_card_id) textcanvas.remove(text_card_id);
 	if (text_card_num) textcanvas.remove(text_card_num);
 
@@ -1267,11 +1267,11 @@ function drawtext()
 	  fill:"white",
 	});
 
-	text_series_id = new fabric.Text(series_id, {
+	text_season_id = new fabric.Text(season_id, {
 	  fontFamily: 'boldtext',
 	  fontWeight:400,
-	  fontSize:fs_series_id,
-	  charSpacing:sp_series_id,
+	  fontSize:fs_season_id,
+	  charSpacing:sp_season_id,
 	  fontKerning: 'none !important',
 	  fill:"white",
 	});
@@ -1302,7 +1302,7 @@ function drawtext()
 	if (typeof title2 != 'undefined') textcanvas.add(text_title2);
 	if (typeof title3 != 'undefined') textcanvas.add(text_title3);
 	if (typeof title4 != 'undefined') textcanvas.add(text_title4);
-	textcanvas.add(text_series_id);
+	textcanvas.add(text_season_id);
 	textcanvas.add(text_card_id);
 	textcanvas.add(text_card_num);
 
@@ -1311,7 +1311,7 @@ function drawtext()
 	if (typeof title2 != 'undefined') text_title2.set({ 		left: pos_title2[0], 	top: pos_title2[1] });
 	if (typeof title3 != 'undefined') text_title3.set({ 		left: pos_title3[0], 	top: pos_title3[1] });
 	if (typeof title4 != 'undefined') text_title4.set({ 		left: pos_title4[0], 	top: pos_title4[1] });
-	text_series_id.set({ 	left: pos_series_id[0], top: pos_series_id[1] });
+	text_season_id.set({ 	left: pos_season_id[0], top: pos_season_id[1] });
 	text_card_id.set({ 		left: pos_card_id[0], 	top: pos_card_id[1] });
 	text_card_num.set({ 	left: pos_card_num[0], 	top: pos_card_num[1] });
 	}
