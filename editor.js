@@ -282,7 +282,7 @@ function confirmdelete()
 }
 window.onbeforeunload = confirmdelete;
 
-//Optionally pre-fill variables based on URL parameters (parameters are written the same as input id's and values)
+//OPTIONALLY PRE-FILL - variables based on URL parameters (parameters are written the same as input id's and values)
 //Fallback Method - newest method was not compatible with my ios7 device, so using this instead
 
 function parse_query_string(query) {
