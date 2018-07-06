@@ -309,7 +309,7 @@ function parse_query_string(query) {
 //var parsed_qs = {};
 //parsed_qs = parse_query_string(location.search.substring(1));
 
-document.getElementById('text_artist').value = parse_query_string("text_artist");		//eg: Artist's name as it is normally written
+if (typeof parse_query_string("text_artist") != "undefined")	document.getElementById('text_artist').value = parse_query_string("text_artist");		//eg: Artist's name as it is normally written
 if (typeof parse_query_string("text_title") != "undefined")		document.getElementById('text_title').value = parse_query_string("text_title");			//eg: Song title as it is normally written
 if (typeof parse_query_string("text_series_id") != "undefined") document.getElementById('text_series_id').value = parse_query_string("text_series_id");	//eg: S01
 if (typeof parse_query_string("text_card_id") != "undefined") 	document.getElementById('text_card_id').value = parse_query_string("text_card_id");		//eg: C001
