@@ -293,7 +293,7 @@ function parse_query_string(query) {
     var key = decodeURIComponent(pair[0]);
     var value = decodeURIComponent(pair[1]);
     // If first entry with this name
-//    if (typeof query_string[key] === "undefined") {
+    if (typeof query_string[key] === "undefined")
       query_string[key] = decodeURIComponent(value);
 //      // If second entry with this name
 //    } else if (typeof query_string[key] === "string") {
