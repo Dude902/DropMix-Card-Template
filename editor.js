@@ -291,7 +291,7 @@ window.onbeforeunload = confirmdelete;
     var key = decodeURIComponent(pair[0]);
     var value = decodeURIComponent(pair[1]);
     // If first entry with this name
-//    if (typeof parsed_qs[key] === "undefined") {
+    if (typeof parsed_qs[key] === "undefined") {
       parsed_qs[key] = decodeURIComponent(value);
 //      // If second entry with this name
 //    } else if (typeof parsed_qs[key] === "string") {
