@@ -309,18 +309,18 @@ function parse_query_string(query) {
 
 var parsed_qs = parse_query_string(window.location.search.substring(1));
 
-if (parsed_qs["text_artist"])		document.getElementById("text_artist").value = parsed_qs["text_artist"];		//eg: Artist's name as it is normally written
-if (parsed_qs["text_title"])		document.getElementById("text_title").value = parsed_qs["text_title"];			//eg: Song title as it is normally written
-if (parsed_qs["text_series_id"]) 	document.getElementById("text_series_id").value = parsed_qs["text_series_id"];	//eg: S01
-if (parsed_qs["text_card_id"]) 		document.getElementById("text_card_id").value = parsed_qs["text_card_id"];		//eg: C001
-if (parsed_qs["text_card_num"]) 	document.getElementById("text_card_num").value = parsed_qs["text_card_num"];	//eg: 1/15
+if (parsed_qs["text_artist"])		document.getElementById('text_artist').value = parsed_qs["text_artist"];		//eg: Artist's name as it is normally written
+if (parsed_qs["text_title"])		document.getElementById('text_title').value = parsed_qs["text_title"];			//eg: Song title as it is normally written
+if (parsed_qs["text_series_id"]) 	document.getElementById('text_series_id').value = parsed_qs["text_series_id"];	//eg: S01
+if (parsed_qs["text_card_id"]) 		document.getElementById('text_card_id').value = parsed_qs["text_card_id"];		//eg: C001
+if (parsed_qs["text_card_num"]) 	document.getElementById('text_card_num').value = parsed_qs["text_card_num"];	//eg: 1/15
 
 if (parsed_qs["level"]) 		if (document.getElementById(parsed_qs["level"])) document.getElementById(parsed_qs["level"]).checked = true;//slightly different code	//eg: w2 (color's first letter followed by a number 1-3, white represented by letter "f" for fx, "w" is for wild)
-if (parsed_qs["instrument1"]) 		document.getElementById("instrument1").value = parsed_qs["instrument1"];		//eg: ysampler (color's first letter followed by instrument including "vocals", "guitar", "keys", "horns", "strings", "sampler", "drums")
-if (parsed_qs["instrument2"]) 		document.getElementById("instrument2").value = parsed_qs["instrument2"];		//eg: same as instrument 1, but only red ("r")
-if (parsed_qs["instrument3"]) 		document.getElementById("instrument3").value = parsed_qs["instrument3"];		//eg: same as instrument 1, but only blue ("b")
-if (parsed_qs["instrument4"]) 		document.getElementById("instrument4").value = parsed_qs["instrument4"];		//eg: same as instrument 1, but only green ("g")
-if (parsed_qs["playlist"]) 			document.getElementById("playlist").value = parsed_qs["playlist"];				//eg: beast (name of listed playlist in lowercase with spaces replace with underscores (DM Icon is "dm_icon"), does not include official playlists)
+if (parsed_qs["instrument1"]) 		document.getElementById('instrument1').value = parsed_qs["instrument1"];		//eg: ysampler (color's first letter followed by instrument including "vocals", "guitar", "keys", "horns", "strings", "sampler", "drums")
+if (parsed_qs["instrument2"]) 		document.getElementById('instrument2').value = parsed_qs["instrument2"];		//eg: same as instrument 1, but only red ("r")
+if (parsed_qs["instrument3"]) 		document.getElementById('instrument3').value = parsed_qs["instrument3"];		//eg: same as instrument 1, but only blue ("b")
+if (parsed_qs["instrument4"]) 		document.getElementById('instrument4').value = parsed_qs["instrument4"];		//eg: same as instrument 1, but only green ("g")
+if (parsed_qs["playlist"]) 			document.getElementById('playlist').value = parsed_qs["playlist"];				//eg: beast (name of listed playlist in lowercase with spaces replace with underscores (DM Icon is "dm_icon"), does not include official playlists)
 
 
 
