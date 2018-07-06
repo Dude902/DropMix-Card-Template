@@ -307,7 +307,7 @@ function parse_query_string(query) {
   return query_string;
 }
 
-var parsed_qs = parse_query_string(window.location.search.substring(1));
+var parsed_qs = parse_query_string(location.search.substring(1));
 
 if (parsed_qs["text_artist"])		document.getElementById('text_artist').value = parsed_qs["text_artist"];		//eg: Artist's name as it is normally written
 if (parsed_qs["text_title"])		document.getElementById('text_title').value = parsed_qs["text_title"];			//eg: Song title as it is normally written
