@@ -282,7 +282,30 @@ function confirmdelete()
 }
 window.onbeforeunload = confirmdelete;
 
-//Optionally preset variables based on URL parameters (same as input id's and values)
+//Optionally pre-fill variables based on URL parameters (parameters are written the same as input id's and values)
+//Fallback Method - new method was not compatible with my ios7 device, so using this instead
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+if (getUrlParameter("text_artist"))		document.getElementById("text_artist").value = getUrlParameter("text_artist");			//eg: Artist's name as it is normally written
+if (getUrlParameter("text_title"))		document.getElementById("text_title").value = getUrlParameter("text_title");			//eg: Song title as it is normally written
+if (getUrlParameter("text_series_id")) 	document.getElementById("text_series_id").value = getUrlParameter("text_series_id");	//eg: S01
+if (getUrlParameter("text_card_id")) 	document.getElementById("text_card_id").value = getUrlParameter("text_card_id");		//eg: C001
+if (getUrlParameter("text_card_num")) 	document.getElementById("text_card_num").value = getUrlParameter("text_card_num");		//eg: 1/15
+
+if (getUrlParameter("level")) 			if (document.getElementById(getUrlParameter("level"))) document.getElementById(getUrlParameter("level")).checked = true;//slightly different code	//eg: w2 (color's first letter followed by a number 1-3, white represented by letter "f" for fx, "w" is for wild)
+if (getUrlParameter("instrument1")) 	document.getElementById("instrument1").value = getUrlParameter("instrument1");			//eg: ysampler (color's first letter followed by instrument including "vocals", "guitar", "keys", "horns", "strings", "sampler", "drums")
+if (getUrlParameter("instrument2")) 	document.getElementById("instrument2").value = getUrlParameter("instrument2");			//eg: same as instrument 1, but only red ("r")
+if (getUrlParameter("instrument3")) 	document.getElementById("instrument3").value = getUrlParameter("instrument3");			//eg: same as instrument 1, but only blue ("b")
+if (getUrlParameter("instrument4")) 	document.getElementById("instrument4").value = getUrlParameter("instrument4");			//eg: same as instrument 1, but only green ("g")
+if (getUrlParameter("playlist")) 		document.getElementById("playlist").value = getUrlParameter("playlist");				//eg: beast (name of listed playlist in lowercase with spaces replace with underscores (DM Icon is "dm_icon"), does not include official playlists)
+
+/*
+//New Method - not compatible with my ios7 device, so using a fallback method instead
 let params = (new URL(document.location)).searchParams;
 if (params.get("text_artist")) 		document.getElementById("text_artist").value = params.get("text_artist"); 				//eg: Artist's name as it is normally written
 if (params.get("text_title")) 		document.getElementById("text_title").value = params.get("text_title");					//eg: Song title as it is normally written
@@ -296,7 +319,7 @@ if (params.get("instrument2")) 		document.getElementById("instrument2").value = 
 if (params.get("instrument3")) 		document.getElementById("instrument3").value = params.get("instrument3");				//eg: same as instrument 1, but only blue ("b")
 if (params.get("instrument4")) 		document.getElementById("instrument4").value = params.get("instrument4");				//eg: same as instrument 1, but only green ("g")
 if (params.get("playlist")) 		document.getElementById("playlist").value = params.get("playlist");						//eg: beast (name of listed playlist in lowercase with spaces replace with underscores (DM Icon is "dm_icon"), does not include official playlists)
-
+*/
 
 
 
