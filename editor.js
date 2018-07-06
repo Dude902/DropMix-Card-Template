@@ -283,13 +283,9 @@ function confirmdelete()
 window.onbeforeunload = confirmdelete;
 
 //Optionally pre-fill variables based on URL parameters (parameters are written the same as input id's and values)
-//Fallback Method - new method was not compatible with my ios7 device, so using this instead
-function getUrlParameter(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    var results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-};
+//Fallback Method - newest method was not compatible with my ios7 device, so using this instead
+
+function getUrlParameter(search_for) { var query = window.location.search.substring(1); var parms = query.split('&'); for (var i = 0; i < parms.length; i++) { var pos = parms[i].indexOf('='); if (pos > 0 && search_for == parms[i].substring(0, pos)) { return decodeURIComponent(parms[i].substring(pos + 1));; } } return ""; }
 
 if (getUrlParameter("text_artist"))		document.getElementById("text_artist").value = getUrlParameter("text_artist");			//eg: Artist's name as it is normally written
 if (getUrlParameter("text_title"))		document.getElementById("text_title").value = getUrlParameter("text_title");			//eg: Song title as it is normally written
@@ -304,8 +300,17 @@ if (getUrlParameter("instrument3")) 	document.getElementById("instrument3").valu
 if (getUrlParameter("instrument4")) 	document.getElementById("instrument4").value = getUrlParameter("instrument4");			//eg: same as instrument 1, but only green ("g")
 if (getUrlParameter("playlist")) 		document.getElementById("playlist").value = getUrlParameter("playlist");				//eg: beast (name of listed playlist in lowercase with spaces replace with underscores (DM Icon is "dm_icon"), does not include official playlists)
 
+//First Fallback Method -  still not compatible with ios7
+/*function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+*/
+
+//First Method - not compatible with my ios7 device, so using a fallback method instead
 /*
-//New Method - not compatible with my ios7 device, so using a fallback method instead
 let params = (new URL(document.location)).searchParams;
 if (params.get("text_artist")) 		document.getElementById("text_artist").value = params.get("text_artist"); 				//eg: Artist's name as it is normally written
 if (params.get("text_title")) 		document.getElementById("text_title").value = params.get("text_title");					//eg: Song title as it is normally written
