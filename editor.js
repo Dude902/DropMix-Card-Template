@@ -321,6 +321,7 @@ if (typeof parse_query_string("instrument2") != "undefined") 	document.getElemen
 if (typeof parse_query_string("instrument3") != "undefined") 	document.getElementById('instrument3').value = parse_query_string("instrument3");		//eg: same as instrument 1, but only blue ("b")
 if (typeof parse_query_string("instrument4") != "undefined") 	document.getElementById('instrument4').value = parse_query_string("instrument4");		//eg: same as instrument 1, but only green ("g")
 if (typeof parse_query_string("playlist") != "undefined") 		document.getElementById('playlist').value = parse_query_string("playlist");				//eg: beast (name of listed playlist in lowercase with spaces replace with underscores (DM Icon is "dm_icon"), does not include official playlists)
+//NOTE - PRELOAD ART VIA URL using tag "artimg", CODE CHECKED DURING INIT
 
 
 
@@ -656,6 +657,11 @@ function init()
 	doneloading = true;
 	draw();
 	updatecardlink();
+	
+	//PRELOAD ART VIA URL
+	if (typeof parse_query_string("artimg") != "undefined") 	{
+	artimg.src = parse_query_string("artimg"); document.getElementById('imguploadform').reset();draw(); console.log(parse_query_string("artimg"));
+	}
 	
 	//Draw automatically after little bit, for some reason text doesn't show until here
 	setTimeout(draw, 250); //0.25 sec
